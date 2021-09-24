@@ -1,7 +1,25 @@
+import React, { ReactElement } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import { AdminLayout } from "layout";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Booke Admin</header>
+      <Router>
+        <Switch>
+          <Route
+            exact={true}
+            path="/"
+            render={(): ReactElement => <Redirect to="/admin" />}
+          />
+          <Route exact={false} path="/admin" component={AdminLayout} />
+        </Switch>
+      </Router>
     </div>
   );
 }
