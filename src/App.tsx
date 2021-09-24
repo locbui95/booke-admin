@@ -1,7 +1,9 @@
+import AppLayout from "components/layout/app";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Booke Admin</header>
+      <AppLayout />
     </div>
   );
 }

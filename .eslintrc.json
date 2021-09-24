@@ -16,6 +16,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": ["error"],
+    "react/jsx-no-bind": "off",
     "consistent-return": "off",
     "semi": "off",
     "no-use-before-define": "off",
