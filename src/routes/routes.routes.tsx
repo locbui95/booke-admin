@@ -9,7 +9,7 @@ interface RouteModel {
   component: ComponentType;
 }
 
-export const productManagementRouter: RouteModel[] = [
+export const appRoutes: RouteModel[] = [
   {
     exact: true,
     path: "/",
