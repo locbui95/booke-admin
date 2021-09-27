@@ -1,7 +1,15 @@
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Layout from "layout";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Booke Admin</header>
+      <Router>
+        <Switch>
+          <Route exact={false} path="/" component={Layout} />
+        </Switch>
+      </Router>
     </div>
   );
 }
