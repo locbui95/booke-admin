@@ -1,4 +1,6 @@
-import { ComponentPropsWithoutRef } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
+
+import styles from "./input.module.css";
 
 interface InputProps extends ComponentPropsWithoutRef<"input"> {
   placeholder: string;
@@ -13,27 +15,15 @@ const Input = ({
   onChange,
   defaultValue,
   placeholder
-}: InputProps) => {
-  const inputStyle = {
-    width: "80%",
-    borderRadius: "10px",
-    borderStyle: "solid",
-    borderColor: "#808080",
-    padding: "5px ",
-    display: "block",
-    borderWidth: "2px",
-    outline: "none"
-  };
-  return (
-    <input
-      name={name}
-      onChange={onChange}
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      type={type}
-      style={inputStyle}
-    />
-  );
-};
+}: InputProps) => (
+  <input
+    name={name}
+    onChange={onChange}
+    placeholder={placeholder}
+    defaultValue={defaultValue}
+    type={type}
+    className={styles.inputStyle}
+  />
+);
 
 export default Input;
