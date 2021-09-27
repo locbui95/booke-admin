@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { adminRouter } from "router/routes.routes";
+import { productManagementRouter } from "router/routes.routes";
 
 function ProductManagementLayout() {
-  const renderRoutes = (routes: typeof adminRouter) =>
+  const renderRoutes = (routes: typeof productManagementRouter) =>
     routes.map((route) => (
       <Route
         key={route.path}
@@ -14,7 +14,7 @@ function ProductManagementLayout() {
     ));
   return (
     <>
-      <Switch>{renderRoutes(adminRouter)}</Switch>
+      <Switch>{renderRoutes(productManagementRouter)}</Switch>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 
-import { Dashboard, Categories, Products } from "pages/productManagement";
+import { Dashboard, Categories, Products } from "pages";
 import { PATH_CATEGORIES, PATH_PRODUCTS } from "./routes.paths";
 
 interface RouteModel {
@@ -9,7 +9,7 @@ interface RouteModel {
   component: ComponentType;
 }
 
-export const adminRouter: RouteModel[] = [
+export const productManagementRouter: RouteModel[] = [
   {
     exact: true,
     path: "/",

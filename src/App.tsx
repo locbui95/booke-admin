@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ProductManagementLayout } from "layout";
+import ProductManagementLayout from "layout";
 
 function App() {
   return (
