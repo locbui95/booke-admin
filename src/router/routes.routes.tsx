@@ -1,11 +1,7 @@
 import { ComponentType } from "react";
 
-import { Dashboard, Categories, Products } from "pages/admin";
-import {
-  PATH_ADMIN,
-  PATH_ADMIN_CATEGORIES,
-  PATH_ADMIN_PRODUCTS
-} from "./routes.paths";
+import { Dashboard, Categories, Products } from "pages/productManagement";
+import { PATH_CATEGORIES, PATH_PRODUCTS } from "./routes.paths";
 
 interface RouteModel {
   exact: boolean;
@@ -16,17 +12,17 @@ interface RouteModel {
 export const adminRouter: RouteModel[] = [
   {
     exact: true,
-    path: PATH_ADMIN,
+    path: "/",
     component: Dashboard
   },
   {
     exact: true,
-    path: PATH_ADMIN_CATEGORIES,
+    path: PATH_CATEGORIES,
     component: Categories
   },
   {
     exact: true,
-    path: PATH_ADMIN_PRODUCTS,
+    path: PATH_PRODUCTS,
     component: Products
   }
 ];

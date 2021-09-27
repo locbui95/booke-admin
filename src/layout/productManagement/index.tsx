@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { adminRouter } from "router/routes.routes";
 
-function AdminLayout() {
+function ProductManagementLayout() {
   const renderRoutes = (routes: typeof adminRouter) =>
     routes.map((route) => (
       <Route
@@ -19,4 +19,4 @@ function AdminLayout() {
   );
 }
 
-export default AdminLayout;
+export default ProductManagementLayout;

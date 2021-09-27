@@ -1,23 +1,13 @@
-import React, { ReactElement } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
-import { AdminLayout } from "layout";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ProductManagementLayout } from "layout";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route
-            exact={true}
-            path="/"
-            render={(): ReactElement => <Redirect to="/admin" />}
-          />
-          <Route exact={false} path="/admin" component={AdminLayout} />
+          <Route exact={false} path="/" component={ProductManagementLayout} />
         </Switch>
       </Router>
     </div>

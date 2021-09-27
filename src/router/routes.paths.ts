@@ -1,8 +1,7 @@
-export const PATH_ADMIN = "/admin";
-export const PATH_ADMIN_CATEGORIES = "/admin/categories";
-export const PATH_ADMIN_CATEGORY_ADD = "/admin/category/add";
-export const PATH_ADMIN_CATEGORY_UPDATE = "/admin/category/update/:id";
+export const PATH_CATEGORIES = "/categories";
+export const PATH_CATEGORY_ADD = "/category/add";
+export const PATH_CATEGORY_UPDATE = "/category/update/:id";
 
-export const PATH_ADMIN_PRODUCTS = "/admin/products";
-export const PATH_ADMIN_PRODUCTS_ADD = "/admin/products/add";
-export const PATH_ADMIN_PRODUCTS_UPDATE = "/admin/products/update/:id";
+export const PATH_PRODUCTS = "/products";
+export const PATH_PRODUCTS_ADD = "/products/add";
+export const PATH_PRODUCTS_UPDATE = "/products/update/:id";
