@@ -1,27 +1,39 @@
-import React from "react";
+import { ComponentPropsWithoutRef } from "react";
 
-interface InputProps {
+interface InputProps extends ComponentPropsWithoutRef<"input"> {
   placeholder: string;
   defaultValue: any;
   name: string;
   type: string;
   onChange(e: any): void;
 }
-const CustomInput: React.FC<InputProps> = ({
+const Input = ({
   type,
   name,
   onChange,
   defaultValue,
   placeholder
-}) => (
-  <input
-    name={name}
-    onChange={onChange}
-    placeholder={placeholder}
-    defaultValue={defaultValue}
-    type={type}
-    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-  />
-);
+}: InputProps) => {
+  const inputStyle = {
+    width: "80%",
+    borderRadius: "10px",
+    borderStyle: "solid",
+    borderColor: "#808080",
+    padding: "5px ",
+    display: "block",
+    borderWidth: "2px",
+    outline: "none"
+  };
+  return (
+    <input
+      name={name}
+      onChange={onChange}
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+      type={type}
+      style={inputStyle}
+    />
+  );
+};
 
-export default CustomInput;
+export default Input;
