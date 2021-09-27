@@ -1,13 +1,15 @@
-import Button from "components/button";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Layout from "layout";
 
 function App() {
-  const sumb = () => {
-    console.log("hihi");
-  };
   return (
     <div className="App">
-      <header className="App-header">Booke Admin</header>
-      <Button onClick={sumb}>add</Button>
+      <Router>
+        <Switch>
+          <Route exact={false} path="/" component={Layout} />
+        </Switch>
+      </Router>
     </div>
   );
 }
