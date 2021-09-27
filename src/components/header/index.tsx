@@ -1,6 +1,6 @@
 import Search from "components/search";
-import avatar from "../../assets/avt.jpg";
-import "../../layout/app/styles.css";
+import avatar from "assets/avt.jpg";
+import "./styles.css";
 
 export default function Header() {
   return (
