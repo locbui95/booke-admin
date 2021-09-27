@@ -1,0 +1,6 @@
+.content{
+  width: calc(100% - 20rem);
+}
+.min-h-content{
+  min-height: calc(100% - 8rem);
+}
