@@ -1,5 +1,4 @@
-import { AiFillAppstore, AiOutlineMenuUnfold } from "react-icons/ai";
-import { BsFillInboxesFill } from "react-icons/bs";
+import { AiFillAppstore, AiOutlineMenuUnfold, AiFillHdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 import logo from "assets/logo.png";
@@ -31,7 +30,7 @@ export default function Sidebar() {
           to={PATH_PRODUCTS}
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all"
         >
-          <BsFillInboxesFill className="text-2xl mx-3" />
+          <AiFillHdd className="text-2xl mx-3" />
           Management Product
         </Link>
       </nav>
