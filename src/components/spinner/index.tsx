@@ -1,9 +1,13 @@
-import React from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 import "./spinner.styles.css";
 
-function Spinner() {
-  return <div className="loader"> </div>;
-}
+interface SpinnerProps extends ComponentPropsWithoutRef<"div"> {}
+
+const Spinner = ({ className, ...props }: SpinnerProps) => (
+  <div className={`loader ${className}`} {...props}>
+    {""}
+  </div>
+);
 
 export default Spinner;
