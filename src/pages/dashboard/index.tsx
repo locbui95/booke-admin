@@ -1,7 +1,18 @@
-import React from "react";
+import Button from "components/button";
+import { useState } from "react";
 
 function Dashboard() {
-  return <div>Dashboard</div>;
+  const [isLoading, setIsLoading] = useState(false);
+  const submit = () => {
+    setIsLoading(true);
+  };
+  return (
+    <div>
+      <Button loading={isLoading} onClick={submit}>
+        OnClick
+      </Button>
+    </div>
+  );
 }
 
 export default Dashboard;
