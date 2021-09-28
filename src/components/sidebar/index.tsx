@@ -8,9 +8,9 @@ export default function Sidebar() {
   return (
     <div className="fixed top-0 left-0 w-80 p-5 bottom-0 bg-white shadow-xl">
       <div className="my-10 text-4xl text-center">
-        <a className="flex justify-center">
+        <Link to="/" className="flex justify-center">
           <img className="w-40" src={logo} alt="" />
-        </a>
+        </Link>
       </div>
       <nav className="pt-7 text-center">
         <Link
