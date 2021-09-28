@@ -10,7 +10,13 @@ interface TableProps extends ComponentPropsWithoutRef<"table"> {
   renderRows: Function;
 }
 
-function Table({ loading, head, data, renderRows, ...props }: TableProps) {
+export default function Table({
+  loading,
+  head,
+  data,
+  renderRows,
+  ...props
+}: TableProps) {
   const currentDataList = data;
 
   function renderTableBody() {
@@ -30,6 +36,7 @@ function Table({ loading, head, data, renderRows, ...props }: TableProps) {
     }
     return currentDataList.map((item) => renderRows(item));
   }
+
   return (
     <table
       className="border-separate border border-gray-800 w-1/2 mx-52 rounded-lg p-5 borderSpacing-0-0"
@@ -44,8 +51,6 @@ function Table({ loading, head, data, renderRows, ...props }: TableProps) {
     </table>
   );
 }
-
-export default Table;
 
 Table.defaultProps = {
   loading: false
