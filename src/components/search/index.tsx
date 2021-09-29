@@ -9,7 +9,7 @@ interface SearchProps {
 export default function Search({ onSearch }: SearchProps) {
   const [value, setvalue] = useState<string>("");
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setvalue(e.target.value);
   };
@@ -24,7 +24,7 @@ export default function Search({ onSearch }: SearchProps) {
       <Input
         className="p-3 w-3/4 bg-gray-200 focus:outline-none focus:border-blue-400 focus:bg-white border-2"
         placeholder="Search here..."
-        onChange={handleOnChange}
+        onChange={handleChange}
       />
     </form>
   );
