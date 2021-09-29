@@ -13,7 +13,7 @@ interface SearchProps extends ComponentPropsWithoutRef<"input"> {
 export default function Search({ onSearch, ...props }: SearchProps) {
   const [value, setvalue] = useState<string>("");
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setvalue(e.target.value);
   };
@@ -30,7 +30,7 @@ export default function Search({ onSearch, ...props }: SearchProps) {
         type="text"
         name="search"
         placeholder="Search here..."
-        onChange={handleOnChange}
+        onChange={handleChange}
         value={value}
         {...props}
       />
