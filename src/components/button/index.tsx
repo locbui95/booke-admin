@@ -4,7 +4,7 @@ import { CgSpinner } from "react-icons/cg";
 import styles from "./button.module.css";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
-  loading: boolean;
+  loading?: boolean;
   children: React.ReactNode;
 }
 
@@ -20,5 +20,9 @@ const Button = ({ loading, children, ...props }: ButtonProps) => (
     )}
   </button>
 );
+
+Button.defaultProps = {
+  loading: false
+};
 
 export default Button;

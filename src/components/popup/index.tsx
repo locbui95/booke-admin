@@ -1,47 +1,44 @@
-import React from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
 import Button from "components/button";
 
 interface PopupProps {
-  isShown: boolean;
+  isOpen: boolean;
+  popupTitle: string;
   message: string;
-  hide: () => void;
+  onClose: () => void;
   onConfirm: () => void;
 }
 
 export default function Popup({
-  isShown,
+  isOpen,
+  popupTitle,
   message,
-  hide,
+  onClose,
   onConfirm
 }: PopupProps) {
   return (
     <div>
-      {isShown ? (
+      {isOpen ? (
         <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0">
-          <div className="flex flex-col p-5 w-80 h-52 rounded-md bg-white shadow-lg">
-            <div className="flex justify-end">
-              <Button
-                className="border-none text-xl"
-                loading={false}
-                onClick={hide}
-              >
-                X
+          <div className="flex flex-col p-5  w-auto h-auto max-w-xl rounded-md bg-white shadow-lg">
+            <div className="flex justify-between">
+              <h1 className="font-semibold text-xl">{popupTitle}</h1>
+              <Button className="border-none text-xl ml-36" onClick={onClose}>
+                <AiFillCloseCircle />
               </Button>
             </div>
-            <div className="inline-block text-center my-8 font-semibold">
+            <div className="inline-block my-8 ">
               <h1>{message}</h1>
             </div>
-            <div className="flex justify-center items-center text-white">
+            <div className="flex justify-end items-center ">
               <Button
-                className="w-20 m-1 bg-red-600 rounded-lg p-2"
-                loading={false}
-                onClick={hide}
+                className="w-20 text-gray-900 font-medium rounded-lg p-2 hover:bg-gray-200 hover:bg-opacity-30"
+                onClick={onClose}
               >
                 Cancel
               </Button>
               <Button
-                loading={false}
-                className="w-20 m-1 bg-blue-400 rounded-lg p-2"
+                className="w-20 text-blue-400 font-medium rounded-lg p-2 hover:bg-gray-200 hover:bg-opacity-30"
                 onClick={onConfirm}
               >
                 Confirm
