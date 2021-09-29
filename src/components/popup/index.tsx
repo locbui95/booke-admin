@@ -3,7 +3,7 @@ import Button from "components/button";
 
 interface PopupProps {
   isOpen: boolean;
-  popupTitle: string;
+  title: string;
   message: string;
   onClose: () => void;
   onConfirm: () => void;
@@ -11,7 +11,7 @@ interface PopupProps {
 
 export default function Popup({
   isOpen,
-  popupTitle,
+  title,
   message,
   onClose,
   onConfirm
@@ -22,7 +22,7 @@ export default function Popup({
         <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0">
           <div className="flex flex-col p-5  w-auto h-auto max-w-xl rounded-md bg-white shadow-lg">
             <div className="flex justify-between">
-              <h1 className="font-semibold text-xl">{popupTitle}</h1>
+              <h1 className="font-semibold text-xl">{title}</h1>
               <Button className="border-none text-xl ml-36" onClick={onClose}>
                 <AiFillCloseCircle />
               </Button>
