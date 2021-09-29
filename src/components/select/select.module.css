@@ -4,7 +4,7 @@ select {
   border: none;
   padding: 1rem 0.5rem;
   margin: 0;
-  width: calc(100% + 5px);
+  width: calc(100% + 10px);
   cursor: inherit;
   line-height: inherit;
   z-index: 1;
