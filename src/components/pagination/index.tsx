@@ -32,7 +32,7 @@ const Pagination = (props: PaginationProps) => {
     handlePageChange(currentPage + 1);
   };
 
-  const handleClickPrevios = () => {
+  const handleClickPrevious = () => {
     handlePageChange(currentPage - 1);
   };
 
@@ -40,7 +40,7 @@ const Pagination = (props: PaginationProps) => {
     <ul className="flex items-center justify-end m-2">
       <Button
         className="text-black py-0 px-3 h-8 text-center box-border flex items-center rounded-2xl hover:bg-blue-400 transition-all hover:text-white cursor-pointer"
-        onClick={handleClickPrevios}
+        onClick={handleClickPrevious}
         disabled={currentPage === 1}
       >
         <FaAngleLeft />
