@@ -4,7 +4,15 @@ import clsx from "clsx";
 
 import { usePagination, DOTS } from "./usePagination";
 
-const Pagination = (props: any) => {
+interface PaginationProps {
+  onPageChange: Function;
+  totalCount: number;
+  siblingCount?: number;
+  currentPage: number;
+  pageSize: number;
+}
+
+const Pagination = (props: PaginationProps) => {
   const {
     onPageChange,
     totalCount,
@@ -13,7 +21,7 @@ const Pagination = (props: any) => {
     pageSize
   } = props;
 
-  const paginationRange: any = usePagination(
+  const paginationRange: (string | number)[] | undefined = usePagination(
     currentPage,
     totalCount,
     siblingCount,
@@ -65,3 +73,7 @@ const Pagination = (props: any) => {
 };
 
 export default Pagination;
+
+Pagination.defaultProps = {
+  siblingCount: 1
+};

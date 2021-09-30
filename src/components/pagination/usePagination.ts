@@ -10,7 +10,7 @@ export const DOTS = "...";
 export const usePagination = (
   currentPage: number,
   totalCount: number,
-  siblingCount = 1,
+  siblingCount: number = 1,
   pageSize: number
 ) => {
   const paginationRange = useMemo(() => {
