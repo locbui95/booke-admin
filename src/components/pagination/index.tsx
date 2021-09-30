@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { usePagination, DOTS } from "./usePagination";
 
 interface PaginationProps {
-  onPageChange: Function;
+  handlePageChange: Function;
   totalCount: number;
   siblingCount?: number;
   currentPage: number;
@@ -14,7 +14,7 @@ interface PaginationProps {
 
 const Pagination = (props: PaginationProps) => {
   const {
-    onPageChange,
+    handlePageChange,
     totalCount,
     siblingCount = 1,
     currentPage,
@@ -28,19 +28,19 @@ const Pagination = (props: PaginationProps) => {
     pageSize
   );
 
-  const onNext = () => {
-    onPageChange(currentPage + 1);
+  const handleClickNext = () => {
+    handlePageChange(currentPage + 1);
   };
 
-  const onPrevious = () => {
-    onPageChange(currentPage - 1);
+  const handleClickPrevios = () => {
+    handlePageChange(currentPage - 1);
   };
 
   return (
     <ul className="flex items-center justify-end m-2">
       <Button
         className="text-black py-0 px-3 h-8 text-center box-border flex items-center rounded-2xl hover:bg-blue-400 transition-all hover:text-white cursor-pointer"
-        onClick={onPrevious}
+        onClick={handleClickPrevios}
         disabled={currentPage === 1}
       >
         <FaAngleLeft />
@@ -54,7 +54,7 @@ const Pagination = (props: PaginationProps) => {
               "hover:bg-blue-400 transition-all hover:text-white cursor-pointer"
           )}
           key={Math.random()}
-          onClick={() => onPageChange(pageNumber)}
+          onClick={() => handlePageChange(pageNumber)}
           disabled={pageNumber === DOTS}
         >
           {pageNumber}
@@ -63,7 +63,7 @@ const Pagination = (props: PaginationProps) => {
 
       <Button
         className="text-black py-0 px-3 h-8 text-center box-border flex items-center rounded-2xl hover:bg-blue-400 transition-all hover:text-white cursor-pointer"
-        onClick={onNext}
+        onClick={handleClickNext}
         disabled={currentPage === Math.ceil(totalCount / pageSize)}
       >
         <FaAngleRight />

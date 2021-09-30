@@ -60,7 +60,7 @@ export default function Table({
         currentPage={currentPage}
         totalCount={data.length}
         pageSize={PageSize}
-        onPageChange={(page: number) => setCurrentPage(page)}
+        handlePageChange={(page: number) => setCurrentPage(page)}
       />
     </div>
   );
