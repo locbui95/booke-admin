@@ -1,19 +1,15 @@
-import { FaSearch } from "react-icons/fa";
-import {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  FormEvent,
-  useState
-} from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-interface SearchProps extends ComponentPropsWithoutRef<"input"> {
+import Input from "components/input";
+
+interface SearchProps {
   onSearch: (search: string) => void;
 }
 
-export default function Search({ onSearch, ...props }: SearchProps) {
+export default function Search({ onSearch }: SearchProps) {
   const [value, setvalue] = useState<string>("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setvalue(e.target.value);
   };
@@ -24,22 +20,12 @@ export default function Search({ onSearch, ...props }: SearchProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative lg:block hidden">
-      <input
-        className="bg-white h-12 w-80 pl-4 pr-8 rounded-2xl shadow-md text-md focus:outline-none"
-        type="text"
-        name="search"
+    <form onSubmit={handleSubmit} className="relative lg:block hidden w-1/2">
+      <Input
+        className="p-3 w-3/4 bg-gray-200 focus:outline-none focus:border-blue-400 focus:bg-white border-2"
         placeholder="Search here..."
-        onChange={handleChange}
-        value={value}
-        {...props}
+        onChange={handleOnChange}
       />
-      <button
-        type="submit"
-        className="absolute right-0 top-0 mt-3 mx-3 text-gray-400 text-xl "
-      >
-        <FaSearch />
-      </button>
     </form>
   );
 }
