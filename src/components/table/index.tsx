@@ -1,8 +1,10 @@
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ReactNode, useMemo, useState } from "react";
 
-import "./table.styles.css";
+import "./table.module.css";
 import Spinner from "components/spinner";
+import Pagination from "components/pagination";
 
+const PageSize: number = 5;
 interface TableProps extends ComponentPropsWithoutRef<"table"> {
   loading?: boolean;
   head: ReactNode;
@@ -17,7 +19,13 @@ export default function Table({
   renderRows,
   ...props
 }: TableProps) {
-  const currentDataList = data;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return data.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
 
   function renderTableBody() {
     if (loading) {
@@ -34,21 +42,27 @@ export default function Table({
         </tr>
       );
     }
-    return currentDataList.map((item) => renderRows(item));
+    return currentTableData.map((item) => renderRows(item));
   }
 
   return (
-    <table
-      className="border-separate border border-gray-800 w-1/2 mx-52 rounded-lg p-5 borderSpacing-0-0"
+    <div
+      className="border-separate border bg-white w-full rounded-lg p-5 borderSpacing-0-0 shadow-md"
       {...props}
     >
-      <thead>
-        <tr className="bg-gray-50 ">{head}</tr>
-      </thead>
-      <tbody>
-        <tr>{renderTableBody()}</tr>
-      </tbody>
-    </table>
+      <table className="w-full mb-3">
+        <thead>
+          <tr className="bg-gray-50 ">{head}</tr>
+        </thead>
+        <tbody>{renderTableBody()}</tbody>
+      </table>
+      <Pagination
+        currentPage={currentPage}
+        totalCount={data.length}
+        pageSize={PageSize}
+        handlePageChange={(page: number) => setCurrentPage(page)}
+      />
+    </div>
   );
 }
 

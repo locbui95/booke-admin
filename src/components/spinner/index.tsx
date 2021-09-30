@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from "react";
 
-import "./spinner.styles.css";
+import "./spinner.module.css";
 
 interface SpinnerProps extends ComponentPropsWithoutRef<"div"> {}
 

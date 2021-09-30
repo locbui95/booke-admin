@@ -13,6 +13,7 @@
         "@types/react-dom": "^17.0.0",
         "@types/react-router-dom": "^5.3.0",
         "axios": "^0.21.4",
+        "clsx": "^1.1.1",
         "cross-env": "^7.0.3",
         "formik": "^2.2.9",
         "json-server": "^0.16.3",

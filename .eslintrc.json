@@ -113,7 +113,9 @@
     "import/name": "off",
     "no-underscore-dangle": "off",
     "react/react-in-jsx-scope": "off",
-    "global-require": "off"
+    "global-require": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   },
   "settings": {
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
