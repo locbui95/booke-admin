@@ -1,10 +1,3 @@
-import SearchBar from "modules/products/search-bar";
-
 export default function ProductList() {
-  return (
-    <div>
-      <SearchBar />
-      {/* List product */}
-    </div>
-  );
+  return <div>1</div>;
 }

@@ -1,6 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 
 import Button from "components/button";
+import ListCategories from "modules/category/list";
 // import Search from "components/search";
 
 export default function Categories() {
@@ -24,7 +25,7 @@ export default function Categories() {
         </div>
       </div>
       <div className="mt-10">
-        <p>List product</p>
+        <ListCategories />
       </div>
     </div>
   );
