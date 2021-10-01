@@ -3,7 +3,7 @@ import { appRoutes } from "routes/routes.routes";
 
 import Header from "components/header";
 import Sidebar from "components/sidebar";
-import "./layout.styles.css";
+import "./layout.module.css";
 
 export default function Layout() {
   const renderRoutes = (routes: typeof appRoutes) =>
