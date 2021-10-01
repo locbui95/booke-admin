@@ -1,14 +1,13 @@
 const ProductsTableHead = () => (
   <>
-    <th className="text-left">Id</th>
-    <th className="text-center">Image</th>
-    <th className="text-center">Import Price</th>
-    <th className="text-center">Price</th>
-    <th className="text-left">Category</th>
-    <th className="text-left">Author</th>
-    <th className="text-center"> Status</th>
-    <th className="text-center">Date Submited</th>
-    <th className="text-right">Action</th>
+    <th className="py-2"> </th>
+    <th className="py-2">Image</th>
+    <th className="py-2">Name</th>
+    <th className="py-2">Import Price</th>
+    <th className="py-2">Price</th>
+    <th className="py-2">Category</th>
+    <th className="py-2"> Status</th>
+    <th className="py-2">Action</th>
   </>
 );
 
