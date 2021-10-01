@@ -22,7 +22,7 @@ export default function Layout() {
         <Sidebar />
         <div className="ml-80 content">
           <Header />
-          <div className="p-10 mt-24 w-full h-min-content">
+          <div className="p-10 mt-24 w-full h-min-content min-h-screen">
             <Switch>{renderRoutes(appRoutes)}</Switch>
           </div>
         </div>
