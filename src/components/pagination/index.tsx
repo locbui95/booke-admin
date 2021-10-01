@@ -28,11 +28,11 @@ const Pagination = (props: PaginationProps) => {
     pageSize
   );
 
-  const handleClickNext = () => {
+  const handleClickNext = (): void => {
     handlePageChange(currentPage + 1);
   };
 
-  const handleClickPrevious = () => {
+  const handleClickPrevious = (): void => {
     handlePageChange(currentPage - 1);
   };
 
