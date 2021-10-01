@@ -52,7 +52,7 @@ export default function Table({
     >
       <table className="w-full mb-3">
         <thead>
-          <tr className="bg-gray-50 ">{head}</tr>
+          <tr className="bg-gray-50 p-2">{head}</tr>
         </thead>
         <tbody>{renderTableBody()}</tbody>
       </table>
