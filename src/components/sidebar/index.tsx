@@ -28,7 +28,7 @@ export default function Sidebar() {
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
         >
           <AiOutlineMenuUnfold className="text-2xl mx-3" />
-          Management Category
+          Category Management
         </NavLink>
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
@@ -36,7 +36,7 @@ export default function Sidebar() {
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
         >
           <AiFillHdd className="text-2xl mx-3" />
-          Management Product
+          Product Management
         </NavLink>
       </nav>
     </div>
