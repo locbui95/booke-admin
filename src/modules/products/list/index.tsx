@@ -86,7 +86,7 @@ const ProductListModule = () => {
     <tr key={product.id}>
       <td className="py-5">{product.id}</td>
       <td className="w-1/12 py-5">
-        <img src={product.image} alt="" className="w-full" />
+        <img src={product.image} alt={product.name} className="w-full" />
       </td>
       <td className="max-w-[9rem] xl:max-w-[15rem] py-5 w-2/12">
         <p className="truncate w-10/12">{product.name}</p>
