@@ -1,5 +1,5 @@
 import avatar from "assets/avt.jpg";
-import "./header.styles.css";
+import "./header.module.css";
 
 export default function Header() {
   return (
