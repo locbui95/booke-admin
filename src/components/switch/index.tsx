@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 import styles from "./switch.module.css";
 
 interface SwitchProps {
@@ -5,12 +7,12 @@ interface SwitchProps {
 }
 
 export default function Switch({ onClickSwitch }: SwitchProps) {
-  const hanldeChangeSwitch = (e: any) => {
+  const hanldeChangeSwitch = (e: ChangeEvent<HTMLInputElement>) => {
     onClickSwitch(e.target.checked);
   };
   return (
     <label className={styles.switch}>
-      <input type="checkbox" onClick={hanldeChangeSwitch} />
+      <input type="checkbox" onChange={hanldeChangeSwitch} />
       <span className={styles.slider} />
     </label>
   );
