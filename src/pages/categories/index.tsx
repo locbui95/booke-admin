@@ -1,6 +1,8 @@
-import Categories from "modules/categories";
+import { AiOutlinePlus } from "react-icons/ai";
 
 import Button from "components/button";
+import Search from "components/search";
+
 // import Search from "components/search";
 
 export default function Categories() {
@@ -13,7 +15,7 @@ export default function Categories() {
       <div className="flex items-center bg-white p-8 shadow-sm justify-between">
         <p className="font-bold text-xl">Category</p>
         <div className="w-3/4 flex justify-end">
-          {/* <Search onSearch={handleSearch} /> */}
+          <Search onSearch={handleSearch} />
           <Button
             loading={false}
             className="flex p-3 bg-blue-400 hover:bg-blue-500 text-white"
