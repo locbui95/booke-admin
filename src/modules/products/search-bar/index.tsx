@@ -3,8 +3,11 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Button from "components/button";
 import Search from "components/search";
 import Select from "components/select";
+// import EditProduct from "pages/products/edit";
+import { Link } from "react-router-dom";
+import { PATH_PRODUCTS_ADD } from "routes/routes.paths";
 
-export default function Products() {
+export default function SearchBar() {
   const handleSearch = (search: string) => {
     console.log(search);
   };
@@ -31,17 +34,16 @@ export default function Products() {
             </Select>
           </div>
           <Search onSearch={handleSearch} />
-          <Button
-            loading={false}
-            className="flex p-3 bg-blue-400 hover:bg-blue-500 text-white"
-          >
-            <AiOutlinePlus className="pr-2 text-2xl font-bold" />
-            Add Product
-          </Button>
+          <Link to={PATH_PRODUCTS_ADD}>
+            <Button
+              loading={false}
+              className="flex p-3 bg-blue-400 hover:bg-blue-500 text-white"
+            >
+              <AiOutlinePlus className="pr-2 text-2xl font-bold" />
+              Add Product
+            </Button>
+          </Link>
         </div>
-      </div>
-      <div className="mt-10">
-        <p>List product</p>
       </div>
     </div>
   );
