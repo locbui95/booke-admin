@@ -60,7 +60,7 @@ const ProductListModule = () => {
   );
 
   return (
-    <div>
+    <div className="mt-10">
       {products ? (
         <Table
           head={<ProductsTableHead />}

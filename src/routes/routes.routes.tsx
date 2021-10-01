@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 
-import { Dashboard, Categories, Products } from "pages";
+import { Dashboard, Categories, ProductList } from "pages";
 import { PATH_CATEGORIES, PATH_PRODUCTS } from "./routes.paths";
 
 interface RouteModel {
@@ -23,6 +23,6 @@ export const appRoutes: RouteModel[] = [
   {
     exact: true,
     path: PATH_PRODUCTS,
-    component: Products
+    component: ProductList
   }
 ];
