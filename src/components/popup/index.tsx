@@ -19,7 +19,7 @@ export default function Popup({
   return (
     <div>
       {isOpen ? (
-        <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-20 inset-0">
+        <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-30 inset-0 z-50">
           <div className="flex flex-col p-5  w-auto h-auto max-w-xl rounded-md bg-white shadow-lg">
             <div className="flex justify-between">
               <h1 className="font-semibold text-xl">{title}</h1>
