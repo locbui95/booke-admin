@@ -38,7 +38,7 @@ export default function Categories() {
 
   return (
     <div>
-      <div className="flex items-center bg-white p-8 shadow-sm justify-between">
+      <div className="flex items-center bg-white p-8 shadow-md rounded-lg justify-between">
         <p className="font-bold text-xl">Category</p>
         <div className="w-3/4 flex justify-end">
           <Search onSearch={handleSearch} />
