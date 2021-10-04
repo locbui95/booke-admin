@@ -1,9 +1,9 @@
-import CategoryModule from "modules/categories";
+import CategoryList from "modules/categories";
 
 export default function Categories() {
   return (
     <div>
-      <CategoryModule />
+      <CategoryList />
     </div>
   );
 }

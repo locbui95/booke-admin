@@ -15,7 +15,7 @@ const valueDemo: Category = {
   status: true
 };
 
-export default function CategoryModule() {
+export default function CategoryList() {
   const [mode, setMode] = useState<string>("create");
   const handleSearch = (search: string) => {
     console.log(search);
