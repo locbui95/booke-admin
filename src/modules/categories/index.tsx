@@ -5,7 +5,7 @@ import { useState } from "react";
 import Button from "components/button";
 import Search from "components/search";
 import Category from "types/category";
-import ListCategories from "modules/category/list";
+import ListCategories from "modules/categories/list";
 import Form from "./form";
 
 const valueDemo: Category = {
@@ -15,7 +15,7 @@ const valueDemo: Category = {
   status: true
 };
 
-export default function Categories() {
+export default function CategoryModule() {
   const [mode, setMode] = useState<string>("create");
   const handleSearch = (search: string) => {
     console.log(search);
@@ -50,14 +50,6 @@ export default function Categories() {
             <AiOutlinePlus className="pr-2 text-2xl font-bold" />
             Add Category
           </Button>
-          <Button
-            loading={false}
-            onClick={hanldeClickEditButon}
-            className="flex p-3 bg-blue-400 hover:bg-blue-500 text-white"
-          >
-            <AiOutlinePlus className="pr-2 text-2xl font-bold" />
-            Edit Category
-          </Button>
           <Form
             isOpen={isOpen}
             mode={mode}
@@ -67,7 +59,9 @@ export default function Categories() {
           />
         </div>
       </div>
-      <div className="mt-10">123</div>
+      <div className="mt-10">
+        <ListCategories />
+      </div>
     </div>
   );
 }

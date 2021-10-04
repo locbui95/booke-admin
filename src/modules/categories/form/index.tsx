@@ -46,11 +46,17 @@ export default function Form({
               </Button>
             </div>
             <div className="my-3 flex items-center">
-              <p className="mr-2 w-24">Name *</p>
+              <div className="flex mr-2 w-24">
+                <p className="mr-1">Name</p>
+                <p className="text-red-500">*</p>
+              </div>
               <Input defaultValue={name} />
             </div>
             <div className="my-3 flex items-center">
-              <p className="mr-2 w-24">Description *</p>
+              <div className="flex mr-2 w-24">
+                <p className="mr-1">Desciption</p>
+                <p className="text-red-500">*</p>
+              </div>
               <Input defaultValue={description} />
             </div>
             <div className="my-3 flex items-center">
