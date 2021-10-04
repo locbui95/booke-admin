@@ -1,18 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
+import { RootState } from "store";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "store/categories/action";
 import Button from "components/button";
 import Spinner from "components/spinner";
 import Table from "components/table";
 import Popup from "components/popup";
 import Category from "types/category";
 import TableHead from "./table-head";
-import { categories } from "./constants";
 
 const ListCategories = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [categoryId, setCategoryId] = useState<number>();
+  const [categoryId, setCategoryId] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { categories, loading } = useSelector(
+    (state: RootState) => state.categories
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const handleClickClose = (id: number) => {
     setCategoryId(id);
@@ -24,7 +35,7 @@ const ListCategories = () => {
     setIsOpen(false);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
   };
 
   const renderRows = (category: Category) => (
@@ -39,11 +50,11 @@ const ListCategories = () => {
       <td>
         {category.status ? (
           <p className="p-1 text-center border border-[#019707] rounded bg-[#019707] text-xs text-white">
-            Stocking
+            Actived
           </p>
         ) : (
           <p className="p-1 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">
-            Out of stock
+            Unactived
           </p>
         )}
       </td>
@@ -70,7 +81,9 @@ const ListCategories = () => {
       ) : (
         ""
       )}
-      <Table data={categories} head={<TableHead />} renderRows={renderRows} />
+      {!loading ? (
+        <Table data={categories} head={<TableHead />} renderRows={renderRows} />
+      ) : null}
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"
