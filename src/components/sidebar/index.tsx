@@ -6,7 +6,7 @@ import { PATH_CATEGORIES, PATH_PRODUCTS } from "routes/routes.paths";
 
 export default function Sidebar() {
   return (
-    <div className="fixed top-0 left-0 w-80 p-5 bottom-0 bg-white shadow-xl">
+    <div className="fixed top-0 left-0 w-80 p-5 bottom-0 bg-white shadow-xl z-50">
       <div className="my-10 text-4xl text-center">
         <Link to="/" className="flex justify-center">
           <img className="w-40" src={logo} alt="" />

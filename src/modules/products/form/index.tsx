@@ -1,10 +1,13 @@
 import Button from "components/button";
 import Input from "components/input";
-import SwitchButton from "components/switch";
+import Switch from "components/switch";
 import { Link } from "react-router-dom";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 
 export default function Form() {
+  const handleChange = () => {
+    console.log("1");
+  };
   return (
     <div>
       <div className="text-center text-2xl font-bold p-5 shadow-sm ">
@@ -31,7 +34,7 @@ export default function Form() {
               <p className="block text-gray-700 text-md font-bold mb-2">
                 Status
               </p>
-              <SwitchButton />
+              <Switch onChange={handleChange} />
             </div>
           </div>
           <div className="flex">

@@ -50,6 +50,14 @@ export default function Categories() {
             <AiOutlinePlus className="pr-2 text-2xl font-bold" />
             Add Category
           </Button>
+          <Button
+            loading={false}
+            onClick={hanldeClickEditButon}
+            className="flex p-3 bg-blue-400 hover:bg-blue-500 text-white"
+          >
+            <AiOutlinePlus className="pr-2 text-2xl font-bold" />
+            Edit Category
+          </Button>
           <Form
             isOpen={isOpen}
             mode={mode}
@@ -59,9 +67,7 @@ export default function Categories() {
           />
         </div>
       </div>
-      <div className="mt-10">
-        <ListCategories />
-      </div>
+      <div className="mt-10">123</div>
     </div>
   );
 }

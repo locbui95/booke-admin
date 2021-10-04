@@ -1,7 +1,12 @@
 import { ComponentType } from "react";
 
 import { Dashboard, Categories, ProductList } from "pages";
-import { PATH_CATEGORIES, PATH_PRODUCTS } from "./routes.paths";
+import FormProps from "modules/products/form";
+import {
+  PATH_CATEGORIES,
+  PATH_PRODUCTS,
+  PATH_PRODUCTS_ADD
+} from "./routes.paths";
 
 interface RouteModel {
   exact: boolean;
@@ -24,5 +29,10 @@ export const appRoutes: RouteModel[] = [
     exact: true,
     path: PATH_PRODUCTS,
     component: ProductList
+  },
+  {
+    exact: true,
+    path: PATH_PRODUCTS_ADD,
+    component: FormProps
   }
 ];
