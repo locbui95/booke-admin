@@ -4,9 +4,10 @@ import styles from "./switch.module.css";
 
 interface SwitchProps {
   onChange: (value: boolean) => void;
+  isChecked: boolean;
 }
 
-export default function Switch({ onChange }: SwitchProps) {
+export default function Switch({ onChange, isChecked }: SwitchProps) {
   const onChangeSwitch = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
     onChange(checked);
@@ -14,7 +15,11 @@ export default function Switch({ onChange }: SwitchProps) {
 
   return (
     <label className={styles.switch}>
-      <input type="checkbox" onChange={onChangeSwitch} defaultChecked />
+      <input
+        type="checkbox"
+        onChange={onChangeSwitch}
+        defaultChecked={isChecked}
+      />
       <span className={styles.slider} />
     </label>
   );
