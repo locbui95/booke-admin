@@ -14,7 +14,7 @@ export default function SearchBar() {
 
   return (
     <div>
-      <div className="flex items-center bg-white p-8 shadow-sm justify-between">
+      <div className="flex items-center bg-white p-8 shadow-md rounded-lg justify-between m">
         <p className="font-bold text-xl">Product</p>
         <div className="w-3/4 flex justify-end">
           <div className="w-1/4 mr-10">
