@@ -14,7 +14,7 @@ export default function Switch({ onChange }: SwitchProps) {
 
   return (
     <label className={styles.switch}>
-      <input type="checkbox" onChange={onChangeSwitch} />
+      <input type="checkbox" onChange={onChangeSwitch} defaultChecked />
       <span className={styles.slider} />
     </label>
   );
