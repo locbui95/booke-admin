@@ -26,6 +26,12 @@ const reducer = (state = initialState, action: ActionTypes) => {
       return { ...state, categories: payload, loading: false };
     case REJECTED:
       return { ...state, loading: false };
+    case DELETE_CATEGORY: {
+      const filterCategories = state.categories.filter(
+        (item) => item.id !== payload
+      );
+      return { ...state, categories: filterCategories, loading: false };
+    }
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
 import { RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "store/categories/action";
+import { deleteCategory, getCategories } from "store/categories/action";
 import Button from "components/button";
 import Spinner from "components/spinner";
 import Table from "components/table";
@@ -33,6 +33,7 @@ const ListCategories = () => {
   const handleClickRemove = () => {
     setIsLoading(true);
     setIsOpen(false);
+    dispatch(deleteCategory(categoryId));
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
