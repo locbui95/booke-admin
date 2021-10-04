@@ -1,6 +1,6 @@
 import Button from "components/button";
 import Input from "components/input";
-import SwitchButton from "components/switch-button";
+import SwitchButton from "components/switch";
 import { Link } from "react-router-dom";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 
