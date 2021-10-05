@@ -1,6 +1,5 @@
 {
-    "categories": [
-        {
+    "categories": [{
             "id": 1,
             "name": "Management - Business Book",
             "description": "Business management books are always in the group of most searched business books. Because you will have access to general as well as broader knowledge of economics and management. On the other hand, you can grasp some basic foundations of economic groups such as finance, human resources, marketing.",
@@ -43,12 +42,11 @@
             "status": true
         }
     ],
-    "products": [
-        {
+    "products": [{
             "id": 1,
             "name": "Self-Training, Self-Leadership",
             "price": 95200,
-            "import _price": 70000,
+            "import_price": 70000,
             "tax": 5,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/42100/sach-huan-luyen-tu-than-lanh-dao-tu-than.jpg",
@@ -56,13 +54,13 @@
             "categoryID": 1,
             "author": "Edgar H. Schein",
             "publishing_year": "2021",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 2,
             "name": "Serial Killers in the Financial World",
             "price": 96000,
-            "import _price": 72000,
+            "import_price": 72000,
             "tax": 5,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/41969/sach-nhung-sat-thu-hang-loat-trong-gioi-tai-chinh.jpg",
@@ -70,13 +68,13 @@
             "categoryID": 1,
             "author": "Bruce Kelly, Tom Ajamie",
             "publishing_year": "2021",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 3,
             "name": "My First Deal",
             "price": 238000,
-            "import _price": 190000,
+            "import_price": 190000,
             "tax": 7,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/41515/sach-thuong-vu-dau-tien-cua-toi.jpg",
@@ -84,13 +82,13 @@
             "categoryID": 2,
             "author": "Asia Books",
             "publishing_year": "2021",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 4,
             "name": "Business Innovation - Overcoming the Crisis",
             "price": 440000,
-            "import _price": 330000,
+            "import_price": 330000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/37126/doi-moi-doanh-nghiep-vuot-qua-khung-hoang.jpg",
@@ -98,13 +96,13 @@
             "categoryID": 2,
             "author": "Tendayi Viki,Esther Gons,Dan Toma,Frederic Laloux,Jordan Berg,Jeff Rosenblum ",
             "publishing_year": "2021",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 5,
             "name": "Food - Starting a Catering Service Business (Set of 2 Books)",
             "price": 260000,
-            "import _price": 200000,
+            "import_price": 200000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/37126/doi-moi-doanh-nghiep-vuot-qua-khung-hoang.jpg",
@@ -112,13 +110,13 @@
             "categoryID": 3,
             "author": "The Staff of Entrepreneur Media Rich Mintzer",
             "publishing_year": "2021",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 6,
             "name": "5 Stars Customer Service",
             "price": 103000,
-            "import _price": 65000,
+            "import_price": 65000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/15150/dich-vu-khach-hang-5-sao.png",
@@ -126,13 +124,13 @@
             "categoryID": 3,
             "author": "Michael Heppell",
             "publishing_year": "2018",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 7,
             "name": "Behind a BIG Decision",
             "price": 91800,
-            "import _price": 65000,
+            "import_price": 65000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/41322/sach-dang-sau-mot-quyet-dinh-lon.jpg",
@@ -140,13 +138,13 @@
             "categoryID": 4,
             "author": "Joseph L Badaracco",
             "publishing_year": "2020",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 8,
             "name": "New Power - How Will The World's Future Be Shaped?",
             "price": 150400,
-            "import _price": 11000,
+            "import_price": 11000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/41322/sach-dang-sau-mot-quyet-dinh-lon.jpg",
@@ -154,13 +152,13 @@
             "categoryID": 4,
             "author": "Henry Timms, Jeremy Heimans",
             "publishing_year": "2020",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 9,
             "name": "Eagles Sometimes Fly Lower Than Chickens",
             "price": 46980,
-            "import _price": 20000,
+            "import_price": 20000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/42244/sach-dai-bang-co-khi-bay-thap-hon-ga.jpg",
@@ -168,13 +166,13 @@
             "categoryID": 6,
             "author": "Truong Thiet Thanh",
             "publishing_year": "2020",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         },
         {
             "id": 10,
             "name": "Eagles Sometimes Fly Lower Than Chickens",
             "price": 46980,
-            "import _price": 20000,
+            "import_price": 20000,
             "tax": 0,
             "status": true,
             "image": "https://newshop.vn/public/uploads/products/42244/sach-dai-bang-co-khi-bay-thap-hon-ga.jpg",
@@ -182,7 +180,7 @@
             "categoryID": 4,
             "author": "Truong Thiet Thanh",
             "publishing_year": "2020",
-            "date_ submitted": "2021-09-28"
+            "date_submitted": "2021-09-28"
         }
     ]
 }
