@@ -9,7 +9,12 @@ import Category from "types/category";
 import TableHead from "./table-head";
 import { categories } from "./constants";
 
-const ListCategories = () => {
+interface CategotyListProps {
+  hanldeClickEditButon: Function;
+}
+
+const ListCategories = (props: CategotyListProps) => {
+  const { hanldeClickEditButon } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -48,7 +53,10 @@ const ListCategories = () => {
         )}
       </td>
       <td className="px-5">
-        <Button className="bg-white text-yellow-600 text-xl pl-2 pr-7 hover:text-yellow-800">
+        <Button
+          className="bg-white text-yellow-600 text-xl pl-2 pr-7 hover:text-yellow-800"
+          onClick={() => hanldeClickEditButon(category)}
+        >
           <BsPencilSquare />
         </Button>
         <Button
