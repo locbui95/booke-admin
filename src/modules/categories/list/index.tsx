@@ -11,7 +11,7 @@ import Popup from "components/popup";
 import Category from "types/category";
 import TableHead from "./table-head";
 
-const ListCategories = () => {
+const CategoriesList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
   const { categories, loading } = useSelector(
@@ -46,11 +46,11 @@ const ListCategories = () => {
       <td>
         {category.status ? (
           <p className="p-1 text-center border border-[#019707] rounded bg-[#019707] text-xs text-white">
-            Actived
+            Active
           </p>
         ) : (
           <p className="p-1 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">
-            Unactived
+            Not Active
           </p>
         )}
       </td>
@@ -88,4 +88,4 @@ const ListCategories = () => {
   );
 };
 
-export default ListCategories;
+export default CategoriesList;
