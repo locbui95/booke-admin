@@ -24,7 +24,7 @@ const productsReducer = (
     case GET_PRODUCTS:
       return {
         ...state,
-        Products: action.payload,
+        products: action.payload,
         loading: false
       };
     case REJECTED:
