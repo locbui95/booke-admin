@@ -11,7 +11,7 @@ interface Pending {
   type: typeof PENDING;
   payload?: string;
 }
-interface getCategory {
+interface IGetCategoryAction {
   type: typeof GET_CATEGORIES;
   payload: Category[];
 }
@@ -19,9 +19,13 @@ interface Rejected {
   type: typeof REJECTED;
   payload?: string;
 }
-interface deleteCategory {
+interface IDeleteCategoryAction {
   type: typeof DELETE_CATEGORY;
   payload: number;
 }
 
-export type ActionTypes = Pending | Rejected | getCategory | deleteCategory;
+export type ActionTypes =
+  | Pending
+  | Rejected
+  | IGetCategoryAction
+  | IDeleteCategoryAction;
