@@ -34,7 +34,7 @@ export default function Form({
   return (
     <div>
       {isOpen ? (
-        <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0 ">
+        <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0 z-50">
           <div className="flex flex-col p-5 h-auto max-w-xl rounded-md bg-white shadow-lg w-full">
             <div className="flex justify-between mb-6">
               <h1 className="font-semibold text-xl">Add Catergory</h1>
@@ -46,16 +46,22 @@ export default function Form({
               </Button>
             </div>
             <div className="my-3 flex items-center">
-              <p className="mr-2 w-24">Name *</p>
+              <div className="flex mr-2 w-24">
+                <p className="mr-1">Name</p>
+                <p className="text-red-500">*</p>
+              </div>
               <Input defaultValue={name} />
             </div>
             <div className="my-3 flex items-center">
-              <p className="mr-2 w-24">Description *</p>
+              <div className="flex mr-2 w-24">
+                <p className="mr-1">Desciption</p>
+                <p className="text-red-500">*</p>
+              </div>
               <Input defaultValue={description} />
             </div>
             <div className="my-3 flex items-center">
               <p className="mr-2 w-24">Status</p>
-              <Switch onChange={handleChangeSwitch} />
+              <Switch onChange={handleChangeSwitch} isChecked={true} />
             </div>
             <div className="flex justify-end items-center mt-2">
               <Button

@@ -1,13 +1,12 @@
 const ProductsTableHead = () => (
   <>
-    <th className="py-2"> </th>
-    <th className="py-2">Image</th>
-    <th className="py-2">Name</th>
-    <th className="py-2">Import Price</th>
-    <th className="py-2">Price</th>
-    <th className="py-2">Category</th>
-    <th className="py-2"> Status</th>
-    <th className="py-2">Action</th>
+    <th className="py-2 text-left"> </th>
+    <th className="py-2 pl-5 text-left">NAME</th>
+    <th className="py-2 text-left">IMPORT PRICE</th>
+    <th className="py-2 pl-5 text-left">PRICE</th>
+    <th className="py-2 pl-5 text-left">CATEGORY</th>
+    <th className="py-2 text-left">STATUS</th>
+    <th className="py-2 pl-5 text-left ">ACTION</th>
   </>
 );
 
