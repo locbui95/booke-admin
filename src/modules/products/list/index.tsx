@@ -11,14 +11,14 @@ import Product from "types/product";
 import Category from "types/category";
 import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
-import { categories, products } from "./constants";
+import { categories } from "./constants";
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { Products, loading } = useSelector(
+  const { products, loading } = useSelector(
     (state: RootState) => state.product
   );
 
@@ -85,7 +85,7 @@ const ProductList = () => {
         <Table
           loading={loading}
           head={<ProductsTableHead />}
-          data={Products}
+          data={products}
           renderRows={renderRows}
         />
       ) : (
