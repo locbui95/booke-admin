@@ -13,8 +13,7 @@ import TableHead from "./table-head";
 
 const ListCategories = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [categoryId, setCategoryId] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [categoryId, setCategoryId] = useState<number>(0);
   const { categories, loading } = useSelector(
     (state: RootState) => state.categories
   );
@@ -31,12 +30,8 @@ const ListCategories = () => {
   };
 
   const handleClickRemove = () => {
-    setIsLoading(true);
     setIsOpen(false);
     dispatch(deleteCategory(categoryId));
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
   };
 
   const renderRows = (category: Category) => (
@@ -75,16 +70,13 @@ const ListCategories = () => {
 
   return (
     <>
-      {isLoading ? (
+      {!loading ? (
+        <Table data={categories} head={<TableHead />} renderRows={renderRows} />
+      ) : (
         <div className=" flex justify-center items-center relative">
           <Spinner />
         </div>
-      ) : (
-        ""
       )}
-      {!loading ? (
-        <Table data={categories} head={<TableHead />} renderRows={renderRows} />
-      ) : null}
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"
