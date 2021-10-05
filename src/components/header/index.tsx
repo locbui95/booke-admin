@@ -8,7 +8,6 @@ export default function Header() {
         <div className="realtive w-10 h-10 rounded-full overflow-hidden">
           <img alt="avatar" src={avatar} />
         </div>
-        <p className="text-xl ml-4"> Admin </p>
       </div>
     </div>
   );

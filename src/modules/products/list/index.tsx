@@ -11,6 +11,8 @@ import Popup from "components/popup";
 import Product from "types/product";
 import Category from "types/category";
 import Table from "components/table";
+import { PATH_PRODUCTS_EDIT } from "routes/routes.paths";
+import { Link } from "react-router-dom";
 import ProductsTableHead from "./products.table-head";
 
 const ProductList = () => {
@@ -64,9 +66,11 @@ const ProductList = () => {
         )}
       </td>
       <td className="py-5 pl-5 w-2/12">
-        <Button className="hover:text-yellow-800 bg-white text-yellow-600 text-xl pl-2 pr-7">
-          <BsPencilSquare />
-        </Button>
+        <Link to={PATH_PRODUCTS_EDIT}>
+          <Button className="hover:text-yellow-800 bg-white text-yellow-600 text-xl pl-2 pr-7">
+            <BsPencilSquare />
+          </Button>
+        </Link>
         <Button
           onClick={handleClickOpen}
           className="hover:text-red-800  bg-white text-red-600 text-xl"

@@ -1,5 +1,5 @@
 import Product from "types/product";
-import { PENDING, GET_PRODUCTS, REJECTED, ActionTypes } from "./constant";
+import { PENDING, GET_PRODUCTS, REJECTED, ActionTypes, ADD_PRODUCTS } from "./constant";
 
 interface InitialStateType {
   products: Product[];
@@ -22,6 +22,12 @@ const productsReducer = (
         loading: true
       };
     case GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        loading: false
+      };
+    case ADD_PRODUCTS:
       return {
         ...state,
         products: action.payload,
