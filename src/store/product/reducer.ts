@@ -9,13 +9,13 @@ import {
 
 interface InitialStateType {
   products: Product[];
-  singleProduct: Product;
+  productDetail: Product;
   loading: boolean;
 }
 
 const initialState: InitialStateType = {
   products: [],
-  singleProduct: {
+  productDetail: {
     id: 0,
     name: "",
     price: 0,
@@ -51,7 +51,7 @@ const productsReducer = (
     case DELETE_PRODUCT:
       return {
         ...state,
-        singleProduct: action.payload,
+        productDetail: action.payload,
         loading: false
       };
     case REJECTED:
