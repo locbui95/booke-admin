@@ -13,7 +13,7 @@ import TableHead from "./table-head";
 
 const ListCategories = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [categoryId, setCategoryId] = useState<number>(0);
+  const [categoryId, setCategoryId] = useState<number>(1);
   const { categories, loading } = useSelector(
     (state: RootState) => state.categories
   );
