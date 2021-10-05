@@ -26,7 +26,7 @@ const initialState: InitialStateType = {
     description: "",
     categoryID: 0,
     author: "",
-    date_of_manufacture: "",
+    publishing_year: "",
     date_submitted: ""
   },
   loading: false

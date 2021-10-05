@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, deleteProduct } from "store/product/action";
+import { getCategories } from "store/categories/action";
 import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
@@ -11,7 +12,6 @@ import Product from "types/product";
 import Category from "types/category";
 import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
-import { categories } from "./constants";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -21,10 +21,12 @@ const ProductList = () => {
   const { products, loading } = useSelector(
     (state: RootState) => state.product
   );
+  const { categories } = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const handleClickOpen = (id: number) => {
     setIsOpen(true);
