@@ -2,12 +2,12 @@ import Product from "types/product";
 import { PENDING, GET_PRODUCTS, REJECTED, ActionTypes } from "./constant";
 
 interface InitialStateType {
-  Products: Product[];
+  products: Product[];
   loading: boolean;
 }
 
 const initialState: InitialStateType = {
-  Products: [],
+  products: [],
   loading: false
 };
 
