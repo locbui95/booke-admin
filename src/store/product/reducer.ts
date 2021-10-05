@@ -8,13 +8,13 @@ import {
 } from "./constant";
 
 interface InitialStateType {
-  Products: Product[];
+  products: Product[];
   singleProduct: Product;
   loading: boolean;
 }
 
 const initialState: InitialStateType = {
-  Products: [],
+  products: [],
   singleProduct: {
     id: 0,
     name: "",
@@ -45,7 +45,7 @@ const productsReducer = (
     case GET_PRODUCTS:
       return {
         ...state,
-        Products: action.payload,
+        products: action.payload,
         loading: false
       };
     case DELETE_PRODUCT:
