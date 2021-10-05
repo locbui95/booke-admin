@@ -29,9 +29,3 @@ export type ActionTypes =
   | Rejected
   | IGetCategoryAction
   | IDeleteCategoryAction;
-
-// export type ActionTypes =
-//   | { type: typeof PENDING }
-//   | { type: typeof GET_CATEGORIES; payload: Category[] }
-//   | { type: typeof DELETE_CATEGORY; payload: number }
-//   | { type: typeof REJECTED };
