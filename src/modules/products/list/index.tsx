@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "store/product/action";
+import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
+import Spinner from "components/spinner";
 import Button from "components/button";
 import Popup from "components/popup";
 import Product from "types/product";
 import Category from "types/category";
 import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
-import { products, categories } from "./constants";
+import { categories } from "./constants";
 
 const ProductList = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { Products, loading } = useSelector(
+    (state: RootState) => state.product
+  );
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
   const handleClickOpen = () => setIsOpen(true);
+
   const handleClickClose = () => setIsOpen(false);
 
   const renderRows = (product: Product) => (
@@ -57,13 +72,18 @@ const ProductList = () => {
 
   return (
     <div className="mt-10">
-      {products ? (
+      {!loading ? (
         <Table
+          loading={loading}
           head={<ProductsTableHead />}
-          data={products}
+          data={Products}
           renderRows={renderRows}
         />
-      ) : null}
+      ) : (
+        <div className=" flex justify-center items-center relative">
+          <Spinner />
+        </div>
+      )}
       <Popup
         isOpen={isOpen}
         title="Confirm Infomation"
