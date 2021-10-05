@@ -18,17 +18,16 @@ const initialState: InitialState = {
 };
 
 const reducer = (state = initialState, action: ActionTypes) => {
-  const { type, payload } = action;
-  switch (type) {
+  switch (action.type) {
     case PENDING:
       return { ...state, loading: true };
     case GET_CATEGORIES:
-      return { ...state, categories: payload, loading: false };
+      return { ...state, categories: action.payload, loading: false };
     case REJECTED:
       return { ...state, loading: false };
     case DELETE_CATEGORY: {
       const filterCategories = state.categories.filter(
-        (item) => item.id !== payload
+        (item) => item.id !== action.payload
       );
       return { ...state, categories: filterCategories, loading: false };
     }
