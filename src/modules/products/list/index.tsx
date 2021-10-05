@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "store/product/action";
+import { getProducts, deleteProduct } from "store/product/action";
 import { getCategories } from "store/categories/action";
 import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
@@ -15,26 +15,30 @@ import ProductsTableHead from "./products.table-head";
 
 const ProductList = () => {
   const dispatch = useDispatch();
+  const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { products, loading } = useSelector(
     (state: RootState) => state.product
   );
-
-  const { categories, loading: isLoading } = useSelector(
-    (state: RootState) => state.categories
-  );
-
-  console.log(categories);
+  const { categories } = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
   }, [dispatch]);
 
-  const handleClickOpen = () => setIsOpen(true);
-
+  const handleClickOpen = (id: number) => {
+    setIsOpen(true);
+    setProductId(id);
+  };
   const handleClickClose = () => setIsOpen(false);
+
+  const handleClickDeleteProduct = async (id: number) => {
+    await dispatch(deleteProduct(id));
+    setIsOpen(false);
+    dispatch(getProducts());
+  };
 
   const renderRows = (product: Product) => (
     <tr key={product.id} className="text-left">
@@ -68,7 +72,7 @@ const ProductList = () => {
           <BsPencilSquare />
         </Button>
         <Button
-          onClick={handleClickOpen}
+          onClick={() => handleClickOpen(product.id)}
           className="hover:text-red-800  bg-white text-red-600 text-xl"
         >
           <BsTrash />
@@ -96,7 +100,7 @@ const ProductList = () => {
         title="Confirm Infomation"
         message="Are you sure to delete this record?"
         onClose={handleClickClose}
-        onConfirm={() => console.log("lii")}
+        onConfirm={() => handleClickDeleteProduct(productId)}
       />
     </div>
   );
