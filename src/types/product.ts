@@ -9,6 +9,6 @@ export default interface Product {
   description: string;
   categoryID: number;
   author: string;
-  date_of_manufacture: string;
+  publishing_year: string;
   date_submitted: string;
 }
