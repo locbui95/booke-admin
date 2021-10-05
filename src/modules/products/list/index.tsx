@@ -17,7 +17,7 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { Products, loading } = useSelector(
+  const { products, loading } = useSelector(
     (state: RootState) => state.product
   );
 
@@ -76,7 +76,7 @@ const ProductList = () => {
         <Table
           loading={loading}
           head={<ProductsTableHead />}
-          data={Products}
+          data={products}
           renderRows={renderRows}
         />
       ) : (
