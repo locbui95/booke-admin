@@ -1,23 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
+import { RootState } from "store";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCategory, getCategories } from "store/categories/action";
 import Button from "components/button";
 import Spinner from "components/spinner";
 import Table from "components/table";
 import Popup from "components/popup";
 import Category from "types/category";
 import TableHead from "./table-head";
-import { categories } from "./constants";
 
 interface CategotyListProps {
   hanldeClickEditButon: Function;
 }
 
-const ListCategories = (props: CategotyListProps) => {
+const CategoriesList = (props: CategotyListProps) => {
   const { hanldeClickEditButon } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [categoryId, setCategoryId] = useState<number>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [categoryId, setCategoryId] = useState<number>(0);
+  const { categories, loading } = useSelector(
+    (state: RootState) => state.categories
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const handleClickClose = (id: number) => {
     setCategoryId(id);
@@ -25,11 +35,8 @@ const ListCategories = (props: CategotyListProps) => {
   };
 
   const handleClickRemove = () => {
-    setIsLoading(true);
     setIsOpen(false);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    dispatch(deleteCategory(categoryId));
   };
 
   const renderRows = (category: Category) => (
@@ -44,11 +51,11 @@ const ListCategories = (props: CategotyListProps) => {
       <td>
         {category.status ? (
           <p className="p-1 text-center border border-[#019707] rounded bg-[#019707] text-xs text-white">
-            Stocking
+            Active
           </p>
         ) : (
           <p className="p-1 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">
-            Out of stock
+            Not Active
           </p>
         )}
       </td>
@@ -71,14 +78,13 @@ const ListCategories = (props: CategotyListProps) => {
 
   return (
     <>
-      {isLoading ? (
+      {!loading ? (
+        <Table data={categories} head={<TableHead />} renderRows={renderRows} />
+      ) : (
         <div className=" flex justify-center items-center relative">
           <Spinner />
         </div>
-      ) : (
-        ""
       )}
-      <Table data={categories} head={<TableHead />} renderRows={renderRows} />
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"
@@ -90,4 +96,4 @@ const ListCategories = (props: CategotyListProps) => {
   );
 };
 
-export default ListCategories;
+export default CategoriesList;
