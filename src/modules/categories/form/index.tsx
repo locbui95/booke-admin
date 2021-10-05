@@ -2,7 +2,9 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from "formik";
 import { useMemo, useState } from "react";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
 
+import { createCategories, getCategories } from "store/categories/action";
 import Button from "components/button";
 import Input from "components/input";
 import Switch from "components/switch";
@@ -26,12 +28,14 @@ export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
   const initialValues = useMemo(() => {
     if (mode === "edit") {
       return {
+        id: data.id,
         name: data.name,
         description: data.description,
         status: data.status
       };
     }
     return {
+      id: 0,
       name: "",
       description: "",
       status: true
@@ -45,13 +49,17 @@ export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
   const hanldeClickClose = (): void => {
     setIsOpen(false);
   };
-  const handleSubmit = (values: any, { resetForm }: any): void => {
+  const dispatch = useDispatch();
+  const handleSubmit = (values: Category, { resetForm }: any): void => {
     const submitData = {
+      id: Number(new Date()),
       name: values.name,
-      descripton: values.description,
+      description: values.description,
       status: valueCheckSwitch
     };
-    console.log(submitData);
+    dispatch(createCategories(submitData));
+    dispatch(getCategories());
+    console.log("submitData: ", submitData);
     resetForm({ value: "" });
     hanldeClickClose();
   };
