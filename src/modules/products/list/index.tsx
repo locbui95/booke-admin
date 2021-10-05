@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "store/product/action";
+import { getProducts, deleteProduct } from "store/product/action";
 import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
@@ -11,10 +11,11 @@ import Product from "types/product";
 import Category from "types/category";
 import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
-import { categories } from "./constants";
+import { categories, products } from "./constants";
 
 const ProductList = () => {
   const dispatch = useDispatch();
+  const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { Products, loading } = useSelector(
@@ -25,9 +26,17 @@ const ProductList = () => {
     dispatch(getProducts());
   }, []);
 
-  const handleClickOpen = () => setIsOpen(true);
-
+  const handleClickOpen = (id: number) => {
+    setIsOpen(true);
+    setProductId(id);
+  };
   const handleClickClose = () => setIsOpen(false);
+
+  const handleClickDeleteProduct = async (id: number) => {
+    await dispatch(deleteProduct(id));
+    setIsOpen(false);
+    dispatch(getProducts());
+  };
 
   const renderRows = (product: Product) => (
     <tr key={product.id} className="text-left">
@@ -61,7 +70,7 @@ const ProductList = () => {
           <BsPencilSquare />
         </Button>
         <Button
-          onClick={handleClickOpen}
+          onClick={() => handleClickOpen(product.id)}
           className="hover:text-red-800  bg-white text-red-600 text-xl"
         >
           <BsTrash />
@@ -89,7 +98,7 @@ const ProductList = () => {
         title="Confirm Infomation"
         message="Are you sure to delete this record?"
         onClose={handleClickClose}
-        onConfirm={() => console.log("lii")}
+        onConfirm={() => handleClickDeleteProduct(productId)}
       />
     </div>
   );
