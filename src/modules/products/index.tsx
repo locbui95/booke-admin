@@ -15,7 +15,7 @@ export default function ProductList() {
   const [select, setSelect] = useState("");
   const [search, setSearch] = useState("");
 
-  const handChangeSelect = (e: ChangeEvent<HTMLSelectElement>) =>
+  const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) =>
     setSelect(e.target.value);
 
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -30,7 +30,7 @@ export default function ProductList() {
         <p className="font-bold text-xl">Product</p>
         <div className="w-3/4 flex justify-end">
           <div className="w-1/4 mr-10">
-            <Select value={select} onChange={handChangeSelect}>
+            <Select value={select} onChange={handleChangeSelect}>
               <option value="">All</option>
               {categories.map((category: Category) => (
                 <option key={category.id} value={category.id}>
