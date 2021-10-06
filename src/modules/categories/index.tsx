@@ -27,6 +27,9 @@ export default function CategoryList() {
     setIsOpen(true);
     setMode("create");
   };
+  const onClose = (): void => {
+    setIsOpen(false);
+  };
   const hanldeClickEditButon = (value: Category): void => {
     setCategoryRow(value);
     setIsOpen(true);
@@ -51,7 +54,7 @@ export default function CategoryList() {
             isOpen={isOpen}
             mode={mode}
             categoryRow={categoryRow}
-            setIsOpen={setIsOpen}
+            onClose={onClose}
           />
         </div>
       </div>

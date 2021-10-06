@@ -16,16 +16,16 @@ interface FormProps {
   mode: string;
   categoryRow: Category;
   isOpen: boolean;
-  setIsOpen: (param: boolean) => void;
+  onClose: () => void;
 }
 
 export default function Form({
   mode,
   categoryRow,
   isOpen,
-  setIsOpen
+  onClose
 }: FormProps) {
-  const [valueCheckSwitch, setValueCheckSwitch] = useState<boolean>(true);
+  const [valueSwitch, setValueSwitch] = useState<boolean>(true);
   const { categories } = useSelector((state: RootState) => state.categories);
   const dispatch = useDispatch();
 
@@ -52,12 +52,8 @@ export default function Form({
     };
   }, [categoryRow, mode]);
 
-  const hanldeClickClose = (): void => {
-    setIsOpen(false);
-  };
-
-  const handleChangeSwitch = (onChangeSwitch: boolean): void => {
-    setValueCheckSwitch(onChangeSwitch);
+  const handleSwitch = (isCheck: boolean): void => {
+    setValueSwitch(isCheck);
   };
 
   const index: number[] = Object.values(categories).map(
@@ -68,15 +64,15 @@ export default function Form({
       id: index[index.length] + 1,
       name: values.name,
       description: values.description,
-      status: valueCheckSwitch
+      status: valueSwitch
     };
     if (mode === "create") {
       dispatch(createCategories(submitData));
     } else {
       dispatch(editCategories({ ...submitData, id: categoryRow.id }));
     }
-    resetForm({ value: "" });
-    hanldeClickClose();
+    resetForm({ values: "" });
+    onClose();
   };
 
   const formik = useFormik({
@@ -97,10 +93,7 @@ export default function Form({
             <div className="flex flex-col p-5 h-auto max-w-xl rounded-md bg-white shadow-lg w-full">
               <div className="flex justify-between mb-6">
                 <h1 className="font-semibold text-xl">{title}</h1>
-                <Button
-                  className="border-none text-xl ml-36"
-                  onClick={hanldeClickClose}
-                >
+                <Button className="border-none text-xl ml-36" onClick={onClose}>
                   <AiFillCloseCircle />
                 </Button>
               </div>
@@ -154,14 +147,14 @@ export default function Form({
                   Status
                 </label>
                 <Switch
-                  onChange={handleChangeSwitch}
+                  onChange={handleSwitch}
                   isChecked={categoryRow.status}
                 />
               </div>
               <div className="flex justify-end items-center mt-2">
                 <Button
                   className="w-20 text-gray-900 font-medium rounded-lg p-2 hover:bg-gray-200 hover:bg-opacity-30"
-                  onClick={hanldeClickClose}
+                  onClick={onClose}
                 >
                   Cancel
                 </Button>
