@@ -17,7 +17,6 @@ interface ISearchName {
 const CategoriesList = ({ searchName }: ISearchName) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
-  const [filterCategories, setFilterCategories] = useState<Category[]>([]);
   const { categories } = useSelector((state: RootState) => state.categories);
 
   const dispatch = useDispatch();
@@ -26,14 +25,14 @@ const CategoriesList = ({ searchName }: ISearchName) => {
     dispatch(getCategories());
   }, [dispatch]);
 
-  useEffect(() => {
-    const newArrayCategories = categories.filter(
-      (category: Category) =>
-        category.name === searchName ||
-        category.name.toLowerCase().includes(searchName.toLowerCase())
-    );
-    setFilterCategories(newArrayCategories);
-  }, [searchName]);
+  const newArrayCategories: Category[] = categories.filter(
+    (category: Category) => {
+      if (category.name.toLowerCase().includes(searchName.toLowerCase())) {
+        return category;
+      }
+      return "";
+    }
+  );
 
   const handleClickClose = (id: number) => {
     setCategoryId(id);
@@ -82,11 +81,10 @@ const CategoriesList = ({ searchName }: ISearchName) => {
   return (
     <>
       <Table
-        data={filterCategories.length === 0 ? categories : filterCategories}
+        data={newArrayCategories}
         head={<TableHead />}
         renderRows={renderRows}
       />
-
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"
