@@ -12,16 +12,16 @@ import Category from "types/category";
 import List from "./list";
 
 export default function ProductList() {
-  const [onSelect, setOnSelect] = useState("");
-  const [onSearch, setOnSearch] = useState("");
+  const [select, setSelect] = useState("");
+  const [search, setSearch] = useState("");
 
-  const handChange = (e: ChangeEvent<HTMLSelectElement>) =>
-    setOnSelect(e.target.value);
+  const handChangeSelect = (e: ChangeEvent<HTMLSelectElement>) =>
+    setSelect(e.target.value);
 
   const { categories } = useSelector((state: RootState) => state.categories);
 
-  const handleSearch = (search: string) => {
-    setOnSearch(search);
+  const handleSearch = (searchName: string) => {
+    setSearch(searchName);
   };
 
   return (
@@ -30,7 +30,7 @@ export default function ProductList() {
         <p className="font-bold text-xl">Product</p>
         <div className="w-3/4 flex justify-end">
           <div className="w-1/4 mr-10">
-            <Select value={onSelect} onChange={handChange}>
+            <Select value={select} onChange={handChangeSelect}>
               <option value="">All</option>
               {categories.map((category: Category) => (
                 <option key={category.id} value={category.id}>
@@ -51,7 +51,7 @@ export default function ProductList() {
           </Link>
         </div>
       </div>
-      <List onSelect={onSelect} onSearch={onSearch} />
+      <List select={select} search={search} />
     </div>
   );
 }

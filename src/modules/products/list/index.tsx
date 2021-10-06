@@ -13,11 +13,11 @@ import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
 
 interface ProductListProps {
-  onSelect: string;
-  onSearch: string;
+  select: string;
+  search: string;
 }
 
-const ProductList = ({ onSelect, onSearch }: ProductListProps) => {
+const ProductList = ({ select, search }: ProductListProps) => {
   const dispatch = useDispatch();
   const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -27,11 +27,11 @@ const ProductList = ({ onSelect, onSearch }: ProductListProps) => {
   );
 
   const valueSelect = products.filter((product: Product) => {
-    if (onSelect === "") {
+    if (select === "") {
       return product;
     }
-    if (onSelect !== "0") {
-      return product.categoryID === Number(onSelect);
+    if (select !== "") {
+      return product.categoryID === Number(select);
     }
     return false;
   });
@@ -41,7 +41,7 @@ const ProductList = ({ onSelect, onSearch }: ProductListProps) => {
       value.name
         .trim()
         .toLocaleLowerCase()
-        .match(onSearch.trim().toLocaleLowerCase())
+        .match(search.trim().toLocaleLowerCase())
     ) {
       return value;
     }
@@ -61,8 +61,8 @@ const ProductList = ({ onSelect, onSearch }: ProductListProps) => {
   };
   const handleClickClose = () => setIsOpen(false);
 
-  const handleClickDeleteProduct = async (id: number) => {
-    await dispatch(deleteProduct(id));
+  const handleClickDeleteProduct = (id: number) => {
+    dispatch(deleteProduct(id));
     setIsOpen(false);
     dispatch(getProducts());
   };
