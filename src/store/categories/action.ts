@@ -27,15 +27,5 @@ const deleteCategory =
       dispatch({ type: REJECTED });
     }
   };
-  const deleteCategory =
-  (id: number) => async (dispatch: Dispatch<ActionTypes>) => {
-    dispatch({ type: PENDING });
-    try {
-      await CategoryAPI.remove(id);
-      dispatch({ type: DELETE_CATEGORY, payload: id });
-    } catch (error) {
-      dispatch({ type: REJECTED });
-    }
-  };
 
 export { getCategories, deleteCategory };

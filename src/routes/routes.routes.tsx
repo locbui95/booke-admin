@@ -7,7 +7,8 @@ import {
   PATH_CATEGORIES,
   PATH_PRODUCTS,
   PATH_PRODUCTS_ADD,
-  PATH_PRODUCTS_EDIT
+  PATH_PRODUCTS_EDIT,
+  PATH_PRODUCTS_UPDATE
 } from "./routes.paths";
 
 interface RouteModel {
@@ -39,7 +40,7 @@ export const appRoutes: RouteModel[] = [
   },
   {
     exact: true,
-    path: PATH_PRODUCTS_EDIT,
+    path: PATH_PRODUCTS_UPDATE,
     component: Edit
   }
 ];

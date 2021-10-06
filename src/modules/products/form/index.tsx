@@ -1,11 +1,21 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { ChangeEvent, useMemo, useState, useEffect } from "react";
+import { RootState } from "store";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 import Button from "components/button";
 import Input from "components/input";
 import Select from "components/select";
 import Switch from "components/switch";
-import { Link } from "react-router-dom";
+import Category from "types/category";
+import {
+  addProduct,
+  getProductDetail,
+  getProducts,
+  updateProduct
+} from "store/product/action";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./form.module.css";
@@ -13,13 +23,46 @@ import styles from "./form.module.css";
 interface UserFormProps {
   mode: "create" | "edit";
 }
+
 export default function Form({ mode }: UserFormProps) {
-  const handleChange = (abc: boolean) => {
-    console.log(abc);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [image, setImage] = useState("");
+  const { id } = useParams<{ id: string }>();
+  const [statusSwitch, setStatusSwitch] = useState<boolean>();
+  const { productDetail } = useSelector((state: RootState) => state.product);
+  const { categories } = useSelector((state: RootState) => state.categories);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(getProductDetail(Number(id)));
+    }
+  }, []);
+
+  const handleChange = (value: boolean) => {
+    setStatusSwitch(value);
+  };
+  const getLinkImage = (e: ChangeEvent<HTMLInputElement>): void => {
+    setImage(e.target.value);
   };
 
-  const formik = useFormik({
-    initialValues: {
+  const initialValues = useMemo(() => {
+    if (mode === "edit") {
+      return {
+        name: Object(productDetail)?.name,
+        price: Object(productDetail)?.price,
+        import_price: Object(productDetail)?.import_price,
+        tax: Object(productDetail)?.tax,
+        status: Object(productDetail)?.status,
+        image: Object(productDetail)?.image,
+        description: Object(productDetail)?.description,
+        categoryID: Object(productDetail)?.categoryID,
+        author: Object(productDetail)?.author,
+        publishing_year: Object(productDetail)?.publishing_year,
+        date_submitted: Object(productDetail)?.date_submitted
+      };
+    }
+    return {
       name: "",
       price: 0,
       import_price: 0,
@@ -31,7 +74,24 @@ export default function Form({ mode }: UserFormProps) {
       author: "",
       publishing_year: "",
       date_submitted: ""
-    },
+    };
+  }, [productDetail, mode]);
+
+  function handleSubmit(values: any) {
+    if (mode === "edit") {
+      const valueEdit = { ...values, status: statusSwitch };
+      dispatch(updateProduct(Number(id), valueEdit));
+      dispatch(getProducts());
+    } else {
+      dispatch(addProduct(values));
+      dispatch(getProducts());
+    }
+    history.push(PATH_PRODUCTS);
+  }
+
+  const formik = useFormik({
+    initialValues,
+    enableReinitialize: true,
     validationSchema: Yup.object().shape({
       name: Yup.string().required("Please enter name"),
       price: Yup.string().required("Please enter price"),
@@ -44,10 +104,7 @@ export default function Form({ mode }: UserFormProps) {
       date_submitted: Yup.string().required("Please choose date submitted"),
       author: Yup.string().required("Please enter author")
     }),
-    onSubmit: (values: any, { resetForm }) => {
-      console.log(values);
-      resetForm({ values: "" });
-    }
+    onSubmit: handleSubmit
   });
 
   return (
@@ -184,6 +241,7 @@ export default function Form({ mode }: UserFormProps) {
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.image}
+                onBlur={getLinkImage}
               />
               {formik.touched.image && formik.errors.image ? (
                 <span className={styles.error}>{formik.errors.image}</span>
@@ -222,7 +280,7 @@ export default function Form({ mode }: UserFormProps) {
                 className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
                 name="publishing_year"
                 id="publishing_year"
-                type="date"
+                type="number"
                 onChange={formik.handleChange}
                 value={formik.values.publishing_year}
               />
@@ -281,15 +339,15 @@ export default function Form({ mode }: UserFormProps) {
                 onBlur={formik.handleBlur}
                 value={formik.values.categoryID}
               >
-                <option className="leading-10" value="1">
-                  one
-                </option>
-                <option className="leading-10" value="2">
-                  two
-                </option>
-                <option className="leading-10" value="2">
-                  three
-                </option>
+                {categories.map((value: Category) => (
+                  <option
+                    key={value.id}
+                    className="leading-10"
+                    value={value.id}
+                  >
+                    {value.name}
+                  </option>
+                ))}
               </Select>
               {formik.touched.categoryID && formik.errors.categoryID ? (
                 <span className={styles.error}>{formik.errors.categoryID}</span>
@@ -310,13 +368,31 @@ export default function Form({ mode }: UserFormProps) {
             </Link>
           </div>
         </div>
-        <div className="ml-10 mt-5 block">
-          <img
-            className="w-[20rem] h-[30rem] border-md shadow-lg rounded-xl"
-            src="https://i.pinimg.com/564x/ab/4f/2d/ab4f2dc76ef777821c5ad32976a328b3.jpg"
-            alt=""
-          />
-        </div>
+        {id ? (
+          <div className="ml-10 mt-5 block">
+            {!image ? (
+              <img
+                className="w-[20rem] h-[30rem] border-md shadow-lg rounded-xl"
+                src={Object(productDetail).image}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-[20rem] h-[30rem] border-md shadow-lg rounded-xl"
+                src={image}
+                alt=""
+              />
+            )}
+          </div>
+        ) : (
+          <div className="ml-10 mt-5 block">
+            <img
+              className="w-[20rem] h-[30rem] border-md shadow-lg rounded-xl"
+              src={image}
+              alt=""
+            />
+          </div>
+        )}
       </form>
     </div>
   );

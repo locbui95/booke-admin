@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "store/product/action";
+import { getProducts, deleteProduct } from "store/product/action";
 import { getCategories } from "store/categories/action";
 import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 import Spinner from "components/spinner";
 import Button from "components/button";
@@ -11,32 +12,34 @@ import Popup from "components/popup";
 import Product from "types/product";
 import Category from "types/category";
 import Table from "components/table";
-import { PATH_PRODUCTS_EDIT } from "routes/routes.paths";
-import { Link } from "react-router-dom";
 import ProductsTableHead from "./products.table-head";
 
 const ProductList = () => {
   const dispatch = useDispatch();
+  const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { products, loading } = useSelector(
     (state: RootState) => state.product
   );
-
-  const { categories, loading: isLoading } = useSelector(
-    (state: RootState) => state.categories
-  );
-
-  console.log(categories);
+  const { categories } = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
   }, [dispatch]);
 
-  const handleClickOpen = () => setIsOpen(true);
-
+  const handleClickOpen = (id: number) => {
+    setIsOpen(true);
+    setProductId(id);
+  };
   const handleClickClose = () => setIsOpen(false);
+
+  const handleClickDeleteProduct = async (id: number) => {
+    await dispatch(deleteProduct(id));
+    setIsOpen(false);
+    dispatch(getProducts());
+  };
 
   const renderRows = (product: Product) => (
     <tr key={product.id} className="text-left">
@@ -48,7 +51,7 @@ const ProductList = () => {
       <td className="py-5 pl-5 w-1/12">{product.price}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         {categories.map((category: Category) => {
-          if (category.id === product.categoryID) {
+          if (category.id === Number(product.categoryID)) {
             return <p className="truncate w-10/12">{category.name}</p>;
           }
           return null;
@@ -66,13 +69,13 @@ const ProductList = () => {
         )}
       </td>
       <td className="py-5 pl-5 w-2/12">
-        <Link to={PATH_PRODUCTS_EDIT}>
+        <Link to={`products/update/${product.id}`}>
           <Button className="hover:text-yellow-800 bg-white text-yellow-600 text-xl pl-2 pr-7">
             <BsPencilSquare />
           </Button>
         </Link>
         <Button
-          onClick={handleClickOpen}
+          onClick={() => handleClickOpen(product.id)}
           className="hover:text-red-800  bg-white text-red-600 text-xl"
         >
           <BsTrash />
@@ -100,7 +103,7 @@ const ProductList = () => {
         title="Confirm Infomation"
         message="Are you sure to delete this record?"
         onClose={handleClickClose}
-        onConfirm={() => console.log("lii")}
+        onConfirm={() => handleClickDeleteProduct(productId)}
       />
     </div>
   );
