@@ -22,7 +22,6 @@ const CategoriesList = (props: CategotyListProps) => {
   const { categories, loading } = useSelector(
     (state: RootState) => state.categories
   );
-
   const dispatch = useDispatch();
 
   useEffect(() => {

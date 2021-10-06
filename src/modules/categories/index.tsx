@@ -47,7 +47,7 @@ export default function CategoryList() {
           <Form
             isOpen={isOpen}
             mode={mode}
-            data={categoryRow}
+            categoryRow={categoryRow}
             setIsOpen={setIsOpen}
           />
         </div>
