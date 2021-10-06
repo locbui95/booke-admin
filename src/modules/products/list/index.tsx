@@ -5,7 +5,6 @@ import { getCategories } from "store/categories/action";
 import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
-import Spinner from "components/spinner";
 import Button from "components/button";
 import Popup from "components/popup";
 import Product from "types/product";
@@ -13,7 +12,12 @@ import Category from "types/category";
 import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
 
-const ProductList = () => {
+interface ProductListProps {
+  onSelect: string;
+  onSearch: string;
+}
+
+const ProductList = ({ onSelect, onSearch }: ProductListProps) => {
   const dispatch = useDispatch();
   const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -21,12 +25,35 @@ const ProductList = () => {
   const { products, loading } = useSelector(
     (state: RootState) => state.product
   );
+
+  const valueSelect = products.filter((product: Product) => {
+    if (onSelect === "") {
+      return product;
+    }
+    if (onSelect !== "0") {
+      return product.categoryID === Number(onSelect);
+    }
+    return false;
+  });
+
+  const keySearch = valueSelect.filter((value: Product) => {
+    if (
+      value.name
+        .trim()
+        .toLocaleLowerCase()
+        .match(onSearch.trim().toLocaleLowerCase())
+    ) {
+      return value;
+    }
+    return false;
+  });
+
   const { categories } = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
-  }, [dispatch]);
+  }, []);
 
   const handleClickOpen = (id: number) => {
     setIsOpen(true);
@@ -83,18 +110,13 @@ const ProductList = () => {
 
   return (
     <div className="mt-10">
-      {!loading ? (
-        <Table
-          loading={loading}
-          head={<ProductsTableHead />}
-          data={products}
-          renderRows={renderRows}
-        />
-      ) : (
-        <div className=" flex justify-center items-center relative">
-          <Spinner />
-        </div>
-      )}
+      <Table
+        loading={loading}
+        head={<ProductsTableHead />}
+        data={keySearch}
+        renderRows={renderRows}
+      />
+
       <Popup
         isOpen={isOpen}
         title="Confirm Infomation"
