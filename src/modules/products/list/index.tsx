@@ -5,7 +5,6 @@ import { getCategories } from "store/categories/action";
 import { RootState } from "store";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 
-import Spinner from "components/spinner";
 import Button from "components/button";
 import Popup from "components/popup";
 import Product from "types/product";
@@ -13,20 +12,46 @@ import Category from "types/category";
 import Table from "components/table";
 import ProductsTableHead from "./products.table-head";
 
-const ProductList = () => {
+interface ProductListProps {
+  select: string;
+  search: string;
+}
+
+const ProductList = ({ select, search }: ProductListProps) => {
   const dispatch = useDispatch();
   const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { products, loading } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { products } = useSelector((state: RootState) => state.product);
+
+  const selectProductCategory = products.filter((product: Product) => {
+    if (select === "") {
+      return product;
+    }
+    if (select !== "") {
+      return product.categoryID === Number(select);
+    }
+    return false;
+  });
+
+  const newArrayProducts = selectProductCategory.filter((product: Product) => {
+    if (
+      product.name
+        .trim()
+        .toLocaleLowerCase()
+        .match(search.trim().toLocaleLowerCase())
+    ) {
+      return product;
+    }
+    return false;
+  });
+
   const { categories } = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
-  }, [dispatch]);
+  }, []);
 
   const handleClickOpen = (id: number) => {
     setIsOpen(true);
@@ -34,8 +59,8 @@ const ProductList = () => {
   };
   const handleClickClose = () => setIsOpen(false);
 
-  const handleClickDeleteProduct = async (id: number) => {
-    await dispatch(deleteProduct(id));
+  const handleClickDeleteProduct = (id: number) => {
+    dispatch(deleteProduct(id));
     setIsOpen(false);
     dispatch(getProducts());
   };
@@ -83,18 +108,12 @@ const ProductList = () => {
 
   return (
     <div className="mt-10">
-      {!loading ? (
-        <Table
-          loading={loading}
-          head={<ProductsTableHead />}
-          data={products}
-          renderRows={renderRows}
-        />
-      ) : (
-        <div className=" flex justify-center items-center relative">
-          <Spinner />
-        </div>
-      )}
+      <Table
+        head={<ProductsTableHead />}
+        data={newArrayProducts}
+        renderRows={renderRows}
+      />
+
       <Popup
         isOpen={isOpen}
         title="Confirm Infomation"

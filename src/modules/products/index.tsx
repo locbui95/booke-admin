@@ -1,15 +1,27 @@
+import React, { ChangeEvent, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "store";
 import { AiOutlinePlus } from "react-icons/ai";
 
 import Button from "components/button";
 import Search from "components/search";
 import Select from "components/select";
-// import EditProduct from "pages/products/edit";
 import { Link } from "react-router-dom";
 import { PATH_PRODUCTS_ADD } from "routes/routes.paths";
+import Category from "types/category";
+import List from "./list";
 
-export default function SearchBar() {
-  const handleSearch = (search: string) => {
-    console.log(search);
+export default function ProductList() {
+  const [select, setSelect] = useState("");
+  const [search, setSearch] = useState("");
+
+  const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) =>
+    setSelect(e.target.value);
+
+  const { categories } = useSelector((state: RootState) => state.categories);
+
+  const handleSearch = (searchName: string) => {
+    setSearch(searchName);
   };
 
   return (
@@ -18,19 +30,13 @@ export default function SearchBar() {
         <p className="font-bold text-xl">Product</p>
         <div className="w-3/4 flex justify-end">
           <div className="w-1/4 mr-10">
-            <Select>
-              <option disabled className="leading-10" value="number">
-                number
-              </option>
-              <option className="leading-10" value="1">
-                one
-              </option>
-              <option className="leading-10" value="2">
-                two
-              </option>
-              <option className="leading-10" value="2">
-                three
-              </option>
+            <Select value={select} onChange={handleChangeSelect}>
+              <option value="">All</option>
+              {categories.map((category: Category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </Select>
           </div>
           <Search onSearch={handleSearch} />
@@ -45,6 +51,7 @@ export default function SearchBar() {
           </Link>
         </div>
       </div>
+      <List select={select} search={search} />
     </div>
   );
 }
