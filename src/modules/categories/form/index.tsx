@@ -2,9 +2,10 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from "formik";
 import { useMemo, useState } from "react";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store";
 
-import { createCategories, getCategories } from "store/categories/action";
+import { createCategories, editCategories } from "store/categories/action";
 import Button from "components/button";
 import Input from "components/input";
 import Switch from "components/switch";
@@ -13,12 +14,21 @@ import styles from "./form.module.css";
 
 interface FormProps {
   mode: string;
-  data: Category;
+  categoryRow: Category;
   isOpen: boolean;
-  setIsOpen: (param: boolean) => void;
+  onClose: () => void;
 }
 
-export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
+export default function Form({
+  mode,
+  categoryRow,
+  isOpen,
+  onClose
+}: FormProps) {
+  const [valueSwitch, setValueSwitch] = useState<boolean>(true);
+  const { categories } = useSelector((state: RootState) => state.categories);
+  const dispatch = useDispatch();
+
   let title: string;
   if (mode === "edit") {
     title = "Edit Category";
@@ -28,10 +38,10 @@ export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
   const initialValues = useMemo(() => {
     if (mode === "edit") {
       return {
-        id: data.id,
-        name: data.name,
-        description: data.description,
-        status: data.status
+        id: categoryRow.id,
+        name: categoryRow.name,
+        description: categoryRow.description,
+        status: categoryRow.status
       };
     }
     return {
@@ -40,28 +50,29 @@ export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
       description: "",
       status: true
     };
-  }, [data, mode]);
+  }, [categoryRow, mode]);
 
-  const [valueCheckSwitch, setValueCheckSwitch] = useState<boolean>(true);
-  const handleChangeSwitch = (onChangeSwitch: boolean): void => {
-    setValueCheckSwitch(onChangeSwitch);
+  const handleSwitch = (isCheck: boolean): void => {
+    setValueSwitch(isCheck);
   };
-  const hanldeClickClose = (): void => {
-    setIsOpen(false);
-  };
-  const dispatch = useDispatch();
+
+  const index: number[] = Object.values(categories).map(
+    (value: any) => value.id
+  );
   const handleSubmit = (values: Category, { resetForm }: any): void => {
     const submitData = {
-      id: Number(new Date()),
+      id: index[index.length] + 1,
       name: values.name,
       description: values.description,
-      status: valueCheckSwitch
+      status: valueSwitch
     };
-    dispatch(createCategories(submitData));
-    dispatch(getCategories());
-    console.log("submitData: ", submitData);
-    resetForm({ value: "" });
-    hanldeClickClose();
+    if (mode === "create") {
+      dispatch(createCategories(submitData));
+    } else {
+      dispatch(editCategories({ ...submitData, id: categoryRow.id }));
+    }
+    resetForm({ values: "" });
+    onClose();
   };
 
   const formik = useFormik({
@@ -82,10 +93,7 @@ export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
             <div className="flex flex-col p-5 h-auto max-w-xl rounded-md bg-white shadow-lg w-full">
               <div className="flex justify-between mb-6">
                 <h1 className="font-semibold text-xl">{title}</h1>
-                <Button
-                  className="border-none text-xl ml-36"
-                  onClick={hanldeClickClose}
-                >
+                <Button className="border-none text-xl ml-36" onClick={onClose}>
                   <AiFillCloseCircle />
                 </Button>
               </div>
@@ -138,12 +146,15 @@ export default function Form({ mode, data, isOpen, setIsOpen }: FormProps) {
                 >
                   Status
                 </label>
-                <Switch onChange={handleChangeSwitch} isChecked={data.status} />
+                <Switch
+                  onChange={handleSwitch}
+                  isChecked={categoryRow.status}
+                />
               </div>
               <div className="flex justify-end items-center mt-2">
                 <Button
                   className="w-20 text-gray-900 font-medium rounded-lg p-2 hover:bg-gray-200 hover:bg-opacity-30"
-                  onClick={hanldeClickClose}
+                  onClick={onClose}
                 >
                   Cancel
                 </Button>

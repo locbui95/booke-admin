@@ -9,6 +9,12 @@ import Form from "./form";
 
 export default function CategoryList() {
   const [mode, setMode] = useState<string>("create");
+  const [categoryRow, setCategoryRow] = useState<Category>({
+    id: 0,
+    name: "",
+    description: "",
+    status: true
+  });
   const [searchName, setSearchName] = useState<string>("");
 
   const handleSearch = (search: string) => {
@@ -19,6 +25,9 @@ export default function CategoryList() {
   const hanldeClickAddButon = (): void => {
     setIsOpen(true);
     setMode("create");
+  };
+  const onClose = (): void => {
+    setIsOpen(false);
   };
   const hanldeClickEditButon = (value: Category): void => {
     setCategoryRow(value);
@@ -43,13 +52,16 @@ export default function CategoryList() {
           <Form
             isOpen={isOpen}
             mode={mode}
-            data={categoryRow}
-            setIsOpen={setIsOpen}
+            categoryRow={categoryRow}
+            onClose={onClose}
           />
         </div>
       </div>
       <div className="mt-10">
-        <ListCategories searchName={searchName} />
+        <CategoriesList
+          searchName={searchName}
+          hanldeClickEditButon={hanldeClickEditButon}
+        />
       </div>
     </div>
   );
