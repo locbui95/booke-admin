@@ -22,11 +22,9 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { products, loading } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { products } = useSelector((state: RootState) => state.product);
 
-  const valueSelect = products.filter((product: Product) => {
+  const selectProductCategory = products.filter((product: Product) => {
     if (select === "") {
       return product;
     }
@@ -36,14 +34,14 @@ const ProductList = ({ select, search }: ProductListProps) => {
     return false;
   });
 
-  const keySearch = valueSelect.filter((value: Product) => {
+  const newArrayProducts = selectProductCategory.filter((product: Product) => {
     if (
-      value.name
+      product.name
         .trim()
         .toLocaleLowerCase()
         .match(search.trim().toLocaleLowerCase())
     ) {
-      return value;
+      return product;
     }
     return false;
   });
@@ -111,9 +109,8 @@ const ProductList = ({ select, search }: ProductListProps) => {
   return (
     <div className="mt-10">
       <Table
-        loading={loading}
         head={<ProductsTableHead />}
-        data={keySearch}
+        data={newArrayProducts}
         renderRows={renderRows}
       />
 
