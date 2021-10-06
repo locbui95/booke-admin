@@ -10,7 +10,11 @@ import Popup from "components/popup";
 import Category from "types/category";
 import TableHead from "./table-head";
 
-const CategoriesList = ({ searchName = "" }: any) => {
+interface ISearchName {
+  searchName: string;
+}
+
+const CategoriesList = ({ searchName }: ISearchName) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
   const [filterCategories, setFilterCategories] = useState<Category[]>([]);
@@ -78,10 +82,11 @@ const CategoriesList = ({ searchName = "" }: any) => {
   return (
     <>
       <Table
-        data={filterCategories}
+        data={filterCategories.length === 0 ? categories : filterCategories}
         head={<TableHead />}
         renderRows={renderRows}
       />
+
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"
