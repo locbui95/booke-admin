@@ -71,7 +71,7 @@ export default function Form({
     } else {
       dispatch(editCategories({ ...submitData, id: categoryRow.id }));
     }
-    resetForm({ value: "" });
+    resetForm({ values: "" });
     onClose();
   };
 
