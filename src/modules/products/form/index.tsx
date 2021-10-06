@@ -34,7 +34,7 @@ export default function Form() {
               <p className="block text-gray-700 text-md font-bold mb-2">
                 Status
               </p>
-              <Switch onChange={handleChange} isChecked={true} />
+              {/* <Switch onChange={handleChange} /> */}
             </div>
           </div>
           <div className="flex">
