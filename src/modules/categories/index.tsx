@@ -16,9 +16,12 @@ export default function CategoryList() {
     description: "",
     status: true
   });
+  const [searchName, setSearchName] = useState<string>("");
+
   const handleSearch = (search: string) => {
-    // console.log(search);
+    setSearchName(search);
   };
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const hanldeClickAddButon = (): void => {
     setIsOpen(true);
@@ -53,7 +56,10 @@ export default function CategoryList() {
         </div>
       </div>
       <div className="mt-10">
-        <CategoriesList hanldeClickEditButon={hanldeClickEditButon} />
+        <CategoriesList
+          searchName={searchName}
+          hanldeClickEditButon={hanldeClickEditButon}
+        />
       </div>
     </div>
   );

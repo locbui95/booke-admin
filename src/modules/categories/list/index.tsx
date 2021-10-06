@@ -5,7 +5,6 @@ import { RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCategory, getCategories } from "store/categories/action";
 import Button from "components/button";
-import Spinner from "components/spinner";
 import Table from "components/table";
 import Popup from "components/popup";
 import Category from "types/category";
@@ -13,20 +12,30 @@ import TableHead from "./table-head";
 
 interface CategotyListProps {
   hanldeClickEditButon: Function;
+  searchName: string;
 }
 
 const CategoriesList = (props: CategotyListProps) => {
-  const { hanldeClickEditButon } = props;
+  const { hanldeClickEditButon, searchName } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
-  const { categories, loading } = useSelector(
-    (state: RootState) => state.categories
-  );
+  const [filterCategories, setFilterCategories] = useState<Category[]>([]);
+  const { categories } = useSelector((state: RootState) => state.categories);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    const newArrayCategories = categories.filter(
+      (category: Category) =>
+        category.name === searchName ||
+        category.name.toLowerCase().includes(searchName.toLowerCase())
+    );
+    setFilterCategories(newArrayCategories);
+  }, [searchName]);
 
   const handleClickClose = (id: number) => {
     setCategoryId(id);
@@ -77,13 +86,11 @@ const CategoriesList = (props: CategotyListProps) => {
 
   return (
     <>
-      {!loading ? (
-        <Table data={categories} head={<TableHead />} renderRows={renderRows} />
-      ) : (
-        <div className=" flex justify-center items-center relative">
-          <Spinner />
-        </div>
-      )}
+      <Table
+        data={filterCategories.length === 0 ? categories : filterCategories}
+        head={<TableHead />}
+        renderRows={renderRows}
+      />
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"
