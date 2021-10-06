@@ -1,11 +1,14 @@
 import CategoryAPI from "apis/category";
 import { Dispatch } from "redux";
+import Category from "types/category";
 import {
   ActionTypes,
   GET_CATEGORIES,
   PENDING,
   REJECTED,
-  DELETE_CATEGORY
+  DELETE_CATEGORY,
+  CREATE_CATEGORY,
+  EDIT_CATEGORY
 } from "./constant";
 
 const getCategories = () => async (dispatch: Dispatch<ActionTypes>) => {
@@ -27,5 +30,25 @@ const deleteCategory =
       dispatch({ type: REJECTED });
     }
   };
+const createCategories =
+  (item: Category) => async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch({ type: PENDING });
+    try {
+      const { data: category } = await CategoryAPI.add(item);
+      dispatch({ type: CREATE_CATEGORY, payload: category });
+    } catch (error) {
+      dispatch({ type: REJECTED });
+    }
+  };
+const editCategories =
+  (item: Category) => async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch({ type: PENDING });
+    try {
+      const { data: category } = await CategoryAPI.edit(item.id, item);
+      dispatch({ type: EDIT_CATEGORY, payload: category });
+    } catch (error) {
+      dispatch({ type: REJECTED });
+    }
+  };
 
-export { getCategories, deleteCategory };
+export { getCategories, deleteCategory, createCategories, editCategories };

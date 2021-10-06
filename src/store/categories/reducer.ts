@@ -4,7 +4,9 @@ import {
   GET_CATEGORIES,
   REJECTED,
   ActionTypes,
-  DELETE_CATEGORY
+  DELETE_CATEGORY,
+  CREATE_CATEGORY,
+  EDIT_CATEGORY
 } from "./constant";
 
 interface InitialState {
@@ -30,6 +32,26 @@ const reducer = (state = initialState, action: ActionTypes) => {
         (item) => item.id !== action.payload
       );
       return { ...state, categories: filterCategories, loading: false };
+    }
+    case CREATE_CATEGORY:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+        loading: false
+      };
+    case EDIT_CATEGORY: {
+      const { payload } = action;
+      const newCategories = state.categories.map((item: Category) => {
+        if (item.id === payload.id) {
+          return payload;
+        }
+        return item;
+      });
+      return {
+        ...state,
+        categories: newCategories,
+        loading: false
+      };
     }
     default:
       return state;
