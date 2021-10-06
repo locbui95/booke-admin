@@ -1,6 +1,6 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from "formik";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
