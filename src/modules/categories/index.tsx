@@ -17,9 +17,12 @@ const valueDemo: Category = {
 
 export default function CategoryList() {
   const [mode, setMode] = useState<string>("create");
+  const [searchName, setSearchName] = useState<string>("");
+
   const handleSearch = (search: string) => {
-    console.log(search);
+    setSearchName(search);
   };
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const hanldeClickAddButon = () => {
     setIsOpen(true);
@@ -60,7 +63,7 @@ export default function CategoryList() {
         </div>
       </div>
       <div className="mt-10">
-        <ListCategories />
+        <ListCategories searchName={searchName} />
       </div>
     </div>
   );
