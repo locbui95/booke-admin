@@ -20,13 +20,13 @@
     },
     {
       "id": 4,
-      "name": "Business Leadership Books",
+      "name": "Business Leadership Books ",
       "description": "Therefore, many young people and leaders have come to this line of business books to learn about how to lead, operate and coordinate with employees to serve the goals that businesses and organizations propose. out. ",
       "status": true
     },
     {
       "id": 5,
-      "name": "Books enjoy life",
+      "name": "Books enjoy life ",
       "description": "Is a collection of good books about information and knowledge revolving around daily life: health care, child rearing, cooking, first aid for injured people, etc. Hopefully, through Newshop's regular bookcase, everyone will be equipped with a lot of useful information and tips to apply in your daily life.",
       "status": true
     },
@@ -40,6 +40,12 @@
       "id": 7,
       "name": "Agricul ture book - bonsai",
       "description": " Especially for Vietnam, a country with agricultural production as the foundation, so grasping agricultural knowledge and techniques is extremely essential. Agricultural techniques and knowledge will contribute to increased productivity and unexpected efficiency in the process of growing crops and livestock.",
+      "status": true
+    },
+    {
+      "id": 8,
+      "name": "Sweet Book",
+      "description": "Book for love",
       "status": true
     }
   ],
