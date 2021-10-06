@@ -10,11 +10,13 @@ import Popup from "components/popup";
 import Category from "types/category";
 import TableHead from "./table-head";
 
-interface ISearchName {
+interface CategotyListProps {
+  hanldeClickEditButon: Function;
   searchName: string;
 }
 
-const CategoriesList = ({ searchName }: ISearchName) => {
+const CategoriesList = (props: CategotyListProps) => {
+  const { hanldeClickEditButon, searchName } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
   const { categories } = useSelector((state: RootState) => state.categories);
