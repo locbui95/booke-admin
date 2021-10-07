@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, deleteProduct } from "store/product/action";
@@ -85,7 +85,7 @@ const ProductList = ({ select, search }: ProductListProps) => {
       <td className="py-5 w-1/12">
         {product.status ? (
           <p className="p-1 text-center border border-[#019707] rounded bg-[#019707] text-xs text-white">
-            On stock
+            In stock
           </p>
         ) : (
           <p className="p-1 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">

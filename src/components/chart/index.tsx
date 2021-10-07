@@ -1,43 +1,8 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
 
-const COLORS = ["#27ae60", "#e74c3c"];
-
+const COLORS = ["#019707", "#fb0b12"];
 const RADIAN: number = Math.PI / 180;
-
-interface renderCustomizedLabelProps {
-  cx: number;
-  cy: number;
-  midAngle: number;
-  innerRadius: number;
-  outerRadius: number;
-  percent: number;
-}
-
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent
-}: renderCustomizedLabelProps) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="white"
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
-    >
-      {" "}
-    </text>
-  );
-};
 
 interface renderActiveShapeProps {
   cx: number;
@@ -48,12 +13,11 @@ interface renderActiveShapeProps {
   startAngle: number;
   endAngle: number;
   fill: string;
-  payload: Payload;
+  payload: Data;
   percent: number;
   value: number;
 }
-
-interface Payload {
+interface Data {
   name: string;
   value: number;
 }
@@ -68,9 +32,7 @@ const renderActiveShape = (props: renderActiveShapeProps) => {
     startAngle,
     endAngle,
     fill,
-    payload,
-    percent,
-    value
+    payload
   } = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
@@ -81,6 +43,7 @@ const renderActiveShape = (props: renderActiveShapeProps) => {
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
   const textAnchor = cos >= 0 ? "start" : "end";
+
   return (
     <g>
       <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
@@ -118,21 +81,12 @@ const renderActiveShape = (props: renderActiveShapeProps) => {
       >
         {payload.value}
       </text>
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        dy={18}
-        textAnchor={textAnchor}
-        fill="#999"
-      >
-        {" "}
-      </text>
     </g>
   );
 };
 
 interface CircleChartProps {
-  data: any[];
+  data: Data[];
 }
 
 export default function CircleChart({ data }: CircleChartProps) {
@@ -153,7 +107,6 @@ export default function CircleChart({ data }: CircleChartProps) {
         cx={180}
         cy={150}
         labelLine={false}
-        label={renderCustomizedLabel}
         innerRadius={50}
         outerRadius={70}
         fill="#1abc9c"

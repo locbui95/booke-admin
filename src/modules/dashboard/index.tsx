@@ -5,7 +5,6 @@ import DashboardCard from "components/dashboard-card";
 export default function DashboardList() {
   const products = 10;
   const categories = 8;
-
   const productsOnStock = 8;
   const productsOutofStock = 2;
 
@@ -24,26 +23,26 @@ export default function DashboardList() {
       <h2 className="mb-10 text-3xl font-medium text-gray-600">Dashboard</h2>
       <div className="grid grid-cols-2 gap-4">
         <div className="flex items-center justify-around mb-8 bg-white text-gray-600 shadow-md rounded-xl ">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center ml-3">
             <DashboardCard
               icon={<FaShoppingBasket />}
               count={products}
               title="Total Products"
             />
           </div>
-          <div className="flex justify-center items-center ">
+          <div className="flex justify-center items-center">
             <CircleChart data={dataProduct} />
           </div>
         </div>
         <div className="flex items-center justify-around mb-8 bg-white text-gray-600 shadow-md rounded-xl  ">
-          <div>
+          <div className="flex justify-center items-center ml-3">
             <DashboardCard
               icon={<FaThLarge />}
               count={categories}
               title="Total Categories"
             />
           </div>
-          <div>
+          <div className="flex justify-center items-center">
             <CircleChart data={dataCategory} />
           </div>
         </div>
