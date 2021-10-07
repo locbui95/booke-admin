@@ -1,4 +1,9 @@
-import { AiFillAppstore, AiOutlineMenuUnfold, AiFillHdd } from "react-icons/ai";
+import {
+  AiFillAppstore,
+  AiOutlineMenuUnfold,
+  AiFillHdd,
+  AiOutlineUsergroupAdd
+} from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
 
 import logo from "assets/logo.png";
@@ -43,7 +48,7 @@ export default function Sidebar() {
           to={PATH_USER}
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
         >
-          <AiFillHdd className="text-2xl mx-3" />
+          <AiOutlineUsergroupAdd className="text-2xl mx-3" />
           User Management
         </NavLink>
       </nav>
