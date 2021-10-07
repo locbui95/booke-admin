@@ -141,7 +141,6 @@ export default function Form({ mode }: UserFormProps) {
                 <span className={styles.error}>{formik.errors.name}</span>
               ) : null}
             </div>
-<<<<<<< HEAD
             <div className="mt-1 w-2/4">
               <label
                 className="block text-gray-700 text-md font-bold mb-2"
@@ -160,13 +159,6 @@ export default function Form({ mode }: UserFormProps) {
               {formik.touched.author && formik.errors.author ? (
                 <span className={styles.error}>{formik.errors.author}</span>
               ) : null}
-=======
-            <div className="mt-2 w-2/4">
-              <p className="block text-gray-700 text-md font-bold mb-2">
-                Status
-              </p>
-              {/* <Switch onChange={handleChange} /> */}
->>>>>>> 7daaa90557ed4937ef68489d60a991788077ba34
             </div>
           </div>
           <div className="flex">
