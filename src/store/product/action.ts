@@ -26,8 +26,8 @@ export const deleteProduct =
   (id: number) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });
     try {
-      const response = await ProductApi.remove(id);
-      dispatch({ type: DELETE_PRODUCT, payload: response.data });
+      await ProductApi.remove(id);
+      dispatch({ type: DELETE_PRODUCT, payload: id });
     } catch (error) {
       dispatch({ type: REJECTED });
     }
