@@ -5,24 +5,36 @@ import { RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCategory, getCategories } from "store/categories/action";
 import Button from "components/button";
-import Spinner from "components/spinner";
 import Table from "components/table";
 import Popup from "components/popup";
 import Category from "types/category";
 import TableHead from "./table-head";
 
-const CategoriesList = () => {
+interface CategotyListProps {
+  hanldeClickEditButon: Function;
+  searchName: string;
+}
+
+const CategoriesList = (props: CategotyListProps) => {
+  const { hanldeClickEditButon, searchName } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
-  const { categories, loading } = useSelector(
-    (state: RootState) => state.categories
-  );
+  const { categories } = useSelector((state: RootState) => state.categories);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
+  const newArrayCategories: Category[] = categories.filter(
+    (category: Category) => {
+      if (category.name.toLowerCase().includes(searchName.toLowerCase())) {
+        return category;
+      }
+      return "";
+    }
+  );
 
   const handleClickClose = (id: number) => {
     setCategoryId(id);
@@ -55,7 +67,10 @@ const CategoriesList = () => {
         )}
       </td>
       <td className="px-5">
-        <Button className="bg-white text-yellow-600 text-xl pl-2 pr-7 hover:text-yellow-800">
+        <Button
+          className="bg-white text-yellow-600 text-xl pl-2 pr-7 hover:text-yellow-800"
+          onClick={() => hanldeClickEditButon(category)}
+        >
           <BsPencilSquare />
         </Button>
         <Button
@@ -70,13 +85,11 @@ const CategoriesList = () => {
 
   return (
     <>
-      {!loading ? (
-        <Table data={categories} head={<TableHead />} renderRows={renderRows} />
-      ) : (
-        <div className=" flex justify-center items-center relative">
-          <Spinner />
-        </div>
-      )}
+      <Table
+        data={newArrayCategories}
+        head={<TableHead />}
+        renderRows={renderRows}
+      />
       <Popup
         message="Are you sure to delete this record ?"
         title="Confirm Information"

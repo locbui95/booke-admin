@@ -8,8 +8,8 @@ import {
   ActionTypes,
   DELETE_PRODUCT,
   ADD_PRODUCT,
-  GET_PRODUCT_DETAIL,
-  UPDATE_PRODUCT_DETAIL
+  UPDATE_PRODUCT,
+  GET_PRODUCT_DETAIL
 } from "./constant";
 
 export const getProducts = () => async (dispatch: Dispatch<ActionTypes>) => {
@@ -57,7 +57,7 @@ export const updateProduct =
     dispatch({ type: PENDING });
     try {
       const response = await ProductApi.edit(id, item);
-      dispatch({ type: UPDATE_PRODUCT_DETAIL, payload: response.data });
+      dispatch({ type: UPDATE_PRODUCT, payload: response.data });
     } catch (error) {
       dispatch({ type: REJECTED });
     }

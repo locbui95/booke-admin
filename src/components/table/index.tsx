@@ -25,7 +25,7 @@ export default function Table({
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return data.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+  }, [currentPage, data]);
 
   function renderTableBody() {
     if (loading) {

@@ -2,37 +2,37 @@ import Product from "types/product";
 import {
   PENDING,
   GET_PRODUCTS,
-  REJECTED,
-  ActionTypes,
   ADD_PRODUCT,
-  DELETE_PRODUCT,
   GET_PRODUCT_DETAIL,
-  UPDATE_PRODUCT_DETAIL
+  UPDATE_PRODUCT,
+  DELETE_PRODUCT,
+  REJECTED,
+  ActionTypes
 } from "./constant";
 
 interface InitialStateType {
   products: Product[];
-  loading: boolean;
   productDetail: Product;
+  loading: boolean;
 }
 
 const initialState: InitialStateType = {
   products: [],
-  loading: false,
   productDetail: {
     id: 0,
     name: "",
     price: 0,
     import_price: 0,
     tax: 0,
-    status: false,
+    status: true,
     image: "",
     description: "",
     categoryID: 0,
     author: "",
     publishing_year: "",
     date_submitted: ""
-  }
+  },
+  loading: false
 };
 
 const productsReducer = (
@@ -60,7 +60,7 @@ const productsReducer = (
     case ADD_PRODUCT:
       return {
         ...state,
-        products: [...state.products, action.payload],
+        productDetail: action.payload,
         loading: false
       };
     case GET_PRODUCT_DETAIL:
@@ -69,16 +69,16 @@ const productsReducer = (
         productDetail: action.payload,
         loading: false
       };
-    case UPDATE_PRODUCT_DETAIL:
+    case UPDATE_PRODUCT:
       return {
         ...state,
-        products: [...state.products, action.payload],
+        productDetail: action.payload,
         loading: false
       };
     case REJECTED:
       return {
         ...state,
-        loading: false
+        loading: true
       };
     default:
       return state;

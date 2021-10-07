@@ -10,6 +10,7 @@ import Input from "components/input";
 import Select from "components/select";
 import Switch from "components/switch";
 import Category from "types/category";
+import Product from "types/product";
 import {
   addProduct,
   getProductDetail,
@@ -27,9 +28,9 @@ interface UserFormProps {
 export default function Form({ mode }: UserFormProps) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [image, setImage] = useState("");
   const { id } = useParams<{ id: string }>();
-  const [statusSwitch, setStatusSwitch] = useState<boolean>();
+  const [image, setImage] = useState("");
+  const [statusSwitch, setStatusSwitch] = useState<boolean>(true);
   const { productDetail } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
 
@@ -38,8 +39,7 @@ export default function Form({ mode }: UserFormProps) {
       dispatch(getProductDetail(Number(id)));
     }
   }, []);
-
-  const handleChange = (value: boolean) => {
+  const handleSwitch = (value: boolean): void => {
     setStatusSwitch(value);
   };
   const getLinkImage = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -49,17 +49,17 @@ export default function Form({ mode }: UserFormProps) {
   const initialValues = useMemo(() => {
     if (mode === "edit") {
       return {
-        name: Object(productDetail)?.name,
-        price: Object(productDetail)?.price,
-        import_price: Object(productDetail)?.import_price,
-        tax: Object(productDetail)?.tax,
-        status: Object(productDetail)?.status,
-        image: Object(productDetail)?.image,
-        description: Object(productDetail)?.description,
-        categoryID: Object(productDetail)?.categoryID,
-        author: Object(productDetail)?.author,
-        publishing_year: Object(productDetail)?.publishing_year,
-        date_submitted: Object(productDetail)?.date_submitted
+        name: productDetail.name,
+        price: productDetail.price,
+        import_price: productDetail.import_price,
+        tax: productDetail.tax,
+        status: productDetail.status,
+        image: productDetail.image,
+        description: productDetail.description,
+        categoryID: productDetail.categoryID,
+        author: productDetail.author,
+        publishing_year: productDetail.publishing_year,
+        date_submitted: productDetail.date_submitted
       };
     }
     return {
@@ -67,7 +67,7 @@ export default function Form({ mode }: UserFormProps) {
       price: 0,
       import_price: 0,
       tax: 0,
-      status: true,
+      status: false,
       image: "",
       description: "",
       categoryID: 0,
@@ -81,11 +81,10 @@ export default function Form({ mode }: UserFormProps) {
     if (mode === "edit") {
       const valueEdit = { ...values, status: statusSwitch };
       dispatch(updateProduct(Number(id), valueEdit));
-      dispatch(getProducts());
     } else {
       dispatch(addProduct(values));
-      dispatch(getProducts());
     }
+    dispatch(getProducts());
     history.push(PATH_PRODUCTS);
   }
 
@@ -319,8 +318,8 @@ export default function Form({ mode }: UserFormProps) {
                 Status
               </p>
               <Switch
-                onChange={handleChange}
-                isChecked={formik.values.status}
+                onChange={handleSwitch}
+                isChecked={productDetail.status}
               />
             </div>
             <div className="mt-1 w-2/4 ">

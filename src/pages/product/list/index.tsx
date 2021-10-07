@@ -1,13 +1,9 @@
-import ProductList from "modules/products/list";
-import SearchBar from "modules/products/search-bar";
+import ProductList from "modules/products";
 
 export default function Product() {
   return (
     <div>
-      <SearchBar />
-      <div className="mt-10">
-        <ProductList />
-      </div>
+      <ProductList />
     </div>
   );
 }
