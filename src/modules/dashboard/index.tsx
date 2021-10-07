@@ -18,10 +18,10 @@ export default function DashboardList() {
             icon={<FaShoppingBasket />}
             count={products}
             title="Total Products"
-            statusTrueTitle="On stock"
-            statusFalseTitle="Out of stock"
-            statusTrueCount={productsOnStock}
-            statusFalseCount={productsOutofStock}
+            activeTitle="On stock"
+            notActiveTitle="Out of stock"
+            activeCount={productsOnStock}
+            notActiveCount={productsOutofStock}
           />
         </div>
         <div>
@@ -29,10 +29,10 @@ export default function DashboardList() {
             icon={<FaThLarge />}
             count={categories}
             title="Total Categories"
-            statusTrueTitle="Active"
-            statusFalseTitle="Not Active"
-            statusTrueCount={categoriesActive}
-            statusFalseCount={categoriesNotActive}
+            activeTitle="Active"
+            notActiveTitle="Not Active"
+            activeCount={categoriesActive}
+            notActiveCount={categoriesNotActive}
           />
         </div>
       </div>

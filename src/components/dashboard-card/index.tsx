@@ -1,23 +1,23 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 interface DashboardCardProps {
-  icon: any;
+  icon: ReactElement;
   count: number;
   title: string;
-  statusTrueTitle?: string;
-  statusFalseTitle?: string;
-  statusTrueCount?: number;
-  statusFalseCount?: number;
+  activeTitle?: string;
+  notActiveTitle?: string;
+  activeCount?: number;
+  notActiveCount?: number;
 }
 
 const DashboardCard = ({
   icon,
   count,
   title,
-  statusTrueTitle,
-  statusFalseTitle,
-  statusTrueCount,
-  statusFalseCount
+  activeTitle,
+  notActiveTitle,
+  activeCount,
+  notActiveCount
 }: DashboardCardProps) => (
   <div className="flex items-center py-8 mb-8 bg-white text-gray-600 shadow-md rounded-xl hover:bg-blue-400 hover:text-white hover:transition hover:delay-100 hover:ease-in-out hover:duration-700 ">
     <div className="flex items-center justify-center w-1/6 h-full text-4xl">
@@ -27,19 +27,19 @@ const DashboardCard = ({
       <h4 className="mb-3 text-5xl font-semibold">{count}</h4>
       <p>{title}</p>
     </div>
-    {statusTrueTitle || statusFalseTitle ? (
+    {activeTitle || notActiveTitle ? (
       <div className="flex-grow flex-col items-center justify-center">
         <div className="flex my-3">
           <h4 className="p-1 w-20 text-center border border-[#019707] rounded bg-[#019707] text-xs text-white">
-            {statusTrueTitle}
+            {activeTitle}
           </h4>
-          <span className="ml-2 font-semibold">{statusTrueCount}</span>
+          <span className="ml-2 font-semibold">{activeCount}</span>
         </div>
         <div className="flex my-3">
           <h4 className="p-1 w-20 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">
-            {statusFalseTitle}
+            {notActiveTitle}
           </h4>
-          <span className="ml-2 font-semibold">{statusFalseCount}</span>
+          <span className="ml-2 font-semibold">{notActiveCount}</span>
         </div>
       </div>
     ) : null}
@@ -49,8 +49,8 @@ const DashboardCard = ({
 export default DashboardCard;
 
 DashboardCard.defaultProps = {
-  statusTrueTitle: false,
-  statusFalseTitle: false,
-  statusTrueCount: false,
-  statusFalseCount: false
+  activeTitle: "",
+  notActiveTitle: "",
+  activeCount: 0,
+  notActiveCount: 0
 };
