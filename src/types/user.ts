@@ -6,3 +6,8 @@ export default interface User {
   phone: string;
   address: string;
 }
+
+export interface IUserLogin {
+  email: string;
+  password: string;
+}

@@ -60,7 +60,7 @@ const productsReducer = (
     case ADD_PRODUCT:
       return {
         ...state,
-        productDetail: action.payload,
+        products: [...state.products, action.payload],
         loading: false
       };
     case GET_PRODUCT_DETAIL:
