@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, deleteProduct } from "store/product/action";
 import { getCategories } from "store/categories/action";
@@ -19,6 +20,7 @@ interface ProductListProps {
 
 const ProductList = ({ select, search }: ProductListProps) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [productId, setProductId] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -62,7 +64,6 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const handleClickDeleteProduct = (id: number) => {
     dispatch(deleteProduct(id));
     setIsOpen(false);
-    dispatch(getProducts());
   };
 
   const renderRows = (product: Product) => (
@@ -75,7 +76,7 @@ const ProductList = ({ select, search }: ProductListProps) => {
       <td className="py-5 pl-5 w-1/12">{product.price}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         {categories.map((category: Category) => {
-          if (category.id === product.categoryID) {
+          if (category.id === Number(product.categoryID)) {
             return <p className="truncate w-10/12">{category.name}</p>;
           }
           return null;
@@ -93,7 +94,10 @@ const ProductList = ({ select, search }: ProductListProps) => {
         )}
       </td>
       <td className="py-5 pl-5 w-2/12">
-        <Button className="hover:text-yellow-800 bg-white text-yellow-600 text-xl pl-2 pr-7">
+        <Button
+          className="hover:text-yellow-800 bg-white text-yellow-600 text-xl pl-2 pr-7"
+          onClick={() => history.push(`products/update/${product.id}`)}
+        >
           <BsPencilSquare />
         </Button>
         <Button
