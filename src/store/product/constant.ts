@@ -11,7 +11,7 @@ export const REJECTED = "REJECTED";
 export type ActionTypes =
   | { type: typeof PENDING }
   | { type: typeof GET_PRODUCTS; payload: Product[] }
-  | { type: typeof DELETE_PRODUCT; payload: Product }
+  | { type: typeof DELETE_PRODUCT; payload: number }
   | { type: typeof ADD_PRODUCT; payload: Product }
   | { type: typeof GET_PRODUCT_DETAIL; payload: Product }
   | { type: typeof UPDATE_PRODUCT; payload: Product }
