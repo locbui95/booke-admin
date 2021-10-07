@@ -64,7 +64,6 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const handleClickDeleteProduct = (id: number) => {
     dispatch(deleteProduct(id));
     setIsOpen(false);
-    dispatch(getProducts());
   };
 
   const renderRows = (product: Product) => (
