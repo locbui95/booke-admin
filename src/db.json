@@ -177,7 +177,6 @@
       "date_submitted": "2021-09-28"
     },
     {
-      "id": 10,
       "name": "Eagles Sometimes Fly Lower Than Chickens",
       "price": 46980,
       "import_price": 20000,
@@ -188,7 +187,8 @@
       "categoryID": 4,
       "author": "Truong Thiet Thanh",
       "publishing_year": "2020",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 10
     }
   ],
   "users": [
