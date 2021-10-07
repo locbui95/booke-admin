@@ -190,5 +190,15 @@
       "publishing_year": "2020",
       "date_submitted": "2021-09-28"
     }
+  ],
+  "users": [
+    {
+      "email": "myntph12144@fpt.edu.vn",
+      "password": "$2a$10$2OMawRI9nAgi3R9mIpVrj.2/CgH4K6vvhCR6ni9PY5LCCq6Tux7qu",
+      "id": 1,
+      "name": "My Nguyen Thi",
+      "phone": "0373415145",
+      "address": "TT Bich Dong - Viet Yen"
+    }
   ]
 }
