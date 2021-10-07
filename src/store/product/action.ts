@@ -32,6 +32,7 @@ export const deleteProduct =
       dispatch({ type: REJECTED });
     }
   };
+
 export const addProduct =
   (item: Product) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });

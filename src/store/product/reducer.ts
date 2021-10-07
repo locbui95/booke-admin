@@ -57,7 +57,6 @@ const productsReducer = (
       );
       return { ...state, products: filterProducts, loading: false };
     }
-
     case ADD_PRODUCT:
       return {
         ...state,
@@ -79,7 +78,7 @@ const productsReducer = (
     case REJECTED:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     default:
       return state;
