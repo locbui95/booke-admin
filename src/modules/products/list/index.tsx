@@ -76,12 +76,12 @@ const ProductList = ({ select, search }: ProductListProps) => {
       <td className="py-5 w-2/12">{product.import_price}</td>
       <td className="py-5 pl-5 w-1/12">{product.price}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
-        {categories.map((category: Category) => {
+        {/* {categories.map((category: Category) => {
           if (category.id === product.categoryID) {
             return <p className="truncate w-10/12">{category.name}</p>;
           }
           return null;
-        })}
+        })} */}
       </td>
       <td className="py-5 w-1/12">
         {product.status ? (
