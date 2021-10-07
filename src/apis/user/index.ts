@@ -1,6 +1,6 @@
 import { axiosClient } from "apis";
 
-import User from "types/user";
+import User, { IUserLogin } from "types/user";
 
 const UserApi = {
   getAll() {
@@ -19,11 +19,11 @@ const UserApi = {
     const url: string = `/users/${id}`;
     return axiosClient.put(url, user);
   },
-  remove(id: User) {
+  remove(id: number) {
     const url: string = `/users/${id}`;
     return axiosClient.delete(url);
   },
-  login(user: User) {
+  login(user: IUserLogin) {
     const url: string = `/login`;
     return axiosClient.post(url, user);
   }
