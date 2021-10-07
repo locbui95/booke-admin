@@ -4,19 +4,19 @@ import Category from "types/category";
 
 const CategoryAPI = {
   getAll() {
-    const url = `/categories`;
+    const url: string = `/categories`;
     return axiosClient.get(url);
   },
   add(category: Category) {
-    const url = `/categories`;
+    const url: string = `/categories`;
     return axiosClient.post(url, category);
   },
   edit(id: number, category: Category) {
-    const url = `/categories/${id}`;
+    const url: string = `/categories/${id}`;
     return axiosClient.put(url, category);
   },
   remove(id: number) {
-    const url = `/categories/${id}`;
+    const url: string = `/categories/${id}`;
     return axiosClient.delete(url);
   }
 };
