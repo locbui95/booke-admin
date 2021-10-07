@@ -10,7 +10,6 @@ import Input from "components/input";
 import Select from "components/select";
 import Switch from "components/switch";
 import Category from "types/category";
-import Product from "types/product";
 import {
   addProduct,
   getProductDetail,
