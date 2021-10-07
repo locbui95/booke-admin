@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Business finance books",
       "description": "This series of business books is a useful tool to give you an understanding of the corporate financial system. Because through the compiled knowledge, you can learn how to mobilize and use capital as well as effective cash flow management skills to bring profits to your business.",
-      "status": true
+      "status": false
     },
     {
       "id": 3,
@@ -189,6 +189,16 @@
       "author": "Truong Thiet Thanh",
       "publishing_year": "2020",
       "date_submitted": "2021-09-28"
+    }
+  ],
+  "users": [
+    {
+      "email": "myntph12144@fpt.edu.vn",
+      "password": "$2a$10$2OMawRI9nAgi3R9mIpVrj.2/CgH4K6vvhCR6ni9PY5LCCq6Tux7qu",
+      "id": 1,
+      "name": "My Nguyen Thi",
+      "phone": "0373415145",
+      "address": "TT Bich Dong - Viet Yen"
     }
   ]
 }
