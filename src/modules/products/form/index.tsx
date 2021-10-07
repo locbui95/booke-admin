@@ -10,12 +10,7 @@ import Input from "components/input";
 import Select from "components/select";
 import Switch from "components/switch";
 import Category from "types/category";
-import {
-  addProduct,
-  getProductDetail,
-  getProducts,
-  updateProduct
-} from "store/product/action";
+import { addProduct, getProducts, updateProduct } from "store/product/action";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./form.module.css";
@@ -28,16 +23,21 @@ export default function Form({ mode }: UserFormProps) {
   const history = useHistory();
   const dispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
-  const [image, setImage] = useState("");
-  const [statusSwitch, setStatusSwitch] = useState<boolean>(true);
-  const { productDetail } = useSelector((state: RootState) => state.product);
+  const [image, setImage] = useState<string>("");
+  const [productDetail, setProductDetail] = useState<Object>();
+  const [statusSwitch, setStatusSwitch] = useState<boolean>();
+  const { products } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
     if (id) {
-      dispatch(getProductDetail(Number(id)));
+      const findProduct: any = Object.values(products).find(
+        (item: any) => item.id === Number(id)
+      );
+      setProductDetail(findProduct);
     }
   }, [id]);
+
   const handleSwitch = (value: boolean): void => {
     setStatusSwitch(value);
   };
@@ -48,17 +48,17 @@ export default function Form({ mode }: UserFormProps) {
   const initialValues = useMemo(() => {
     if (mode === "edit") {
       return {
-        name: productDetail.name,
-        price: productDetail.price,
-        import_price: productDetail.import_price,
-        tax: productDetail.tax,
-        status: productDetail?.status,
-        image: productDetail.image,
-        description: productDetail.description,
-        categoryID: productDetail.categoryID,
-        author: productDetail.author,
-        publishing_year: productDetail.publishing_year,
-        date_submitted: productDetail.date_submitted
+        name: Object(productDetail).name,
+        price: Object(productDetail).price,
+        import_price: Object(productDetail).import_price,
+        tax: Object(productDetail).tax,
+        status: Object(productDetail).status,
+        image: Object(productDetail).image,
+        description: Object(productDetail).description,
+        categoryID: Object(productDetail).categoryID,
+        author: Object(productDetail).author,
+        publishing_year: Object(productDetail).publishing_year,
+        date_submitted: Object(productDetail).date_submitted
       };
     }
     return {
@@ -318,7 +318,7 @@ export default function Form({ mode }: UserFormProps) {
               </p>
               <Switch
                 onChange={handleSwitch}
-                isChecked={productDetail.status}
+                isChecked={Object(productDetail).status}
               />
             </div>
             <div className="mt-1 w-2/4 ">
