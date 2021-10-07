@@ -8,3 +8,4 @@ export const PATH_PRODUCTS_EDIT = "/products/edit";
 
 export const PATH_PRODUCTS_UPDATE = "/products/update/:id";
 
+export const PATH_USER = "/user";

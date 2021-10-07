@@ -3,11 +3,13 @@ import { ComponentType } from "react";
 import { Dashboard, Categories, Product } from "pages";
 import Create from "pages/product/create";
 import Edit from "pages/product/edit";
+import ListUser from "pages/users/list";
 import {
   PATH_CATEGORIES,
   PATH_PRODUCTS,
   PATH_PRODUCTS_ADD,
-  PATH_PRODUCTS_UPDATE
+  PATH_PRODUCTS_UPDATE,
+  PATH_USER
 } from "./routes.paths";
 
 interface RouteModel {
@@ -41,5 +43,10 @@ export const appRoutes: RouteModel[] = [
     exact: true,
     path: PATH_PRODUCTS_UPDATE,
     component: Edit
+  },
+  {
+    exact: true,
+    path: PATH_USER,
+    component: ListUser
   }
 ];
