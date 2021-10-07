@@ -2,6 +2,9 @@ import Product from "types/product";
 import {
   PENDING,
   GET_PRODUCTS,
+  ADD_PRODUCT,
+  GET_PRODUCT_DETAIL,
+  UPDATE_PRODUCT,
   DELETE_PRODUCT,
   REJECTED,
   ActionTypes
@@ -21,7 +24,7 @@ const initialState: InitialStateType = {
     price: 0,
     import_price: 0,
     tax: 0,
-    status: false,
+    status: true,
     image: "",
     description: "",
     categoryID: 0,
@@ -54,10 +57,28 @@ const productsReducer = (
         productDetail: action.payload,
         loading: false
       };
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        productDetail: action.payload,
+        loading: false
+      };
+    case GET_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail: action.payload,
+        loading: false
+      };
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        productDetail: action.payload,
+        loading: false
+      };
     case REJECTED:
       return {
         ...state,
-        loading: false
+        loading: true
       };
     default:
       return state;
