@@ -37,7 +37,7 @@ export default function Form({ mode }: UserFormProps) {
     if (id) {
       dispatch(getProductDetail(Number(id)));
     }
-  }, []);
+  }, [id]);
   const handleSwitch = (value: boolean): void => {
     setStatusSwitch(value);
   };
@@ -52,7 +52,7 @@ export default function Form({ mode }: UserFormProps) {
         price: productDetail.price,
         import_price: productDetail.import_price,
         tax: productDetail.tax,
-        status: productDetail.status,
+        status: productDetail?.status,
         image: productDetail.image,
         description: productDetail.description,
         categoryID: productDetail.categoryID,
@@ -66,7 +66,7 @@ export default function Form({ mode }: UserFormProps) {
       price: 0,
       import_price: 0,
       tax: 0,
-      status: false,
+      status: true,
       image: "",
       description: "",
       categoryID: 0,
@@ -384,11 +384,13 @@ export default function Form({ mode }: UserFormProps) {
           </div>
         ) : (
           <div className="ml-10 mt-5 block">
-            <img
-              className="w-[20rem] h-[30rem] border-md shadow-lg rounded-xl"
-              src={image}
-              alt=""
-            />
+            {image ? (
+              <img
+                className="w-[20rem] h-[30rem] border-md shadow-lg rounded-xl"
+                src={image}
+                alt=""
+              />
+            ) : null}
           </div>
         )}
       </form>

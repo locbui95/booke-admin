@@ -51,21 +51,20 @@
   ],
   "products": [
     {
-      "id": 1,
       "name": "Self-Training, Self-Leadership",
-      "price": 95200,
-      "import_price": 70000,
+      "price": 952001,
+      "import_price": 700001,
       "tax": 5,
-      "status": true,
+      "status": false,
       "image": "https://newshop.vn/public/uploads/products/42100/sach-huan-luyen-tu-than-lanh-dao-tu-than.jpg",
       "description": "stSelf-Training, Self-Leadership - focuses on the concept of using yourself as a coaching tool, a key aspect of coaching and coaching.ring",
       "categoryID": 1,
       "author": "Edgar H. Schein",
       "publishing_year": "2021",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Serial Killers in the Financial World",
       "price": 96000,
       "import_price": 72000,
@@ -76,10 +75,10 @@
       "categoryID": 1,
       "author": "Bruce Kelly, Tom Ajamie",
       "publishing_year": "2021",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 2
     },
     {
-      "id": 3,
       "name": "My First Deal",
       "price": 238000,
       "import_price": 190000,
@@ -90,7 +89,8 @@
       "categoryID": 2,
       "author": "Asia Books",
       "publishing_year": "2021",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 3
     },
     {
       "id": 4,
@@ -149,7 +149,6 @@
       "date_submitted": "2021-09-28"
     },
     {
-      "id": 8,
       "name": "New Power - How Will The World's Future Be Shaped?",
       "price": 150400,
       "import_price": 11000,
@@ -160,10 +159,10 @@
       "categoryID": 4,
       "author": "Henry Timms, Jeremy Heimans",
       "publishing_year": "2020",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 8
     },
     {
-      "id": 9,
       "name": "Eagles Sometimes Fly Lower Than Chickens",
       "price": 46980,
       "import_price": 20000,
@@ -174,7 +173,8 @@
       "categoryID": 6,
       "author": "Truong Thiet Thanh",
       "publishing_year": "2020",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 9
     },
     {
       "id": 10,
@@ -189,6 +189,34 @@
       "author": "Truong Thiet Thanh",
       "publishing_year": "2020",
       "date_submitted": "2021-09-28"
+    },
+    {
+      "name": "qưewqe",
+      "price": 213123,
+      "import_price": 213123,
+      "tax": 21321,
+      "status": true,
+      "image": "sdsad",
+      "description": "ádsad",
+      "categoryID": "3",
+      "author": "qưewq",
+      "publishing_year": 213,
+      "date_submitted": "2021-10-21",
+      "id": 11
+    },
+    {
+      "name": "ewe",
+      "price": 132123,
+      "import_price": 123,
+      "tax": 123,
+      "status": true,
+      "image": "sdas",
+      "description": "đasad",
+      "categoryID": 0,
+      "author": "qưewqe",
+      "publishing_year": 213,
+      "date_submitted": "2021-10-11",
+      "id": 12
     }
   ]
 }
