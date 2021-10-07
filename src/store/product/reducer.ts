@@ -51,12 +51,12 @@ const productsReducer = (
         products: action.payload,
         loading: false
       };
-    case DELETE_PRODUCT:
-      return {
-        ...state,
-        productDetail: action.payload,
-        loading: false
-      };
+    case DELETE_PRODUCT: {
+      const filterProducts = state.products.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, products: filterProducts, loading: false };
+    }
     case ADD_PRODUCT:
       return {
         ...state,
@@ -78,7 +78,7 @@ const productsReducer = (
     case REJECTED:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     default:
       return state;
