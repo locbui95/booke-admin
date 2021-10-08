@@ -1,34 +1,45 @@
 import { useEffect, useState } from "react";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
-
 import { RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCategory, getCategories } from "store/categories/action";
 import Button from "components/button";
 import Table from "components/table";
-import { getUsers } from "store/users/action";
+import { deleteUser, getUsers } from "store/users/action";
 import User from "types/user";
 import Popup from "components/popup";
-import Category from "types/category";
 import TableHead from "./table-head";
 
-const UsersList = () => {
+interface UsersProps {
+  keySearch: string;
+}
+
+const UsersList = (props: UsersProps) => {
+  const { keySearch } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { users } = useSelector((state: RootState) => state.users);
-
+  const [userId, setUserId] = useState<number>(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const handleClickRemove = () => {
-    setIsOpen(false);
+  const handleShowForm = (id: number) => {
+    setIsOpen(!isOpen);
+    setUserId(id);
   };
 
-  const handleClickClose = () => {
-    setIsOpen(!isOpen);
+  const handleConfirmDelete = () => {
+    setIsOpen(false);
+    dispatch(deleteUser(userId));
   };
+
+  const newArrayUser: User[] = users.filter((user: User) => {
+    if (user.name.toLowerCase().includes(keySearch.toLowerCase())) {
+      return user;
+    }
+    return "";
+  });
 
   const renderRows = (user: User) => (
     <tr key={user.id} className="">
@@ -43,7 +54,7 @@ const UsersList = () => {
           <BsPencilSquare />
         </Button>
         <Button
-          onClick={handleClickClose}
+          onClick={() => handleShowForm(user.id)}
           className="bg-white text-red-600 text-xl hover:text-red-800"
         >
           <BsTrash />
@@ -54,12 +65,12 @@ const UsersList = () => {
 
   return (
     <>
-      <Table data={users} head={<TableHead />} renderRows={renderRows} />
+      <Table data={newArrayUser} head={<TableHead />} renderRows={renderRows} />
       <Popup
-        message="Are you sure to delete this User?"
+        message="Are you sure to delete this user?"
         title="Confirm Information"
         isOpen={isOpen}
-        onConfirm={handleClickRemove}
+        onConfirm={handleConfirmDelete}
         onClose={() => setIsOpen(!isOpen)}
       />
     </>

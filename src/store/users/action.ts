@@ -35,7 +35,7 @@ export const deleteUser =
     }
   };
 
-export const addProduct =
+export const addUser =
   (item: User) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });
     try {
@@ -45,7 +45,7 @@ export const addProduct =
       dispatch({ type: REJECTED });
     }
   };
-export const getProductDetail =
+export const getUserDetail =
   (id: number) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });
     try {
@@ -55,7 +55,7 @@ export const getProductDetail =
       dispatch({ type: REJECTED });
     }
   };
-export const updateProduct =
+export const updateUser =
   (id: number, item: User) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });
     try {
