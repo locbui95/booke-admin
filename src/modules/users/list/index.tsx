@@ -18,7 +18,7 @@ const UsersList = (props: UsersProps) => {
   const { keySearch } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { users } = useSelector((state: RootState) => state.users);
-  const [idDelete, setIdDelete] = useState<number>(0);
+  const [userId, setUserId] = useState<number>(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,12 +27,12 @@ const UsersList = (props: UsersProps) => {
 
   const handleShowForm = (id: number) => {
     setIsOpen(!isOpen);
-    setIdDelete(id);
+    setUserId(id);
   };
 
   const handleConfirmDelete = () => {
     setIsOpen(false);
-    dispatch(deleteUser(idDelete));
+    dispatch(deleteUser(userId));
   };
 
   const newArrayUser: User[] = users.filter((user: User) => {
