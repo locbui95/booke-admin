@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
-
 import { RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
+
 import Button from "components/button";
 import Table from "components/table";
 import { deleteUser, getUsers } from "store/users/action";

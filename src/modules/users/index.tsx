@@ -10,7 +10,6 @@ export default function UserList() {
 
   const handleSearch = (search: string) => {
     setKeySearch(search);
-  };
 
   return (
     <div>
