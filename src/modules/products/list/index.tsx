@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, deleteProduct } from "store/product/action";
@@ -25,6 +25,7 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { products } = useSelector((state: RootState) => state.product);
+  const { categories } = useSelector((state: RootState) => state.categories);
 
   const selectProductCategory = products.filter((product: Product) => {
     if (select === "") {
@@ -48,12 +49,13 @@ const ProductList = ({ select, search }: ProductListProps) => {
     return false;
   });
 
-  const { categories } = useSelector((state: RootState) => state.categories);
-
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
   }, []);
+
+  const formatPrice = (price: number) =>
+    price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   const handleClickOpen = (id: number) => {
     setIsOpen(true);
@@ -72,8 +74,8 @@ const ProductList = ({ select, search }: ProductListProps) => {
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         <p className="truncate w-10/12">{product.name}</p>
       </td>
-      <td className="py-5 w-2/12">{product.import_price}</td>
-      <td className="py-5 pl-5 w-1/12">{product.price}</td>
+      <td className="py-5 w-2/12">{formatPrice(product.import_price)}</td>
+      <td className="py-5 pl-5 w-1/12">{formatPrice(product.price)}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         {categories.map((category: Category) => {
           if (category.id === Number(product.categoryID)) {
@@ -85,7 +87,7 @@ const ProductList = ({ select, search }: ProductListProps) => {
       <td className="py-5 w-1/12">
         {product.status ? (
           <p className="p-1 text-center border border-[#019707] rounded bg-[#019707] text-xs text-white">
-            On stock
+            In stock
           </p>
         ) : (
           <p className="p-1 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">
