@@ -55,7 +55,7 @@
       "price": 952001,
       "import_price": 700001,
       "tax": 5,
-      "status": false,
+      "status": true,
       "image": "https://newshop.vn/public/uploads/products/42100/sach-huan-luyen-tu-than-lanh-dao-tu-than.jpg",
       "description": "stSelf-Training, Self-Leadership - focuses on the concept of using yourself as a coaching tool, a key aspect of coaching and coaching.ring",
       "categoryID": 1,
@@ -69,7 +69,7 @@
       "price": 96000,
       "import_price": 72000,
       "tax": 5,
-      "status": true,
+      "status": false,
       "image": "https://newshop.vn/public/uploads/products/41969/sach-nhung-sat-thu-hang-loat-trong-gioi-tai-chinh.jpg",
       "description": "You have worked your whole life to amass a relatively large fortune, or received it from a close family member. Either way, this is your money, and you certainly don't want it lost or in the hands of someone else. But it's not as easy as you think. Serial killers in the financial world are everywhere, snooping and spying on you, always looking for ways to cut, extract, and even appropriate your entire valuable asset.",
       "categoryID": 1,
@@ -93,18 +93,18 @@
       "id": 3
     },
     {
-      "id": 4,
       "name": "Business Innovation - Overcoming the Crisis",
       "price": 440000,
       "import_price": 330000,
       "tax": 0,
-      "status": true,
+      "status": false,
       "image": "https://newshop.vn/public/uploads/products/37126/doi-moi-doanh-nghiep-vuot-qua-khung-hoang.jpg",
       "description": "Business Innovation - Overcoming the Crisis - The economy deviating from the growth trajectory is an undesirable scenario, but it is happening and has serious effects around the world.",
       "categoryID": 2,
       "author": "Tendayi Viki,Esther Gons,Dan Toma,Frederic Laloux,Jordan Berg,Jeff Rosenblum ",
       "publishing_year": "2021",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "id": 4
     },
     {
       "id": 5,

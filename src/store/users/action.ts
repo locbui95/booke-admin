@@ -46,7 +46,7 @@ export const addUser =
       dispatch({ type: REJECTED });
     }
   };
-export const getProductDetail =
+export const getUserDetail =
   (id: number) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });
     try {

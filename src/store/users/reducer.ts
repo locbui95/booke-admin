@@ -1,10 +1,10 @@
-import User, { IUserLogin } from "types/user";
+import User from "types/user";
 import {
   ActionTypes,
   PENDING,
   REJECTED,
   GET_USERS,
-  LOGIN_USER
+  DELETE_USER
 } from "./constant";
 
 interface InitialState {
@@ -33,6 +33,12 @@ const UsersReducer = (state = initialState, action: ActionTypes) => {
         users: action.payload,
         loading: false
       };
+    case DELETE_USER: {
+      const filterUsers = state.users.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, users: filterUsers, loading: false };
+    }
     case REJECTED:
       return { ...state, loading: false, error: action.payload };
     case LOGIN_USER:

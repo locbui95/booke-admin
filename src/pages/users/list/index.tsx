@@ -1,4 +1,4 @@
-import UserList from "modules/users/list";
+import UserList from "modules/users";
 
 export default function User() {
   return (

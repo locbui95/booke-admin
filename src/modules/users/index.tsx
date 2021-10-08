@@ -1,12 +1,15 @@
 import { AiOutlinePlus } from "react-icons/ai";
+import { useState } from "react";
 
 import Button from "components/button";
 import Search from "components/search";
 import UsersList from "./list";
 
 export default function UserList() {
+  const [keySearch, setKeySearch] = useState<string>("");
+
   const handleSearch = (search: string) => {
-    console.log(search);
+    setKeySearch(search);
   };
 
   return (
@@ -25,7 +28,7 @@ export default function UserList() {
         </div>
       </div>
       <div className="mt-10">
-        <UsersList />
+        <UsersList keySearch={keySearch} />
       </div>
     </div>
   );

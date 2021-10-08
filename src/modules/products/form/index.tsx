@@ -16,6 +16,7 @@ import {
   getProducts,
   updateProduct
 } from "store/product/action";
+import { getCategories } from "store/categories/action";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./form.module.css";
@@ -36,6 +37,7 @@ export default function Form({ mode }: UserFormProps) {
   useEffect(() => {
     if (id) {
       dispatch(getProductDetail(Number(id)));
+      dispatch(getCategories());
     }
   }, [id]);
   const handleSwitch = (value: boolean): void => {
@@ -52,7 +54,7 @@ export default function Form({ mode }: UserFormProps) {
         price: productDetail.price,
         import_price: productDetail.import_price,
         tax: productDetail.tax,
-        status: productDetail?.status,
+        status: productDetail.status,
         image: productDetail.image,
         description: productDetail.description,
         categoryID: productDetail.categoryID,
