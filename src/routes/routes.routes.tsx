@@ -1,9 +1,8 @@
 import { ComponentType } from "react";
 
-import { Dashboard, Categories, Product } from "pages";
+import { Dashboard, Categories, Product, User } from "pages";
 import Create from "pages/product/create";
 import Edit from "pages/product/edit";
-import ListUser from "pages/users/list";
 import {
   PATH_CATEGORIES,
   PATH_PRODUCTS,
@@ -47,6 +46,6 @@ export const appRoutes: RouteModel[] = [
   {
     exact: true,
     path: PATH_USER,
-    component: ListUser
+    component: User
   }
 ];
