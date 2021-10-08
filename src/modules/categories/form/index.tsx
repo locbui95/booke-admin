@@ -71,6 +71,7 @@ export default function Form({
     } else {
       dispatch(editCategories({ ...submitData, id: categoryRow.id }));
     }
+    setValueSwitch(true);
     resetForm({ values: "" });
     onClose();
   };
@@ -89,7 +90,7 @@ export default function Form({
     <div>
       {isOpen ? (
         <form onSubmit={formik.handleSubmit}>
-          <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0 ">
+          <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0 z-50">
             <div className="flex flex-col p-5 h-auto max-w-xl rounded-md bg-white shadow-lg w-full">
               <div className="flex justify-between mb-6">
                 <h1 className="font-semibold text-xl">{title}</h1>
