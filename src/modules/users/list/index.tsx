@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
-
 import { RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "components/button";
