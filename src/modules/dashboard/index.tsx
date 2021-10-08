@@ -1,21 +1,47 @@
-import CircleChart from "components/chart";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store";
+import { useEffect } from "react";
 import { FaShoppingBasket, FaThLarge } from "react-icons/fa";
+
 import DashboardCard from "components/dashboard-card";
+import CircleChart from "components/chart";
+import { getProducts } from "store/product/action";
+import { getCategories } from "store/categories/action";
+import Product from "types/product";
+import Category from "types/category";
 
 export default function DashboardList() {
-  const products = 10;
-  const categories = 8;
-  const productsOnStock = 8;
-  const productsOutofStock = 2;
+  const dispatch = useDispatch();
+  const { products } = useSelector((state: RootState) => state.product);
+  const { categories } = useSelector((state: RootState) => state.categories);
+
+  useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getCategories());
+  }, []);
+
+  const filterProducts = products.filter((item: Product) =>
+    item.status ? item : ""
+  );
+
+  const filterCategories = categories.filter((item: Category) =>
+    item.status ? item : ""
+  );
 
   const dataProduct = [
-    { name: "In stock", value: productsOnStock },
-    { name: "Out of stock", value: productsOutofStock }
+    { name: "In stock", value: Number(filterProducts.length) },
+    {
+      name: "Out of stock",
+      value: Number(products.length) - Number(filterProducts.length)
+    }
   ];
 
   const dataCategory = [
-    { name: "Active", value: productsOnStock },
-    { name: "Inactive", value: productsOutofStock }
+    { name: "Active", value: Number(filterCategories.length) },
+    {
+      name: "Inactive",
+      value: Number(categories.length) - Number(filterCategories.length)
+    }
   ];
 
   return (
@@ -26,7 +52,7 @@ export default function DashboardList() {
           <div className="flex justify-center items-center ml-3">
             <DashboardCard
               icon={<FaShoppingBasket />}
-              count={products}
+              count={Number(products?.length)}
               title="Total Products"
             />
           </div>
@@ -38,7 +64,7 @@ export default function DashboardList() {
           <div className="flex justify-center items-center ml-3">
             <DashboardCard
               icon={<FaThLarge />}
-              count={categories}
+              count={Number(categories?.length)}
               title="Total Categories"
             />
           </div>
