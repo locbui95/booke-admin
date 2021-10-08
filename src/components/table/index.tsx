@@ -37,9 +37,9 @@ export default function Table({
     }
     if (data?.length === 0 || !data) {
       return (
-        <tr>
-          <td className="text-center"> No data</td>
-        </tr>
+        <div className="text-center absolute top-0 left-0 w-full text-2xl font-thin pt-[2.5rem]">
+          No data
+        </div>
       );
     }
     return currentTableData.map((item) => renderRows(item));
@@ -47,14 +47,14 @@ export default function Table({
 
   return (
     <div
-      className="border-separate border bg-white w-full rounded-lg p-5 borderSpacing-0-0 shadow-md"
+      className="border-separate border bg-white w-full rounded-lg p-5 borderSpacing-0-0 shadow-md min-h-[12rem]"
       {...props}
     >
       <table className="w-full mb-3">
         <thead>
           <tr className="bg-gray-50 p-2">{head}</tr>
         </thead>
-        <tbody>{renderTableBody()}</tbody>
+        <tbody className="relative min-h-32">{renderTableBody()}</tbody>
       </table>
       <Pagination
         currentPage={currentPage}
