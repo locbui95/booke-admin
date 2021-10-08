@@ -148,7 +148,7 @@ export default function Form({
                 </label>
                 <Switch
                   onChange={handleSwitch}
-                  isChecked={categoryRow.status}
+                  isChecked={formik.values.status}
                 />
               </div>
               <div className="flex justify-end items-center mt-2">
