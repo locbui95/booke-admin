@@ -68,7 +68,7 @@ const UsersList = (props: UsersProps) => {
     <>
       <Table data={newArrayUser} head={<TableHead />} renderRows={renderRows} />
       <Popup
-        message="Are you sure to delete this User?"
+        message="Are you sure to delete this user?"
         title="Confirm Information"
         isOpen={isOpen}
         onConfirm={handleConfirmDelete}
