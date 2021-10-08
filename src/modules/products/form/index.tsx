@@ -37,7 +37,6 @@ export default function Form({ mode }: UserFormProps) {
   useEffect(() => {
     if (id) {
       dispatch(getProductDetail(Number(id)));
-      dispatch(getCategories());
     }
     dispatch(getCategories());
   }, [id]);
@@ -267,7 +266,7 @@ export default function Form({ mode }: UserFormProps) {
               <span className="text-red-400 ml-1">*</span>
             </label>
             <textarea
-              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white h-40"
               name="description"
               id="description"
               onChange={formik.handleChange}
