@@ -1,9 +1,10 @@
-import User from "types/user";
+import User, { IUserLogin } from "types/user";
 import {
   ActionTypes,
   PENDING,
   REJECTED,
   GET_USERS,
+  LOGIN_USER,
   DELETE_USER
 } from "./constant";
 
@@ -40,7 +41,7 @@ const UsersReducer = (state = initialState, action: ActionTypes) => {
       return { ...state, users: filterUsers, loading: false };
     }
     case REJECTED:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loading: true };
     case LOGIN_USER:
       return {
         ...state,
