@@ -34,7 +34,7 @@
       "id": 6,
       "name": "Book of Encyclopedia knowledge",
       "description": "Is an invaluable treasure, awakening the potential power of human knowledge. Due to the increasingly urgent need for professional and encyclopedic knowledge, in order to meet the reading and research needs of many readers today",
-      "status": true
+      "status": false
     },
     {
       "id": 7,
@@ -224,6 +224,14 @@
       "email": "myntph12144@fpt.edu.vn",
       "password": "$2a$10$2OMawRI9nAgi3R9mIpVrj.2/CgH4K6vvhCR6ni9PY5LCCq6Tux7qu",
       "id": 1,
+      "name": "My Nguyen Thi",
+      "phone": "0373415145",
+      "address": "TT Bich Dong - Viet Yen"
+    },
+    {
+      "email": "myntph12144@fpt1.edu.vn",
+      "password": "$2a$10$2nZWUBrdDJapOzOPvXikUuoJqtHookDB5lab4rhDcTYOBt0zNCb.W",
+      "id": 2,
       "name": "My Nguyen Thi",
       "phone": "0373415145",
       "address": "TT Bich Dong - Viet Yen"
