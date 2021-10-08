@@ -15,7 +15,7 @@ export default function DashboardList() {
 
   const dataCategory = [
     { name: "Active", value: productsOnStock },
-    { name: "In Active", value: productsOutofStock }
+    { name: "Inactive", value: productsOutofStock }
   ];
 
   return (
