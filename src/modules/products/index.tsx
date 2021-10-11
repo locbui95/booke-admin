@@ -12,9 +12,6 @@ import Category from "types/category";
 import List from "./list";
 
 export default function ProductList() {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageSize: number = 5;
-
   const [select, setSelect] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState<number>(1);

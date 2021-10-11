@@ -18,8 +18,13 @@ interface ProductListProps {
   search: string;
   pageSize: number;
   currentPage: number;
+<<<<<<< HEAD
   onCurrentPage: Function;
   onPageSize: Function;
+=======
+  setCurrentPage: Function;
+  setPageSize: Function;
+>>>>>>> 9f2a7041b51f4e5379b7f0007127c1b3bef2d958
 }
 
 const ProductList = ({
@@ -27,8 +32,13 @@ const ProductList = ({
   search,
   pageSize,
   currentPage,
+<<<<<<< HEAD
   onCurrentPage,
   onPageSize
+=======
+  setCurrentPage,
+  setPageSize
+>>>>>>> 9f2a7041b51f4e5379b7f0007127c1b3bef2d958
 }: ProductListProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,13 +48,7 @@ const ProductList = ({
   const { products } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
 
-  const sortProducts = products.sort(
-    (a, b) =>
-      new Date(b.timeCreat_Update).getTime() -
-      new Date(a.timeCreat_Update).getTime()
-  );
-
-  const selectProductCategory = sortProducts.filter((product: Product) => {
+  const selectProductCategory = products.filter((product: Product) => {
     if (select === "") {
       return product;
     }
@@ -86,9 +90,9 @@ const ProductList = ({
     onCurrentPage(1);
   };
 
-  const renderRows = (product: Product, index: number) => (
+  const renderRows = (product: Product) => (
     <tr key={product.id} className="text-left">
-      <td className="py-5"> {(currentPage - 1) * pageSize + (index + 1)}</td>
+      <td className="py-5">{product.id}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         <p className="truncate w-10/12">{product.name}</p>
       </td>
@@ -97,11 +101,7 @@ const ProductList = ({
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         {categories.map((category: Category) => {
           if (category.id === Number(product.categoryID)) {
-            return (
-              <p className="truncate w-10/12" key={category.id}>
-                {category.name}
-              </p>
-            );
+            return <p className="truncate w-10/12">{category.name}</p>;
           }
           return null;
         })}
