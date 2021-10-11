@@ -16,6 +16,7 @@ import {
   getProducts,
   updateProduct
 } from "store/product/action";
+import { getCategories } from "store/categories/action";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./form.module.css";
@@ -37,6 +38,7 @@ export default function Form({ mode }: UserFormProps) {
     if (id) {
       dispatch(getProductDetail(Number(id)));
     }
+    dispatch(getCategories());
   }, [id]);
   const handleSwitch = (value: boolean): void => {
     setStatusSwitch(value);
@@ -52,7 +54,7 @@ export default function Form({ mode }: UserFormProps) {
         price: productDetail.price,
         import_price: productDetail.import_price,
         tax: productDetail.tax,
-        status: productDetail?.status,
+        status: productDetail.status,
         image: productDetail.image,
         description: productDetail.description,
         categoryID: productDetail.categoryID,
@@ -63,13 +65,13 @@ export default function Form({ mode }: UserFormProps) {
     }
     return {
       name: "",
-      price: 0,
-      import_price: 0,
-      tax: 0,
+      price: "",
+      import_price: "",
+      tax: "",
       status: true,
       image: "",
       description: "",
-      categoryID: 0,
+      categoryID: "",
       author: "",
       publishing_year: "",
       date_submitted: ""
@@ -80,8 +82,10 @@ export default function Form({ mode }: UserFormProps) {
     if (mode === "edit") {
       const valueEdit = { ...values, status: statusSwitch };
       dispatch(updateProduct(Number(id), valueEdit));
+      dispatch(getProducts());
     } else {
       dispatch(addProduct(values));
+      dispatch(getProducts());
     }
     dispatch(getProducts());
     history.push(PATH_PRODUCTS);
@@ -127,9 +131,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="name"
               >
                 Name
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline"
+                className="border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline bg-gray-200 focus:bg-white"
                 name="name"
                 id="name"
                 type="text"
@@ -146,9 +151,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="author"
               >
                 Author
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="author"
                 id="author"
                 type="text"
@@ -167,9 +173,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="price"
               >
                 Price
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="price"
                 id="price"
                 type="number"
@@ -187,9 +194,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="import_price"
               >
                 Import price
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="import_price"
                 id="import_price"
                 type="number"
@@ -211,9 +219,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="tax"
               >
                 Tax
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="tax"
                 id="tax"
                 type="number"
@@ -231,9 +240,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="image"
               >
                 Image
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="image"
                 id="image"
                 type="text"
@@ -253,9 +263,10 @@ export default function Form({ mode }: UserFormProps) {
               htmlFor="description"
             >
               Description
+              <span className="text-red-400 ml-1">*</span>
             </label>
             <textarea
-              className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
+              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white h-40"
               name="description"
               id="description"
               onChange={formik.handleChange}
@@ -273,12 +284,14 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="publishing_year"
               >
                 Publishing Year
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="publishing_year"
                 id="publishing_year"
                 type="number"
+                min="0"
                 onChange={formik.handleChange}
                 value={formik.values.publishing_year}
               />
@@ -295,9 +308,10 @@ export default function Form({ mode }: UserFormProps) {
                 htmlFor="date_submitted"
               >
                 Date Submitted
+                <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="shadow border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
                 name="date_submitted"
                 id="date_submitted"
                 type="date"
