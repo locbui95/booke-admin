@@ -11,10 +11,14 @@ import TableHead from "./table-head";
 
 interface UsersProps {
   keySearch: string;
+  pageSize: number;
+  currentPage: number;
+  onCurrentPage: Function;
+  onPageSize: Function;
 }
 
 const UsersList = (props: UsersProps) => {
-  const { keySearch } = props;
+  const { keySearch, pageSize, currentPage, onCurrentPage, onPageSize } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { users } = useSelector((state: RootState) => state.users);
   const [userId, setUserId] = useState<number>(0);
@@ -32,6 +36,7 @@ const UsersList = (props: UsersProps) => {
   const handleConfirmDelete = () => {
     setIsOpen(false);
     dispatch(deleteUser(userId));
+    onCurrentPage(1);
   };
 
   const newArrayUser: User[] = users.filter((user: User) => {
@@ -41,9 +46,11 @@ const UsersList = (props: UsersProps) => {
     return "";
   });
 
-  const renderRows = (user: User) => (
+  const renderRows = (user: User, index: number) => (
     <tr key={user.id} className="">
-      <td className="py-4 text-center">{user.id}</td>
+      <td className="py-4 text-center">
+        {(currentPage - 1) * pageSize + (index + 1)}
+      </td>
       <td className="py-4">{user.name}</td>
       <td className="py-4">{user.email}</td>
       <td className="py-4">{user.phone}</td>
@@ -64,7 +71,15 @@ const UsersList = (props: UsersProps) => {
 
   return (
     <>
-      <Table data={newArrayUser} head={<TableHead />} renderRows={renderRows} />
+      <Table
+        data={newArrayUser}
+        head={<TableHead />}
+        renderRows={renderRows}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageSize={onPageSize}
+        onCurrentPage={onCurrentPage}
+      />
       <Popup
         message="Are you sure to delete this user?"
         title="Confirm Information"
