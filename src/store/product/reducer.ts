@@ -30,7 +30,8 @@ const initialState: InitialStateType = {
     categoryID: 0,
     author: "",
     publishing_year: "",
-    date_submitted: ""
+    date_submitted: "",
+    timeCreat_Update: ""
   },
   loading: false
 };

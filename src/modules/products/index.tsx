@@ -12,6 +12,9 @@ import Category from "types/category";
 import List from "./list";
 
 export default function ProductList() {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSize: number = 5;
+
   const [select, setSelect] = useState("");
   const [search, setSearch] = useState("");
 
@@ -39,7 +42,7 @@ export default function ProductList() {
               ))}
             </Select>
           </div>
-          <Search onSearch={handleSearch} />
+          <Search onSearch={handleSearch} setCurrentPage={setCurrentPage} />
           <Link to={PATH_PRODUCTS_ADD}>
             <Button
               loading={false}
@@ -51,7 +54,13 @@ export default function ProductList() {
           </Link>
         </div>
       </div>
-      <List select={select} search={search} />
+      <List
+        select={select}
+        search={search}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        pageSize={pageSize}
+      />
     </div>
   );
 }

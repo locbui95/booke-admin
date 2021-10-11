@@ -16,9 +16,18 @@ import ProductsTableHead from "./products.table-head";
 interface ProductListProps {
   select: string;
   search: string;
+  pageSize: number;
+  currentPage: number;
+  setCurrentPage: Function;
 }
 
-const ProductList = ({ select, search }: ProductListProps) => {
+const ProductList = ({
+  select,
+  search,
+  pageSize,
+  currentPage,
+  setCurrentPage
+}: ProductListProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [productId, setProductId] = useState<number>(0);
@@ -27,7 +36,13 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const { products } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
 
-  const selectProductCategory = products.filter((product: Product) => {
+  const sortProducts = products.sort(
+    (a, b) =>
+      new Date(b.timeCreat_Update).getTime() -
+      new Date(a.timeCreat_Update).getTime()
+  );
+
+  const selectProductCategory = sortProducts.filter((product: Product) => {
     if (select === "") {
       return product;
     }
@@ -66,11 +81,12 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const handleClickDeleteProduct = (id: number) => {
     dispatch(deleteProduct(id));
     setIsOpen(false);
+    setCurrentPage(1);
   };
 
-  const renderRows = (product: Product) => (
+  const renderRows = (product: Product, index: number) => (
     <tr key={product.id} className="text-left">
-      <td className="py-5">{product.id}</td>
+      <td className="py-5"> {(currentPage - 1) * pageSize + (index + 1)}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         <p className="truncate w-10/12">{product.name}</p>
       </td>
@@ -79,7 +95,11 @@ const ProductList = ({ select, search }: ProductListProps) => {
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         {categories.map((category: Category) => {
           if (category.id === Number(product.categoryID)) {
-            return <p className="truncate w-10/12">{category.name}</p>;
+            return (
+              <p className="truncate w-10/12" key={category.id}>
+                {category.name}
+              </p>
+            );
           }
           return null;
         })}
@@ -118,6 +138,9 @@ const ProductList = ({ select, search }: ProductListProps) => {
         head={<ProductsTableHead />}
         data={newArrayProducts}
         renderRows={renderRows}
+        PageSize={pageSize}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
 
       <Popup
