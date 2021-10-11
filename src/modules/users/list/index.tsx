@@ -46,7 +46,6 @@ const UsersList = (props: UsersProps) => {
       <td className="py-4 text-center">{user.id}</td>
       <td className="py-4">{user.name}</td>
       <td className="py-4">{user.email}</td>
-      <td className="py-4">******</td>
       <td className="py-4">{user.phone}</td>
       <td className="py-4">{user.address}</td>
       <td className="py-4">
