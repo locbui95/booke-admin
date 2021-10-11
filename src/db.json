@@ -4,49 +4,57 @@
       "id": 1,
       "name": "Management - Business Book",
       "description": "Business management books are always in the group of most searched business books. Because you will have access to general as well as broader knowledge of economics and management. On the other hand, you can grasp some basic foundations of economic groups such as finance, human resources, marketing.",
-      "status": true
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:22:25+07:00"
     },
     {
       "id": 2,
       "name": "Business finance books",
       "description": "This series of business books is a useful tool to give you an understanding of the corporate financial system. Because through the compiled knowledge, you can learn how to mobilize and use capital as well as effective cash flow management skills to bring profits to your business.",
-      "status": false
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:22:28+07:00"
     },
     {
       "id": 3,
       "name": "Marketing and Sales Books",
       "description": "Through this line of business strategy books, you will learn how to research, analyze and plan closely to bring the value of products, services and corporate brand to potential customers. Above all, you will learn how to come up with creative tactics to maintain the relationship between business and customers.",
-      "status": true
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:22:30+07:00"
     },
     {
       "id": 4,
-      "name": "Business Leadership Books ",
+      "name": "Business Leadership Books 1",
       "description": "Therefore, many young people and leaders have come to this line of business books to learn about how to lead, operate and coordinate with employees to serve the goals that businesses and organizations propose. out. ",
-      "status": true
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:23:40+07:00"
     },
     {
       "id": 5,
       "name": "Books enjoy life ",
       "description": "Is a collection of good books about information and knowledge revolving around daily life: health care, child rearing, cooking, first aid for injured people, etc. Hopefully, through Newshop's regular bookcase, everyone will be equipped with a lot of useful information and tips to apply in your daily life.",
-      "status": true
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:22:33+07:00"
     },
     {
       "id": 6,
       "name": "Book of Encyclopedia knowledge",
       "description": "Is an invaluable treasure, awakening the potential power of human knowledge. Due to the increasingly urgent need for professional and encyclopedic knowledge, in order to meet the reading and research needs of many readers today",
-      "status": true
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:22:37+07:00"
     },
     {
       "id": 7,
       "name": "Agricul ture book - bonsai",
       "description": " Especially for Vietnam, a country with agricultural production as the foundation, so grasping agricultural knowledge and techniques is extremely essential. Agricultural techniques and knowledge will contribute to increased productivity and unexpected efficiency in the process of growing crops and livestock.",
-      "status": true
+      "status": true,
+      "timeCreat_Update": "2021-10-11T10:22:40+07:00"
     },
     {
       "id": 8,
       "name": "Sweet Book",
       "description": "Book for love",
-      "status": true
+      "status": false,
+      "timeCreat_Update": "2021-10-11T10:23:51+07:00"
     }
   ],
   "products": [
@@ -217,6 +225,20 @@
       "publishing_year": 213,
       "date_submitted": "2021-10-11",
       "id": 12
+    },
+    {
+      "id": 13,
+      "name": "Eagles Sometimes Fly Lower Than Chickens",
+      "price": 46980,
+      "import_price": 20000,
+      "tax": 0,
+      "status": true,
+      "image": "https://newshop.vn/public/uploads/products/42244/sach-dai-bang-co-khi-bay-thap-hon-ga.jpg",
+      "description": "Eagles Can Fly Lower Than Chickens - His appearance is not eye-catching, graduated from an ordinary local school, and only at the college level, but among the people who applied for jobs, which students were students? Graduates of prestigious schools, masters and doctorates, his performance is the most special.",
+      "categoryID": 4,
+      "author": "Truong Thiet Thanh",
+      "publishing_year": "2020",
+      "date_submitted": "2021-09-28"
     }
   ],
   "users": [

@@ -27,7 +27,13 @@ const CategoriesList = (props: CategotyListProps) => {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const newArrayCategories: Category[] = categories.filter(
+  const sortCategories = categories.sort(
+    (a, b) =>
+      new Date(b.timeCreat_Update).getTime() -
+      new Date(a.timeCreat_Update).getTime()
+  );
+
+  const newArrayCategories: Category[] = sortCategories.filter(
     (category: Category) => {
       if (category.name.toLowerCase().includes(searchName.toLowerCase())) {
         return category;
@@ -46,9 +52,9 @@ const CategoriesList = (props: CategotyListProps) => {
     dispatch(deleteCategory(categoryId));
   };
 
-  const renderRows = (category: Category) => (
+  const renderRows = (category: Category, index: number) => (
     <tr key={category.id} className="py-2">
-      <td className="text-center">{category.id}</td>
+      <td className="text-center">{index + 1}</td>
       <td className="pl-5">{category.name}</td>
       <td className="my-24 max-w-md p-2.5 h-auto">
         <p className="truncate w-full px-6 py-4 mx-auto">

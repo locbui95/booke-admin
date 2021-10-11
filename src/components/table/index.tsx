@@ -42,7 +42,7 @@ export default function Table({
         </div>
       );
     }
-    return currentTableData.map((item) => renderRows(item));
+    return currentTableData.map((item, index) => renderRows(item, index));
   }
 
   return (

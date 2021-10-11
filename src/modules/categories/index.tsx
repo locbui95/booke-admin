@@ -13,7 +13,8 @@ export default function CategoryList() {
     id: 0,
     name: "",
     description: "",
-    status: true
+    status: true,
+    timeCreat_Update: ""
   });
   const [searchName, setSearchName] = useState<string>("");
 

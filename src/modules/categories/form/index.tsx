@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
+import moment from "moment";
 
 import { createCategories, editCategories } from "store/categories/action";
 import Button from "components/button";
@@ -41,14 +42,16 @@ export default function Form({
         id: categoryRow.id,
         name: categoryRow.name,
         description: categoryRow.description,
-        status: categoryRow.status
+        status: categoryRow.status,
+        timeCreat_Update: categoryRow.timeCreat_Update
       };
     }
     return {
       id: 0,
       name: "",
       description: "",
-      status: true
+      status: true,
+      timeCreat_Update: ""
     };
   }, [categoryRow, mode]);
 
@@ -64,7 +67,8 @@ export default function Form({
       id: index[index.length] + 1,
       name: values.name,
       description: values.description,
-      status: valueSwitch
+      status: valueSwitch,
+      timeCreat_Update: moment().format()
     };
     if (mode === "create") {
       dispatch(createCategories(submitData));
@@ -90,7 +94,7 @@ export default function Form({
     <div>
       {isOpen ? (
         <form onSubmit={formik.handleSubmit}>
-          <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0 ">
+          <div className="flex justify-center items-center fixed bg-gray-800 bg-opacity-50 inset-0 z-[999]">
             <div className="flex flex-col p-5 h-auto max-w-xl rounded-md bg-white shadow-lg w-full">
               <div className="flex justify-between mb-6">
                 <h1 className="font-semibold text-xl">{title}</h1>
