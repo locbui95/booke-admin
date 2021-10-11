@@ -9,7 +9,7 @@ import Form from "./form";
 
 export default function CategoryList() {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const PageSize: number = 5;
+  const [pageSize, setPageSize] = useState<number>(5);
 
   const [mode, setMode] = useState<string>("create");
   const [categoryRow, setCategoryRow] = useState<Category>({
@@ -64,9 +64,10 @@ export default function CategoryList() {
       </div>
       <div className="mt-10">
         <CategoriesList
-          pageSize={PageSize}
+          pageSize={pageSize}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          setPageSize={setPageSize}
           searchName={searchName}
           hanldeClickEditButon={hanldeClickEditButon}
         />

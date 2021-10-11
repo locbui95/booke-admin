@@ -16,9 +16,20 @@ import ProductsTableHead from "./products.table-head";
 interface ProductListProps {
   select: string;
   search: string;
+  pageSize: number;
+  currentPage: number;
+  setCurrentPage: Function;
+  setPageSize: Function;
 }
 
-const ProductList = ({ select, search }: ProductListProps) => {
+const ProductList = ({
+  select,
+  search,
+  pageSize,
+  currentPage,
+  setCurrentPage,
+  setPageSize
+}: ProductListProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [productId, setProductId] = useState<number>(0);
@@ -66,6 +77,7 @@ const ProductList = ({ select, search }: ProductListProps) => {
   const handleClickDeleteProduct = (id: number) => {
     dispatch(deleteProduct(id));
     setIsOpen(false);
+    setCurrentPage(1);
   };
 
   const renderRows = (product: Product) => (
@@ -118,6 +130,10 @@ const ProductList = ({ select, search }: ProductListProps) => {
         head={<ProductsTableHead />}
         data={newArrayProducts}
         renderRows={renderRows}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        setPageSize={setPageSize}
+        setCurrentPage={setCurrentPage}
       />
 
       <Popup

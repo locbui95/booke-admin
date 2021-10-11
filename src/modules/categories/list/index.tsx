@@ -16,6 +16,7 @@ interface CategotyListProps {
   pageSize: number;
   currentPage: number;
   setCurrentPage: Function;
+  setPageSize: Function;
 }
 
 const CategoriesList = (props: CategotyListProps) => {
@@ -24,7 +25,8 @@ const CategoriesList = (props: CategotyListProps) => {
     searchName,
     pageSize,
     currentPage,
-    setCurrentPage
+    setCurrentPage,
+    setPageSize
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
@@ -65,7 +67,7 @@ const CategoriesList = (props: CategotyListProps) => {
   const renderRows = (category: Category, index: number) => (
     <tr key={category.id} className="py-2">
       <td className="text-center">
-        {(currentPage - 1) * PageSize + (index + 1)}
+        {(currentPage - 1) * pageSize + (index + 1)}
       </td>
       <td className="pl-5">{category.name}</td>
       <td className="my-24 max-w-md p-2.5 h-auto">
@@ -107,8 +109,9 @@ const CategoriesList = (props: CategotyListProps) => {
         data={newArrayCategories}
         head={<TableHead />}
         renderRows={renderRows}
-        PageSize={PageSize}
+        pageSize={pageSize}
         currentPage={currentPage}
+        setPageSize={setPageSize}
         setCurrentPage={setCurrentPage}
       />
       <Popup

@@ -9,9 +9,10 @@ interface TableProps extends ComponentPropsWithoutRef<"table"> {
   head: ReactNode;
   data: any[];
   renderRows: Function;
-  PageSize: number;
+  pageSize: number;
   currentPage: number;
   setCurrentPage: Function;
+  setPageSize: Function;
 }
 
 export default function Table({
@@ -19,14 +20,15 @@ export default function Table({
   head,
   data,
   renderRows,
-  PageSize,
+  pageSize,
   currentPage,
+  setPageSize,
   setCurrentPage,
   ...props
 }: TableProps) {
   const currentTableData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
+    const firstPageIndex = (currentPage - 1) * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
     return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, data]);
 
@@ -62,7 +64,8 @@ export default function Table({
       <Pagination
         currentPage={currentPage}
         totalCount={data.length}
-        pageSize={PageSize}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
         handlePageChange={(page: number) => setCurrentPage(page)}
       />
     </div>

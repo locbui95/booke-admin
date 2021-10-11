@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Button from "components/button";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, FaSortDown } from "react-icons/fa";
 import clsx from "clsx";
 
+import Select from "components/select";
 import { usePagination, DOTS } from "./usePagination";
+import { pageSizeOptions } from "./pagination.constants";
 
 interface PaginationProps {
   handlePageChange: Function;
@@ -10,6 +13,7 @@ interface PaginationProps {
   siblingCount?: number;
   currentPage: number;
   pageSize: number;
+  setPageSize: Function;
 }
 
 const Pagination = (props: PaginationProps) => {
@@ -18,7 +22,8 @@ const Pagination = (props: PaginationProps) => {
     totalCount,
     siblingCount = 1,
     currentPage,
-    pageSize
+    pageSize,
+    setPageSize
   } = props;
 
   const paginationRange: (string | number)[] | undefined = usePagination(
@@ -36,8 +41,23 @@ const Pagination = (props: PaginationProps) => {
     handlePageChange(currentPage - 1);
   };
 
-  return (
+  const handleChangeSelect = (e: any): void => {
+    setPageSize(e.target.value);
+    handlePageChange(1);
+  };
+
+  return Math.ceil(totalCount / pageSize) > 1 ? (
     <ul className="flex items-center justify-end m-2">
+      <div className="mr-3">
+        <p>Row Per Page: </p>
+      </div>
+      <Select className="p-2" onChange={handleChangeSelect}>
+        {pageSizeOptions.map((page: number) => (
+          <option key={page} value={page}>
+            {page}
+          </option>
+        ))}
+      </Select>
       <Button
         className={clsx(
           "text-black py-0 px-3 h-8 text-center box-border flex items-center rounded-2xl",
@@ -53,9 +73,10 @@ const Pagination = (props: PaginationProps) => {
       {paginationRange?.map((pageNumber: number | string) => (
         <Button
           className={clsx(
-            "text-black py-0 px-3 h-8 text-center box-border flex items-center rounded-2xl",
+            " py-0 px-3 h-8 text-center box-border flex items-center rounded-2xl",
             pageNumber !== DOTS &&
-              "hover:bg-blue-400 transition-all hover:text-white cursor-pointer"
+              "hover:bg-blue-400 transition-all hover:text-white cursor-pointer",
+            pageNumber === currentPage && "bg-blue-400 text-white"
           )}
           key={Math.random()}
           onClick={() => handlePageChange(pageNumber)}
@@ -77,7 +98,7 @@ const Pagination = (props: PaginationProps) => {
         <FaAngleRight />
       </Button>
     </ul>
-  );
+  ) : null;
 };
 
 export default Pagination;

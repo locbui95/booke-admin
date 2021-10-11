@@ -20,7 +20,7 @@ select::-ms-expand {
   grid-template-areas: "select";
   align-items: center;
   position: relative;
-  min-width: 150px;
+  min-width: 70px;
   cursor: pointer;
   line-height: 1.1;
   background-color: #e5e7eb;

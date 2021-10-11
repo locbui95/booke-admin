@@ -11,10 +11,15 @@ import TableHead from "./table-head";
 
 interface UsersProps {
   keySearch: string;
+  pageSize: number;
+  currentPage: number;
+  setCurrentPage: Function;
+  setPageSize: Function;
 }
 
 const UsersList = (props: UsersProps) => {
-  const { keySearch } = props;
+  const { keySearch, pageSize, currentPage, setCurrentPage, setPageSize } =
+    props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { users } = useSelector((state: RootState) => state.users);
   const [userId, setUserId] = useState<number>(0);
@@ -32,6 +37,7 @@ const UsersList = (props: UsersProps) => {
   const handleConfirmDelete = () => {
     setIsOpen(false);
     dispatch(deleteUser(userId));
+    setCurrentPage(1);
   };
 
   const newArrayUser: User[] = users.filter((user: User) => {
@@ -64,7 +70,15 @@ const UsersList = (props: UsersProps) => {
 
   return (
     <>
-      <Table data={newArrayUser} head={<TableHead />} renderRows={renderRows} />
+      <Table
+        data={newArrayUser}
+        head={<TableHead />}
+        renderRows={renderRows}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        setPageSize={setPageSize}
+        setCurrentPage={setCurrentPage}
+      />
       <Popup
         message="Are you sure to delete this user?"
         title="Confirm Information"

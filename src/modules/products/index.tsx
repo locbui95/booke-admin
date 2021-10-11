@@ -14,6 +14,8 @@ import List from "./list";
 export default function ProductList() {
   const [select, setSelect] = useState("");
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(5);
 
   const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) =>
     setSelect(e.target.value);
@@ -39,7 +41,7 @@ export default function ProductList() {
               ))}
             </Select>
           </div>
-          <Search onSearch={handleSearch} />
+          <Search onSearch={handleSearch} setCurrentPage={setCurrentPage} />
           <Link to={PATH_PRODUCTS_ADD}>
             <Button
               loading={false}
@@ -51,7 +53,14 @@ export default function ProductList() {
           </Link>
         </div>
       </div>
-      <List select={select} search={search} />
+      <List
+        select={select}
+        search={search}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        setPageSize={setPageSize}
+      />
     </div>
   );
 }
