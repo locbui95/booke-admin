@@ -36,12 +36,10 @@ img {
   overflow: hidden;
   display: flex;
   align-items: center;
-  
 }
 
 .button:hover {
   width: 150px;
-
 }
 
 .button:hover .logout{
