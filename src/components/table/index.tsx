@@ -11,8 +11,8 @@ interface TableProps extends ComponentPropsWithoutRef<"table"> {
   renderRows: Function;
   pageSize: number;
   currentPage: number;
-  setCurrentPage: Function;
-  setPageSize: Function;
+  onCurrentPage: Function;
+  onPageSize: Function;
 }
 
 export default function Table({
@@ -22,8 +22,8 @@ export default function Table({
   renderRows,
   pageSize,
   currentPage,
-  setPageSize,
-  setCurrentPage,
+  onPageSize,
+  onCurrentPage,
   ...props
 }: TableProps) {
   const currentTableData = useMemo(() => {
@@ -65,8 +65,8 @@ export default function Table({
         currentPage={currentPage}
         totalCount={data.length}
         pageSize={pageSize}
-        setPageSize={setPageSize}
-        handlePageChange={(page: number) => setCurrentPage(page)}
+        onPageSize={onPageSize}
+        handlePageChange={(page: number) => onCurrentPage(page)}
       />
     </div>
   );
