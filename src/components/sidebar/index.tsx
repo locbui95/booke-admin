@@ -8,6 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import logo from "assets/logo.png";
 import { PATH_CATEGORIES, PATH_PRODUCTS, PATH_USER } from "routes/routes.paths";
+import styles from "./sidebar.module.css";
 
 export default function Sidebar() {
   return (
@@ -22,32 +23,36 @@ export default function Sidebar() {
           exact
           activeClassName="bg-blue-400 text-white transition-all"
           to="/"
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
+          <div className={styles.button}> </div>
           <AiFillAppstore className="text-2xl mx-3" /> Dashboard
         </NavLink>
         <NavLink
           exact
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_CATEGORIES}
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
+          <div className={styles.button}> </div>
           <AiOutlineMenuUnfold className="text-2xl mx-3" />
           Category Management
         </NavLink>
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_PRODUCTS}
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
+          <div className={styles.button}> </div>
           <AiFillHdd className="text-2xl mx-3" />
           Product Management
         </NavLink>
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_USER}
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:bg-blue-400 hover:text-white transition-all mb-1"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
+          <div className={styles.button}> </div>
           <AiOutlineUsergroupAdd className="text-2xl mx-3" />
           User Management
         </NavLink>
