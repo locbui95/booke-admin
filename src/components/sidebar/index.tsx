@@ -31,7 +31,6 @@ export default function Sidebar() {
         <NavLink
           exact
           activeClassName="bg-blue-400 text-white transition-all"
-          id="button"
           to={PATH_CATEGORIES}
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button"
         >
@@ -42,7 +41,6 @@ export default function Sidebar() {
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_PRODUCTS}
-          id="button"
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button1"
         >
           <div className={styles.button}> </div>
@@ -52,7 +50,6 @@ export default function Sidebar() {
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_USER}
-          id="button"
           className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button"
         >
           <div className={styles.button}> </div>
