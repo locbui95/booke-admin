@@ -46,9 +46,11 @@ const UsersList = (props: UsersProps) => {
     return "";
   });
 
-  const renderRows = (user: User) => (
+  const renderRows = (user: User, index: number) => (
     <tr key={user.id} className="">
-      <td className="py-4 text-center">{user.id}</td>
+      <td className="py-4 text-center">
+        {(currentPage - 1) * pageSize + (index + 1)}
+      </td>
       <td className="py-4">{user.name}</td>
       <td className="py-4">{user.email}</td>
       <td className="py-4">{user.phone}</td>

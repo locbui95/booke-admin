@@ -18,13 +18,8 @@ interface ProductListProps {
   search: string;
   pageSize: number;
   currentPage: number;
-<<<<<<< HEAD
   onCurrentPage: Function;
   onPageSize: Function;
-=======
-  setCurrentPage: Function;
-  setPageSize: Function;
->>>>>>> 9f2a7041b51f4e5379b7f0007127c1b3bef2d958
 }
 
 const ProductList = ({
@@ -32,13 +27,8 @@ const ProductList = ({
   search,
   pageSize,
   currentPage,
-<<<<<<< HEAD
   onCurrentPage,
   onPageSize
-=======
-  setCurrentPage,
-  setPageSize
->>>>>>> 9f2a7041b51f4e5379b7f0007127c1b3bef2d958
 }: ProductListProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -90,9 +80,9 @@ const ProductList = ({
     onCurrentPage(1);
   };
 
-  const renderRows = (product: Product) => (
+  const renderRows = (product: Product, index: number) => (
     <tr key={product.id} className="text-left">
-      <td className="py-5">{product.id}</td>
+      <td className="py-5">{(currentPage - 1) * pageSize + (index + 1)}</td>
       <td className="py-5 pl-5 w-1/5 max-w-[10rem] xl:max-w-[20rem] ">
         <p className="truncate w-10/12">{product.name}</p>
       </td>
