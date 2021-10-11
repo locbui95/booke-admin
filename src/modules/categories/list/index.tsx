@@ -13,10 +13,19 @@ import TableHead from "./table-head";
 interface CategotyListProps {
   hanldeClickEditButon: Function;
   searchName: string;
+  PageSize: number;
+  currentPage: number;
+  setCurrentPage: Function;
 }
 
 const CategoriesList = (props: CategotyListProps) => {
-  const { hanldeClickEditButon, searchName } = props;
+  const {
+    hanldeClickEditButon,
+    searchName,
+    PageSize,
+    currentPage,
+    setCurrentPage
+  } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -50,11 +59,14 @@ const CategoriesList = (props: CategotyListProps) => {
   const handleClickRemove = () => {
     setIsOpen(false);
     dispatch(deleteCategory(categoryId));
+    setCurrentPage(1);
   };
 
   const renderRows = (category: Category, index: number) => (
     <tr key={category.id} className="py-2">
-      <td className="text-center">{index + 1}</td>
+      <td className="text-center">
+        {(currentPage - 1) * PageSize + (index + 1)}
+      </td>
       <td className="pl-5">{category.name}</td>
       <td className="my-24 max-w-md p-2.5 h-auto">
         <p className="truncate w-full px-6 py-4 mx-auto">
@@ -68,7 +80,7 @@ const CategoriesList = (props: CategotyListProps) => {
           </p>
         ) : (
           <p className="p-1 text-center border border-[#fb0b12] rounded bg-[#fb0b12] text-xs text-white">
-            Not Active
+            InActive
           </p>
         )}
       </td>
@@ -95,6 +107,9 @@ const CategoriesList = (props: CategotyListProps) => {
         data={newArrayCategories}
         head={<TableHead />}
         renderRows={renderRows}
+        PageSize={PageSize}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
       <Popup
         message="Are you sure to delete this record ?"

@@ -18,13 +18,15 @@ interface FormProps {
   categoryRow: Category;
   isOpen: boolean;
   onClose: () => void;
+  setCurrentPage: Function;
 }
 
 export default function Form({
   mode,
   categoryRow,
   isOpen,
-  onClose
+  onClose,
+  setCurrentPage
 }: FormProps) {
   const [valueSwitch, setValueSwitch] = useState<boolean>(true);
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -77,6 +79,7 @@ export default function Form({
     }
     setValueSwitch(true);
     resetForm({ values: "" });
+    setCurrentPage(1);
     onClose();
   };
 

@@ -8,6 +8,9 @@ import CategoriesList from "modules/categories/list";
 import Form from "./form";
 
 export default function CategoryList() {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const PageSize: number = 5;
+
   const [mode, setMode] = useState<string>("create");
   const [categoryRow, setCategoryRow] = useState<Category>({
     id: 0,
@@ -41,7 +44,7 @@ export default function CategoryList() {
       <div className="flex items-center bg-white p-8 shadow-md rounded-lg justify-between">
         <p className="font-bold text-xl">Category</p>
         <div className="w-3/4 flex justify-end">
-          <Search onSearch={handleSearch} />
+          <Search onSearch={handleSearch} setCurrentPage={setCurrentPage} />
           <Button
             loading={false}
             onClick={hanldeClickAddButon}
@@ -55,11 +58,15 @@ export default function CategoryList() {
             mode={mode}
             categoryRow={categoryRow}
             onClose={onClose}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       </div>
       <div className="mt-10">
         <CategoriesList
+          PageSize={PageSize}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
           searchName={searchName}
           hanldeClickEditButon={hanldeClickEditButon}
         />

@@ -4,12 +4,14 @@ import "./table.module.css";
 import Spinner from "components/spinner";
 import Pagination from "components/pagination";
 
-const PageSize: number = 5;
 interface TableProps extends ComponentPropsWithoutRef<"table"> {
   loading?: boolean;
   head: ReactNode;
   data: any[];
   renderRows: Function;
+  PageSize: number;
+  currentPage: number;
+  setCurrentPage: Function;
 }
 
 export default function Table({
@@ -17,10 +19,11 @@ export default function Table({
   head,
   data,
   renderRows,
+  PageSize,
+  currentPage,
+  setCurrentPage,
   ...props
 }: TableProps) {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
