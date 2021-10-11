@@ -15,7 +15,7 @@ export default function Search({ onSearch }: SearchProps) {
     <div className="relative lg:block hidden w-1/2">
       <Input
         className="p-3 w-3/4 bg-gray-200 focus:outline-none focus:border-blue-400 focus:bg-white border-2"
-        placeholder="Search here..."
+        placeholder="Search name..."
         onChange={handleChange}
       />
     </div>
