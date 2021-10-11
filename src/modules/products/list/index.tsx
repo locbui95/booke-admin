@@ -18,8 +18,8 @@ interface ProductListProps {
   search: string;
   pageSize: number;
   currentPage: number;
-  setCurrentPage: Function;
-  setPageSize: Function;
+  onCurrentPage: Function;
+  onPageSize: Function;
 }
 
 const ProductList = ({
@@ -27,8 +27,8 @@ const ProductList = ({
   search,
   pageSize,
   currentPage,
-  setCurrentPage,
-  setPageSize
+  onCurrentPage,
+  onPageSize
 }: ProductListProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -77,7 +77,7 @@ const ProductList = ({
   const handleClickDeleteProduct = (id: number) => {
     dispatch(deleteProduct(id));
     setIsOpen(false);
-    setCurrentPage(1);
+    onCurrentPage(1);
   };
 
   const renderRows = (product: Product) => (
@@ -132,8 +132,8 @@ const ProductList = ({
         renderRows={renderRows}
         pageSize={pageSize}
         currentPage={currentPage}
-        setPageSize={setPageSize}
-        setCurrentPage={setCurrentPage}
+        onPageSize={onPageSize}
+        onCurrentPage={onCurrentPage}
       />
 
       <Popup

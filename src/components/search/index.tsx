@@ -4,13 +4,13 @@ import Input from "components/input";
 
 interface SearchProps {
   onSearch: (search: string) => void;
-  setCurrentPage: Function;
+  onCurrentPage: Function;
 }
 
-export default function Search({ onSearch, setCurrentPage }: SearchProps) {
+export default function Search({ onSearch, onCurrentPage }: SearchProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
-    setCurrentPage(1);
+    onCurrentPage(1);
   };
 
   return (

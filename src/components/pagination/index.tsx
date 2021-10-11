@@ -13,7 +13,7 @@ interface PaginationProps {
   siblingCount?: number;
   currentPage: number;
   pageSize: number;
-  setPageSize: Function;
+  onPageSize: Function;
 }
 
 const Pagination = (props: PaginationProps) => {
@@ -23,7 +23,7 @@ const Pagination = (props: PaginationProps) => {
     siblingCount = 1,
     currentPage,
     pageSize,
-    setPageSize
+    onPageSize
   } = props;
 
   const paginationRange: (string | number)[] | undefined = usePagination(
@@ -42,7 +42,7 @@ const Pagination = (props: PaginationProps) => {
   };
 
   const handleChangeSelect = (e: any): void => {
-    setPageSize(e.target.value);
+    onPageSize(e.target.value);
     handlePageChange(1);
   };
 

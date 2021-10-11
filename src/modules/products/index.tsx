@@ -41,7 +41,7 @@ export default function ProductList() {
               ))}
             </Select>
           </div>
-          <Search onSearch={handleSearch} setCurrentPage={setCurrentPage} />
+          <Search onSearch={handleSearch} onCurrentPage={setCurrentPage} />
           <Link to={PATH_PRODUCTS_ADD}>
             <Button
               loading={false}
@@ -58,8 +58,8 @@ export default function ProductList() {
         search={search}
         pageSize={pageSize}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        setPageSize={setPageSize}
+        onCurrentPage={setCurrentPage}
+        onPageSize={setPageSize}
       />
     </div>
   );

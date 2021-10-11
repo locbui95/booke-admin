@@ -19,7 +19,7 @@ export default function UserList() {
       <div className="flex items-center bg-white p-8 shadow-md rounded-lg justify-between">
         <p className="font-bold text-xl">User</p>
         <div className="w-3/4 flex justify-end">
-          <Search onSearch={handleSearch} setCurrentPage={setCurrentPage} />
+          <Search onSearch={handleSearch} onCurrentPage={setCurrentPage} />
           <Button
             loading={false}
             className="flex p-3 bg-blue-400 hover:bg-blue-500 text-white"
@@ -34,8 +34,8 @@ export default function UserList() {
           keySearch={keySearch}
           pageSize={pageSize}
           currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          setPageSize={setPageSize}
+          onCurrentPage={setCurrentPage}
+          onPageSize={setPageSize}
         />
       </div>
     </div>

@@ -44,7 +44,7 @@ export default function CategoryList() {
       <div className="flex items-center bg-white p-8 shadow-md rounded-lg justify-between">
         <p className="font-bold text-xl">Category</p>
         <div className="w-3/4 flex justify-end">
-          <Search onSearch={handleSearch} setCurrentPage={setCurrentPage} />
+          <Search onSearch={handleSearch} onCurrentPage={setCurrentPage} />
           <Button
             loading={false}
             onClick={hanldeClickAddButon}
@@ -58,7 +58,7 @@ export default function CategoryList() {
             mode={mode}
             categoryRow={categoryRow}
             onClose={onClose}
-            setCurrentPage={setCurrentPage}
+            onCurrentPage={setCurrentPage}
           />
         </div>
       </div>
@@ -66,8 +66,8 @@ export default function CategoryList() {
         <CategoriesList
           pageSize={pageSize}
           currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          setPageSize={setPageSize}
+          onCurrentPage={setCurrentPage}
+          onPageSize={setPageSize}
           searchName={searchName}
           hanldeClickEditButon={hanldeClickEditButon}
         />

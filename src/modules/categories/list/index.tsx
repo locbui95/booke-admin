@@ -15,8 +15,8 @@ interface CategotyListProps {
   searchName: string;
   pageSize: number;
   currentPage: number;
-  setCurrentPage: Function;
-  setPageSize: Function;
+  onCurrentPage: Function;
+  onPageSize: Function;
 }
 
 const CategoriesList = (props: CategotyListProps) => {
@@ -25,8 +25,8 @@ const CategoriesList = (props: CategotyListProps) => {
     searchName,
     pageSize,
     currentPage,
-    setCurrentPage,
-    setPageSize
+    onCurrentPage,
+    onPageSize
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
@@ -61,7 +61,7 @@ const CategoriesList = (props: CategotyListProps) => {
   const handleClickRemove = () => {
     setIsOpen(false);
     dispatch(deleteCategory(categoryId));
-    setCurrentPage(1);
+    onCurrentPage(1);
   };
 
   const renderRows = (category: Category, index: number) => (
@@ -111,8 +111,8 @@ const CategoriesList = (props: CategotyListProps) => {
         renderRows={renderRows}
         pageSize={pageSize}
         currentPage={currentPage}
-        setPageSize={setPageSize}
-        setCurrentPage={setCurrentPage}
+        onPageSize={onPageSize}
+        onCurrentPage={onPageSize}
       />
       <Popup
         message="Are you sure to delete this record ?"

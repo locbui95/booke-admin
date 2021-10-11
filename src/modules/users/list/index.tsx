@@ -13,13 +13,12 @@ interface UsersProps {
   keySearch: string;
   pageSize: number;
   currentPage: number;
-  setCurrentPage: Function;
-  setPageSize: Function;
+  onCurrentPage: Function;
+  onPageSize: Function;
 }
 
 const UsersList = (props: UsersProps) => {
-  const { keySearch, pageSize, currentPage, setCurrentPage, setPageSize } =
-    props;
+  const { keySearch, pageSize, currentPage, onCurrentPage, onPageSize } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { users } = useSelector((state: RootState) => state.users);
   const [userId, setUserId] = useState<number>(0);
@@ -37,7 +36,7 @@ const UsersList = (props: UsersProps) => {
   const handleConfirmDelete = () => {
     setIsOpen(false);
     dispatch(deleteUser(userId));
-    setCurrentPage(1);
+    onCurrentPage(1);
   };
 
   const newArrayUser: User[] = users.filter((user: User) => {
@@ -76,8 +75,8 @@ const UsersList = (props: UsersProps) => {
         renderRows={renderRows}
         pageSize={pageSize}
         currentPage={currentPage}
-        setPageSize={setPageSize}
-        setCurrentPage={setCurrentPage}
+        onPageSize={onPageSize}
+        onCurrentPage={onCurrentPage}
       />
       <Popup
         message="Are you sure to delete this user?"
