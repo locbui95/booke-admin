@@ -13,7 +13,7 @@ import TableHead from "./table-head";
 interface CategotyListProps {
   hanldeClickEditButon: Function;
   searchName: string;
-  PageSize: number;
+  pageSize: number;
   currentPage: number;
   setCurrentPage: Function;
 }
@@ -22,7 +22,7 @@ const CategoriesList = (props: CategotyListProps) => {
   const {
     hanldeClickEditButon,
     searchName,
-    PageSize,
+    pageSize,
     currentPage,
     setCurrentPage
   } = props;

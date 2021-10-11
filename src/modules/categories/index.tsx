@@ -64,7 +64,7 @@ export default function CategoryList() {
       </div>
       <div className="mt-10">
         <CategoriesList
-          PageSize={PageSize}
+          pageSize={PageSize}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           searchName={searchName}
