@@ -11,4 +11,5 @@ export default interface Product {
   author: string;
   publishing_year: string;
   date_submitted: string;
+  timeCreat_Update: string;
 }
