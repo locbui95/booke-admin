@@ -23,7 +23,7 @@ export default function Sidebar() {
           exact
           activeClassName="bg-blue-400 text-white transition-all"
           to="/"
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
           <div className={styles.button}> </div>
           <AiFillAppstore className="text-2xl mx-3" /> Dashboard
@@ -32,7 +32,7 @@ export default function Sidebar() {
           exact
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_CATEGORIES}
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
           <div className={styles.button}> </div>
           <AiOutlineMenuUnfold className="text-2xl mx-3" />
@@ -41,7 +41,7 @@ export default function Sidebar() {
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_PRODUCTS}
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button1"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
           <div className={styles.button}> </div>
           <AiFillHdd className="text-2xl mx-3" />
@@ -50,7 +50,7 @@ export default function Sidebar() {
         <NavLink
           activeClassName="bg-blue-400 text-white transition-all"
           to={PATH_USER}
-          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative button"
+          className="flex py-4 cursor-pointer text-md text-left mx-2 rounded-2xl hover:text-white transition-all mb-1 relative"
         >
           <div className={styles.button}> </div>
           <AiOutlineUsergroupAdd className="text-2xl mx-3" />
