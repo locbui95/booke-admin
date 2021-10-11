@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ChangeEvent, useMemo, useState, useEffect } from "react";
 import { RootState } from "store";
 import { useParams, Link, useHistory } from "react-router-dom";
+import moment from "moment";
 
 import Button from "components/button";
 import Input from "components/input";
@@ -60,7 +61,8 @@ export default function Form({ mode }: UserFormProps) {
         categoryID: productDetail.categoryID,
         author: productDetail.author,
         publishing_year: productDetail.publishing_year,
-        date_submitted: productDetail.date_submitted
+        date_submitted: productDetail.date_submitted,
+        timeCreat_Update: productDetail.timeCreat_Update
       };
     }
     return {
@@ -74,17 +76,22 @@ export default function Form({ mode }: UserFormProps) {
       categoryID: "",
       author: "",
       publishing_year: "",
-      date_submitted: ""
+      date_submitted: "",
+      timeCreat_Update: ""
     };
   }, [productDetail, mode]);
 
   function handleSubmit(values: any) {
     if (mode === "edit") {
-      const valueEdit = { ...values, status: statusSwitch };
+      const valueEdit = {
+        ...values,
+        status: statusSwitch,
+        timeCreat_Update: moment().format()
+      };
       dispatch(updateProduct(Number(id), valueEdit));
       dispatch(getProducts());
     } else {
-      dispatch(addProduct(values));
+      dispatch(addProduct({ ...values, timeCreat_Update: moment().format() }));
       dispatch(getProducts());
     }
     dispatch(getProducts());
