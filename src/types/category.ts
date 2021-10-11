@@ -3,4 +3,5 @@ export default interface Category {
   name: string;
   description: string;
   status: boolean;
+  timeCreat_Update: string;
 }
