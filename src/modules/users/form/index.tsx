@@ -1,7 +1,6 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from "formik";
 import { useMemo, useState } from "react";
-import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import moment from "moment";
@@ -11,6 +10,7 @@ import Input from "components/input";
 import User from "types/user";
 
 import { addUser, getUsers, updateUser } from "store/users/action";
+import { userSchema } from "./user-form.schema";
 import styles from "./form.module.css";
 
 interface FormProps {
@@ -86,13 +86,7 @@ export default function Form({
     initialValues,
     enableReinitialize: true,
     onSubmit: handleSubmit,
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required("Please enter name"),
-      email: Yup.string().required("Please enter email"),
-      password: Yup.string().required("Please enter password"),
-      phone: Yup.string().required("Please enter phone"),
-      address: Yup.string().required("Please enter address")
-    })
+    validationSchema: userSchema
   });
 
   return (
@@ -147,36 +141,34 @@ export default function Form({
               {formik.touched.email && formik.errors.email ? (
                 <span className={styles.error}>{formik.errors.email}</span>
               ) : null}
-              {mode === "create" ? (
-                <>
-                  <div className="my-3 flex items-center">
-                    <div className="flex mr-2 w-24">
-                      <label
-                        className="mr-1 block text-gray-700 text-md font-bold"
-                        htmlFor="password"
-                      >
-                        Password
-                      </label>
-                      <p className="text-red-500">*</p>
-                    </div>
-                    <Input
-                      id="password"
-                      name="password"
-                      type={passwordShown ? "text" : "password"}
-                      value={formik.values.password}
-                      onChange={formik.handleChange}
-                    />
-                  </div>
-                  <div className="flex justify-end mr-1 ">
-                    <i
-                      className="hover:text-blue-400 cursor-pointer"
-                      onClick={togglePasswordVisiblity}
+              <>
+                <div className="my-3 flex items-center">
+                  <div className="flex mr-2 w-24">
+                    <label
+                      className="mr-1 block text-gray-700 text-md font-bold"
+                      htmlFor="password"
                     >
-                      Show password
-                    </i>
+                      Password
+                    </label>
+                    <p className="text-red-500">*</p>
                   </div>
-                </>
-              ) : null}
+                  <Input
+                    id="password"
+                    name="password"
+                    type={passwordShown ? "text" : "password"}
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="flex justify-end mr-1 ">
+                  <i
+                    className="hover:text-blue-400 cursor-pointer"
+                    onClick={togglePasswordVisiblity}
+                  >
+                    Show password
+                  </i>
+                </div>
+              </>
 
               {formik.touched.password && formik.errors.password ? (
                 <span className={styles.error}>{formik.errors.password}</span>
