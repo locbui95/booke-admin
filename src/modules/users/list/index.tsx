@@ -39,7 +39,7 @@ const UsersList = (props: UsersProps) => {
     onCurrentPage(1);
   };
 
-  const newArrayUser: User[] = users.filter((user: User) => {
+  const newArrayUser: any = Object.values(users).filter((user: any) => {
     if (user.name.toLowerCase().includes(keySearch.toLowerCase())) {
       return user;
     }

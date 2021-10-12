@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 
 import UserApi from "apis/user";
-import User from "types/user";
+import User, { IUserLogin } from "types/user";
 
 import {
   PENDING,
@@ -11,7 +11,8 @@ import {
   DELETE_USER,
   ADD_USER,
   UPDATE_USER,
-  GET_USER_DETAIL
+  GET_USER_DETAIL,
+  LOGIN_USER
 } from "./constant";
 
 export const getUsers = () => async (dispatch: Dispatch<ActionTypes>) => {
@@ -45,7 +46,7 @@ export const addUser =
       dispatch({ type: REJECTED });
     }
   };
-export const getUserDetail =
+export const getProductDetail =
   (id: number) => async (dispatch: Dispatch<ActionTypes>) => {
     dispatch({ type: PENDING });
     try {
@@ -63,5 +64,15 @@ export const updateUser =
       dispatch({ type: UPDATE_USER, payload: response.data });
     } catch (error) {
       dispatch({ type: REJECTED });
+    }
+  };
+export const loginUser =
+  (user: IUserLogin) => async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch({ type: PENDING });
+    try {
+      const { data } = await UserApi.login(user);
+      dispatch({ type: LOGIN_USER, payload: data.user });
+    } catch (err) {
+      dispatch({ type: REJECTED, payload: Object(err)?.response?.data });
     }
   };
