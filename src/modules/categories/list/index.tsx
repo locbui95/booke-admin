@@ -112,7 +112,7 @@ const CategoriesList = (props: CategotyListProps) => {
         pageSize={pageSize}
         currentPage={currentPage}
         onPageSize={onPageSize}
-        onCurrentPage={onPageSize}
+        onCurrentPage={onCurrentPage}
       />
       <Popup
         message="Are you sure to delete this record ?"
