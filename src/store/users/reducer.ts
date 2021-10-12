@@ -1,7 +1,9 @@
 import User from "types/user";
 import {
   ActionTypes,
+  ADD_USER,
   PENDING,
+  UPDATE_USER,
   REJECTED,
   GET_USERS,
   DELETE_USER
@@ -26,11 +28,30 @@ const UsersReducer = (state = initialState, action: ActionTypes) => {
         users: action.payload,
         loading: false
       };
+    case ADD_USER:
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+        loading: false
+      };
     case DELETE_USER: {
       const filterUsers = state.users.filter(
         (item) => item.id !== action.payload
       );
       return { ...state, users: filterUsers, loading: false };
+    }
+    case UPDATE_USER: {
+      const newUser = state.users.map((user: User) => {
+        if (user.id === action.payload.id) {
+          return action.payload;
+        }
+        return user;
+      });
+      return {
+        ...state,
+        users: newUser,
+        loading: false
+      };
     }
     case REJECTED:
       return { ...state, loading: true };
