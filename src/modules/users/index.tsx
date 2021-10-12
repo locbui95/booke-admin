@@ -31,7 +31,7 @@ export default function UserList() {
     setIsOpen(true);
     setMode("create");
   };
-  const onClose = (): void => {
+  const handleClose = (): void => {
     setIsOpen(false);
   };
   const hanldeClickEditButon = (value: User): void => {
@@ -58,7 +58,7 @@ export default function UserList() {
             isOpen={isOpen}
             mode={mode}
             userRow={userRow}
-            onClose={onClose}
+            onClose={handleClose}
             onCurrentPage={setCurrentPage}
           />
         </div>

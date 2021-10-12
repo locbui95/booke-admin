@@ -31,9 +31,6 @@ export default function Form({
   const { users } = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(!passwordShown);
-  };
 
   let title: string;
   if (mode === "edit") {
@@ -63,6 +60,10 @@ export default function Form({
       timeCreat_Update: ""
     };
   }, [userRow, mode]);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   const handleSubmit = (values: User, { resetForm }: any): void => {
     if (mode === "edit") {
