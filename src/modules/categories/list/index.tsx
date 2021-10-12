@@ -15,7 +15,8 @@ interface CategotyListProps {
   searchName: string;
   pageSize: number;
   currentPage: number;
-  setCurrentPage: Function;
+  onCurrentPage: Function;
+  onPageSize: Function;
 }
 
 const CategoriesList = (props: CategotyListProps) => {
@@ -24,7 +25,8 @@ const CategoriesList = (props: CategotyListProps) => {
     searchName,
     pageSize,
     currentPage,
-    setCurrentPage
+    onCurrentPage,
+    onPageSize
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<number>(0);
@@ -59,13 +61,13 @@ const CategoriesList = (props: CategotyListProps) => {
   const handleClickRemove = () => {
     setIsOpen(false);
     dispatch(deleteCategory(categoryId));
-    setCurrentPage(1);
+    onCurrentPage(1);
   };
 
   const renderRows = (category: Category, index: number) => (
     <tr key={category.id} className="py-2">
       <td className="text-center">
-        {(currentPage - 1) * PageSize + (index + 1)}
+        {(currentPage - 1) * pageSize + (index + 1)}
       </td>
       <td className="pl-5">{category.name}</td>
       <td className="my-24 max-w-md p-2.5 h-auto">
@@ -107,9 +109,10 @@ const CategoriesList = (props: CategotyListProps) => {
         data={newArrayCategories}
         head={<TableHead />}
         renderRows={renderRows}
-        PageSize={PageSize}
+        pageSize={pageSize}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        onPageSize={onPageSize}
+        onCurrentPage={onPageSize}
       />
       <Popup
         message="Are you sure to delete this record ?"
