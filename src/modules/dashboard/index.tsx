@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { useEffect } from "react";
-import { FaShoppingBasket, FaThLarge } from "react-icons/fa";
+import { FaShoppingBasket, FaThLarge, FaUsers } from "react-icons/fa";
 
 import DashboardCard from "components/dashboard-card";
 import CircleChart from "components/chart";
 import { getProducts } from "store/product/action";
 import { getCategories } from "store/categories/action";
+import { getUsers } from "store/users/action";
 import Product from "types/product";
 import Category from "types/category";
 
@@ -14,10 +15,12 @@ export default function DashboardList() {
   const dispatch = useDispatch();
   const { products } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
+  const { users } = useSelector((state: RootState) => state.users);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
+    dispatch(getUsers());
   }, []);
 
   const filterProducts = products.filter((item: Product) =>
@@ -71,6 +74,15 @@ export default function DashboardList() {
           <div className="flex justify-center items-center">
             <CircleChart data={dataCategory} />
           </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-4 gap-4">
+        <div className="flex items-center justify-around mb-8 p-7 bg-white text-gray-600 shadow-md rounded-xl">
+          <DashboardCard
+            icon={<FaUsers />}
+            count={Number(users?.length)}
+            title="Total Users"
+          />
         </div>
       </div>
     </div>

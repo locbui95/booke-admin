@@ -5,6 +5,7 @@ export default interface User {
   password: string;
   phone: string;
   address: string;
+  timeCreat_Update: string;
 }
 
 export interface IUserLogin {

@@ -10,6 +10,7 @@ import Popup from "components/popup";
 import TableHead from "./table-head";
 
 interface UsersProps {
+  hanldeClickEditButon: Function;
   keySearch: string;
   pageSize: number;
   currentPage: number;
@@ -18,7 +19,14 @@ interface UsersProps {
 }
 
 const UsersList = (props: UsersProps) => {
-  const { keySearch, pageSize, currentPage, onCurrentPage, onPageSize } = props;
+  const {
+    keySearch,
+    pageSize,
+    currentPage,
+    onCurrentPage,
+    onPageSize,
+    hanldeClickEditButon
+  } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { users } = useSelector((state: RootState) => state.users);
   const [userId, setUserId] = useState<number>(0);
@@ -38,10 +46,15 @@ const UsersList = (props: UsersProps) => {
     dispatch(deleteUser(userId));
     onCurrentPage(1);
   };
+  const sortUser = users.sort(
+    (a, b) =>
+      new Date(b.timeCreat_Update).getTime() -
+      new Date(a.timeCreat_Update).getTime()
+  );
 
-  const newArrayUser: any = Object.values(users).filter((user: any) => {
-    if (user.name.toLowerCase().includes(keySearch.toLowerCase())) {
-      return user;
+  const newArrayUser: User[] = sortUser.filter((value) => {
+    if (value.name?.toLowerCase().match(keySearch.toLowerCase())) {
+      return value;
     }
     return "";
   });
@@ -56,7 +69,10 @@ const UsersList = (props: UsersProps) => {
       <td className="py-4">{user.phone}</td>
       <td className="py-4">{user.address}</td>
       <td className="py-4">
-        <Button className="bg-white text-yellow-600 text-xl mr-7 hover:text-yellow-800">
+        <Button
+          onClick={() => hanldeClickEditButon(user)}
+          className="bg-white text-yellow-600 text-xl mr-7 hover:text-yellow-800"
+        >
           <BsPencilSquare />
         </Button>
         <Button
@@ -80,6 +96,7 @@ const UsersList = (props: UsersProps) => {
         onPageSize={onPageSize}
         onCurrentPage={onCurrentPage}
       />
+
       <Popup
         message="Are you sure to delete this user?"
         title="Confirm Information"

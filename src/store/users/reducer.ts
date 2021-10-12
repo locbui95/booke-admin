@@ -1,12 +1,12 @@
 import User, { IInfoUser } from "types/user";
 import {
   ActionTypes,
+  ADD_USER,
   PENDING,
+  UPDATE_USER,
   REJECTED,
   GET_USERS,
   DELETE_USER,
-  ADD_USER,
-  UPDATE_USER,
   LOGIN_USER
 } from "./constant";
 
@@ -39,25 +39,24 @@ const UsersReducer = (state = initialState, action: ActionTypes) => {
         users: action.payload,
         loading: false
       };
-    case DELETE_USER: {
-      const filterUsers = state.users.filter(
-        (item) => item.id !== action.payload
-      );
-      return { ...state, users: filterUsers, loading: false };
-    }
     case ADD_USER:
       return {
         ...state,
         users: [...state.users, action.payload],
         loading: false
       };
+    case DELETE_USER: {
+      const filterUsers = state.users.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, users: filterUsers, loading: false };
+    }
     case UPDATE_USER: {
-      const { payload } = action;
-      const newUser = state.users.map((item: User) => {
-        if (item.id === payload.id) {
-          return payload;
+      const newUser = state.users.map((user: User) => {
+        if (user.id === action.payload.id) {
+          return action.payload;
         }
-        return item;
+        return user;
       });
       return {
         ...state,
