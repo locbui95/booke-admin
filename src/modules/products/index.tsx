@@ -17,8 +17,10 @@ export default function ProductList() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
 
-  const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) =>
+  const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelect(e.target.value);
+    setCurrentPage(1);
+  };
 
   const { categories } = useSelector((state: RootState) => state.categories);
 
