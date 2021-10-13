@@ -135,7 +135,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline bg-[#EEEEEE] focus:bg-white"
                 name="name"
                 id="name"
                 type="text"
@@ -155,7 +155,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="author"
                 id="author"
                 type="text"
@@ -177,7 +177,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="price"
                 id="price"
                 type="number"
@@ -198,7 +198,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="import_price"
                 id="import_price"
                 type="number"
@@ -223,7 +223,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="tax"
                 id="tax"
                 type="number"
@@ -244,7 +244,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="image"
                 id="image"
                 type="text"
@@ -267,7 +267,7 @@ export default function Form({ mode }: UserFormProps) {
               <span className="text-red-400 ml-1">*</span>
             </label>
             <textarea
-              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white h-40"
+              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white h-40"
               name="description"
               id="description"
               onChange={formik.handleChange}
@@ -288,7 +288,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="publishing_year"
                 id="publishing_year"
                 type="number"
@@ -312,7 +312,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="date_submitted"
                 id="date_submitted"
                 type="date"
@@ -376,7 +376,7 @@ export default function Form({ mode }: UserFormProps) {
               SUBMIT
             </Button>
             <Link to={PATH_PRODUCTS} className="">
-              <Button className="px-3 py-2 rounded-md transition-all bg-gray-200 hover:bg-gray-400">
+              <Button className="px-3 py-2 rounded-md transition-all bg-[#EEEEEE] hover:bg-gray-400">
                 CANCEL
               </Button>
             </Link>
