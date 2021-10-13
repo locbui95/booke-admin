@@ -21,6 +21,7 @@ import { getCategories } from "store/categories/action";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./form.module.css";
+import { productSchema } from "./product-form.schema";
 
 interface UserFormProps {
   mode: "create" | "edit";
@@ -34,6 +35,7 @@ export default function Form({ mode }: UserFormProps) {
   const [statusSwitch, setStatusSwitch] = useState<boolean>(true);
   const { productDetail } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (id) {
@@ -95,24 +97,16 @@ export default function Form({ mode }: UserFormProps) {
       dispatch(getProducts());
     }
     dispatch(getProducts());
-    history.push(PATH_PRODUCTS);
+    setLoading(true);
+    setTimeout(() => {
+      history.push(PATH_PRODUCTS);
+    }, 1000);
   }
 
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required("Please enter name"),
-      price: Yup.string().required("Please enter price"),
-      import_price: Yup.string().required("Please enter import price"),
-      tax: Yup.string().required("Please enter tax"),
-      image: Yup.string().required("Please enter image"),
-      description: Yup.string().required("Please enter description"),
-      categoryID: Yup.string().required("Please choose category"),
-      publishing_year: Yup.string().required("Please choose publishing year"),
-      date_submitted: Yup.string().required("Please choose date submitted"),
-      author: Yup.string().required("Please enter author")
-    }),
+    validationSchema: productSchema,
     onSubmit: handleSubmit
   });
 
@@ -141,7 +135,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline bg-[#EEEEEE] focus:bg-white"
                 name="name"
                 id="name"
                 type="text"
@@ -161,7 +155,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="author"
                 id="author"
                 type="text"
@@ -183,7 +177,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="price"
                 id="price"
                 type="number"
@@ -204,7 +198,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="import_price"
                 id="import_price"
                 type="number"
@@ -229,7 +223,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="tax"
                 id="tax"
                 type="number"
@@ -250,7 +244,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="image"
                 id="image"
                 type="text"
@@ -273,7 +267,7 @@ export default function Form({ mode }: UserFormProps) {
               <span className="text-red-400 ml-1">*</span>
             </label>
             <textarea
-              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white h-40"
+              className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white h-40"
               name="description"
               id="description"
               onChange={formik.handleChange}
@@ -294,7 +288,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="publishing_year"
                 id="publishing_year"
                 type="number"
@@ -318,7 +312,7 @@ export default function Form({ mode }: UserFormProps) {
                 <span className="text-red-400 ml-1">*</span>
               </label>
               <Input
-                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-gray-200 focus:bg-white"
+                className="border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline focus:border-blue-400 bg-[#EEEEEE] focus:bg-white"
                 name="date_submitted"
                 id="date_submitted"
                 type="date"
@@ -375,13 +369,14 @@ export default function Form({ mode }: UserFormProps) {
           </div>
           <div className="flex justify-end mt-8">
             <Button
-              className="mr-4 px-3 py-2 rounded-md transition-all  bg-blue-400 hover:bg-blue-500 text-white text-sm"
+              loading={loading}
+              className="flex items-center mr-4 px-3 py-2 rounded-md transition-all bg-blue-400 hover:bg-blue-500 text-white text-sm"
               type="submit"
             >
               SUBMIT
             </Button>
             <Link to={PATH_PRODUCTS} className="">
-              <Button className="px-3 py-2 rounded-md transition-all bg-gray-200 hover:bg-gray-400">
+              <Button className="px-3 py-2 rounded-md transition-all bg-[#EEEEEE] hover:bg-gray-400">
                 CANCEL
               </Button>
             </Link>
