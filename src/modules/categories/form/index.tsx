@@ -1,7 +1,6 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from "formik";
 import { useMemo, useState } from "react";
-import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import moment from "moment";
@@ -12,6 +11,7 @@ import Input from "components/input";
 import Switch from "components/switch";
 import Category from "types/category";
 import styles from "./form.module.css";
+import { CategorySchema } from "./form-category.schema";
 
 interface FormProps {
   mode: string;
@@ -87,10 +87,7 @@ export default function Form({
     initialValues,
     enableReinitialize: true,
     onSubmit: handleSubmit,
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required("Please enter name"),
-      description: Yup.string().required("Please enter description")
-    })
+    validationSchema: CategorySchema
   });
 
   return (
