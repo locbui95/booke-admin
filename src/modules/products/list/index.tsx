@@ -48,7 +48,13 @@ const ProductList = ({
     return false;
   });
 
-  const newArrayProducts = selectProductCategory.filter((product: Product) => {
+  const sortProducts = products.sort(
+    (a, b) =>
+      new Date(b.timeCreat_Update).getTime() -
+      new Date(a.timeCreat_Update).getTime()
+  );
+
+  const newArrayProducts = sortProducts.filter((product: Product) => {
     if (
       product.name
         .trim()
