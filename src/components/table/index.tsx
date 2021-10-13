@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactNode, useMemo, useState } from "react";
+import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 
 import "./table.module.css";
 import Spinner from "components/spinner";

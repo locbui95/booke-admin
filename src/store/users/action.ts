@@ -71,6 +71,7 @@ export const loginUser =
     dispatch({ type: PENDING });
     try {
       const { data } = await UserApi.login(user);
+      localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
       dispatch({ type: LOGIN_USER, payload: data.user });
     } catch (err) {
       dispatch({ type: REJECTED, payload: Object(err)?.response?.data });

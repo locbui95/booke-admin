@@ -1,4 +1,4 @@
-.content{
+.content {
   width: calc(100% - 20rem);
 }
 
@@ -13,13 +13,14 @@ img {
   font-size: 0.8rem;
   overflow: hidden;
   opacity: 0;
-  transition: opacity .45s;
-  -webkit-transition: opacity .35s;
+  transition: opacity 0.45s;
+  -webkit-transition: opacity 0.35s;
   color: #000;
   padding-left: 4px;
+  cursor: pointer;
 }
 
-.logout:hover{
+.logout:hover {
   color: #60a5fa;
   text-decoration: underline;
 }
@@ -31,8 +32,8 @@ img {
   margin: 15px;
   color: white;
   width: 120px;
-  transition: width .35s;
-  -webkit-transition: width .35s;
+  transition: width 0.35s;
+  -webkit-transition: width 0.35s;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -42,6 +43,6 @@ img {
   width: 150px;
 }
 
-.button:hover .logout{
-  opacity: .9;
+.button:hover .logout {
+  opacity: 0.9;
 }

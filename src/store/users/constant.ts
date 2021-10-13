@@ -7,7 +7,7 @@ export const ADD_USER = "ADD_USER";
 export const GET_USER_DETAIL = "GET_USER_DETAIL";
 export const UPDATE_USER = "UPDATE_USER";
 export const REJECTED = "REJECTED";
-export const LOGIN_USER = "OGIN_USER";
+export const LOGIN_USER = "LOGIN_USER";
 
 export type ActionTypes =
   | { type: typeof PENDING }
