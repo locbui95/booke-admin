@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const ProductSchema = Yup.object().shape({
+export const productSchema = Yup.object().shape({
   name: Yup.string().required("Please enter name"),
   price: Yup.string().required("Please enter price"),
   import_price: Yup.string().required("Please enter import price"),

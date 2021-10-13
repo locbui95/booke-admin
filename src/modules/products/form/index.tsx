@@ -21,7 +21,7 @@ import { getCategories } from "store/categories/action";
 import { PATH_PRODUCTS } from "routes/routes.paths";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styles from "./form.module.css";
-import { ProductSchema } from "./product-form.schema";
+import { productSchema } from "./product-form.schema";
 
 interface UserFormProps {
   mode: "create" | "edit";
@@ -106,7 +106,7 @@ export default function Form({ mode }: UserFormProps) {
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,
-    validationSchema: ProductSchema,
+    validationSchema: productSchema,
     onSubmit: handleSubmit
   });
 
