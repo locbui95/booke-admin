@@ -1,14 +1,14 @@
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store";
+import { useHistory } from "react-router";
+import { useEffect } from "react";
 
 import logo from "assets/logo.png";
 import { IUserLogin } from "types/user";
-import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "store/users/action";
-import { RootState } from "store";
-
 import Button from "components/button";
 import Input from "components/input";
-import { useHistory } from "react-router";
 
 function LoginForm() {
   const history = useHistory();
@@ -17,20 +17,25 @@ function LoginForm() {
     email: "",
     password: ""
   };
-  const { error, infoUser: user } = useSelector(
-    (state: RootState) => state.users
-  );
 
-  const handleSubmit = (values: IUserLogin): void => {
+  const isCheck = Boolean(localStorage.getItem("accessToken"));
+
+  useEffect(() => {
+    if (isCheck) {
+      history.replace("/");
+    }
+  }, [isCheck]);
+
+  const { error } = useSelector((state: RootState) => state.users);
+
+  const handleSubmit = (values: IUserLogin) => {
     const submitData: IUserLogin = {
       email: values.email,
       password: values.password
     };
     dispatch(loginUser(submitData));
   };
-  if (Object(user).email !== "") {
-    history.push("/");
-  }
+
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,

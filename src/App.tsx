@@ -1,28 +1,19 @@
-import { useSelector } from "react-redux";
-import { RootState } from "store";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from "layout";
+import PrivateRoute from "routes/private.routes";
 import Login from "pages/login";
 
 function App() {
-  const { infoUser: user } = useSelector((state: RootState) => state.users);
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route exact={true} path="/login" component={Login} />
-          <Route
-            exact={false}
-            path="/"
-            render={() =>
-              Object(user).email ? <Layout /> : <Redirect to="/login" />
-            }
-          />
+          <PrivateRoute>
+            <Switch>
+              <Route path="/" component={Layout} />
+            </Switch>
+          </PrivateRoute>
         </Switch>
       </Router>
     </div>

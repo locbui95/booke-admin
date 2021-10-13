@@ -1,8 +1,7 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from "formik";
 import { useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 
 import Button from "components/button";
@@ -28,7 +27,6 @@ export default function Form({
   onClose,
   onCurrentPage
 }: FormProps) {
-  const { users } = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
 
