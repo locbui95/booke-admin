@@ -70,6 +70,7 @@
       "author": "Edgar H. Schein",
       "publishing_year": "2021",
       "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:12+07:00",
       "id": 1
     },
     {
@@ -77,13 +78,14 @@
       "price": 96000,
       "import_price": 72000,
       "tax": 5,
-      "status": false,
+      "status": true,
       "image": "https://newshop.vn/public/uploads/products/41969/sach-nhung-sat-thu-hang-loat-trong-gioi-tai-chinh.jpg",
       "description": "You have worked your whole life to amass a relatively large fortune, or received it from a close family member. Either way, this is your money, and you certainly don't want it lost or in the hands of someone else. But it's not as easy as you think. Serial killers in the financial world are everywhere, snooping and spying on you, always looking for ways to cut, extract, and even appropriate your entire valuable asset.",
       "categoryID": 1,
       "author": "Bruce Kelly, Tom Ajamie",
       "publishing_year": "2021",
       "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:16+07:00",
       "id": 2
     },
     {
@@ -98,6 +100,7 @@
       "author": "Asia Books",
       "publishing_year": "2021",
       "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:20+07:00",
       "id": 3
     },
     {
@@ -105,17 +108,17 @@
       "price": 440000,
       "import_price": 330000,
       "tax": 0,
-      "status": false,
+      "status": true,
       "image": "https://newshop.vn/public/uploads/products/37126/doi-moi-doanh-nghiep-vuot-qua-khung-hoang.jpg",
       "description": "Business Innovation - Overcoming the Crisis - The economy deviating from the growth trajectory is an undesirable scenario, but it is happening and has serious effects around the world.",
       "categoryID": 2,
       "author": "Tendayi Viki,Esther Gons,Dan Toma,Frederic Laloux,Jordan Berg,Jeff Rosenblum ",
       "publishing_year": "2021",
       "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:26+07:00",
       "id": 4
     },
     {
-      "id": 5,
       "name": "Food - Starting a Catering Service Business (Set of 2 Books)",
       "price": 260000,
       "import_price": 200000,
@@ -126,10 +129,11 @@
       "categoryID": 3,
       "author": "The Staff of Entrepreneur Media Rich Mintzer",
       "publishing_year": "2021",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:30+07:00",
+      "id": 5
     },
     {
-      "id": 6,
       "name": "5 Stars Customer Service",
       "price": 103000,
       "import_price": 65000,
@@ -140,10 +144,11 @@
       "categoryID": 3,
       "author": "Michael Heppell",
       "publishing_year": "2018",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:35+07:00",
+      "id": 6
     },
     {
-      "id": 7,
       "name": "Behind a BIG Decision",
       "price": 91800,
       "import_price": 65000,
@@ -154,7 +159,9 @@
       "categoryID": 4,
       "author": "Joseph L Badaracco",
       "publishing_year": "2020",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:39+07:00",
+      "id": 7
     },
     {
       "name": "New Power - How Will The World's Future Be Shaped?",
@@ -168,6 +175,7 @@
       "author": "Henry Timms, Jeremy Heimans",
       "publishing_year": "2020",
       "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:44+07:00",
       "id": 8
     },
     {
@@ -182,10 +190,10 @@
       "author": "Truong Thiet Thanh",
       "publishing_year": "2020",
       "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:50+07:00",
       "id": 9
     },
     {
-      "id": 10,
       "name": "Eagles Sometimes Fly Lower Than Chickens",
       "price": 46980,
       "import_price": 20000,
@@ -196,49 +204,9 @@
       "categoryID": 4,
       "author": "Truong Thiet Thanh",
       "publishing_year": "2020",
-      "date_submitted": "2021-09-28"
-    },
-    {
-      "name": "qưewqe",
-      "price": 213123,
-      "import_price": 213123,
-      "tax": 21321,
-      "status": true,
-      "image": "sdsad",
-      "description": "ádsad",
-      "categoryID": "3",
-      "author": "qưewq",
-      "publishing_year": 213,
-      "date_submitted": "2021-10-21",
-      "id": 11
-    },
-    {
-      "name": "ewe",
-      "price": 132123,
-      "import_price": 123,
-      "tax": 123,
-      "status": true,
-      "image": "sdas",
-      "description": "đasad",
-      "categoryID": 0,
-      "author": "qưewqe",
-      "publishing_year": 213,
-      "date_submitted": "2021-10-11",
-      "id": 12
-    },
-    {
-      "id": 13,
-      "name": "Eagles Sometimes Fly Lower Than Chickens",
-      "price": 46980,
-      "import_price": 20000,
-      "tax": 0,
-      "status": true,
-      "image": "https://newshop.vn/public/uploads/products/42244/sach-dai-bang-co-khi-bay-thap-hon-ga.jpg",
-      "description": "Eagles Can Fly Lower Than Chickens - His appearance is not eye-catching, graduated from an ordinary local school, and only at the college level, but among the people who applied for jobs, which students were students? Graduates of prestigious schools, masters and doctorates, his performance is the most special.",
-      "categoryID": 4,
-      "author": "Truong Thiet Thanh",
-      "publishing_year": "2020",
-      "date_submitted": "2021-09-28"
+      "date_submitted": "2021-09-28",
+      "timeCreat_Update": "2021-10-13T10:12:54+07:00",
+      "id": 10
     }
   ],
   "users": [
