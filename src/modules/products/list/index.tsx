@@ -65,6 +65,12 @@ const ProductList = ({
     dispatch(getCategories());
   }, []);
 
+  const sortProducts = products.sort(
+    (a, b) =>
+      new Date(b.timeCreat_Update).getTime() -
+      new Date(a.timeCreat_Update).getTime()
+  );
+
   const formatPrice = (price: number) =>
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -128,7 +134,7 @@ const ProductList = ({
     <div className="mt-10">
       <Table
         head={<ProductsTableHead />}
-        data={newArrayProducts}
+        data={sortProducts}
         renderRows={renderRows}
         pageSize={pageSize}
         currentPage={currentPage}
