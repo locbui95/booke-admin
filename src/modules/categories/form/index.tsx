@@ -11,7 +11,7 @@ import Input from "components/input";
 import Switch from "components/switch";
 import Category from "types/category";
 import styles from "./form.module.css";
-import { CategorySchema } from "./form-category.schema";
+import { categorySchema } from "./form-category.schema";
 
 interface FormProps {
   mode: string;
@@ -87,7 +87,7 @@ export default function Form({
     initialValues,
     enableReinitialize: true,
     onSubmit: handleSubmit,
-    validationSchema: CategorySchema
+    validationSchema: categorySchema
   });
 
   return (
