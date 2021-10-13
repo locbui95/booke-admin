@@ -1,4 +1,4 @@
-import User from "types/user";
+import User, { IUserLogin } from "types/user";
 
 export const PENDING = "PENDING";
 export const GET_USERS = "GET_USERS";
@@ -7,6 +7,7 @@ export const ADD_USER = "ADD_USER";
 export const GET_USER_DETAIL = "GET_USER_DETAIL";
 export const UPDATE_USER = "UPDATE_USER";
 export const REJECTED = "REJECTED";
+export const LOGIN_USER = "LOGIN_USER";
 
 export type ActionTypes =
   | { type: typeof PENDING }
@@ -15,4 +16,5 @@ export type ActionTypes =
   | { type: typeof ADD_USER; payload: User }
   | { type: typeof GET_USER_DETAIL; payload: User }
   | { type: typeof UPDATE_USER; payload: User }
-  | { type: typeof REJECTED };
+  | { type: typeof REJECTED; payload?: string }
+  | { type: typeof LOGIN_USER; payload: IUserLogin };

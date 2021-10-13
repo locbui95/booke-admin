@@ -1,4 +1,4 @@
-import User from "types/user";
+import User, { IInfoUser } from "types/user";
 import {
   ActionTypes,
   ADD_USER,
@@ -6,16 +6,27 @@ import {
   UPDATE_USER,
   REJECTED,
   GET_USERS,
-  DELETE_USER
+  DELETE_USER,
+  LOGIN_USER
 } from "./constant";
 
 interface InitialState {
   loading: boolean;
   users: User[];
+  infoUser: IInfoUser;
+  error: string;
 }
 const initialState: InitialState = {
   loading: false,
-  users: []
+  users: [],
+  infoUser: {
+    email: "",
+    id: 0,
+    name: "",
+    phone: "",
+    address: ""
+  },
+  error: ""
 };
 
 const UsersReducer = (state = initialState, action: ActionTypes) => {
@@ -54,7 +65,11 @@ const UsersReducer = (state = initialState, action: ActionTypes) => {
       };
     }
     case REJECTED:
-      return { ...state, loading: true };
+      return { ...state, loading: false, error: action.payload };
+    case LOGIN_USER: {
+      return { ...state, loading: false, infoUser: action.payload };
+    }
+
     default:
       return state;
   }

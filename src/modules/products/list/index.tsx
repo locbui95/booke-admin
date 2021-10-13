@@ -48,7 +48,7 @@ const ProductList = ({
     return false;
   });
 
-  const sortProducts = products.sort(
+  const sortProducts = selectProductCategory.sort(
     (a, b) =>
       new Date(b.timeCreat_Update).getTime() -
       new Date(a.timeCreat_Update).getTime()
