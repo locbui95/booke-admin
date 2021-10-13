@@ -34,6 +34,7 @@ export default function Form({ mode }: UserFormProps) {
   const [statusSwitch, setStatusSwitch] = useState<boolean>(true);
   const { productDetail } = useSelector((state: RootState) => state.product);
   const { categories } = useSelector((state: RootState) => state.categories);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (id) {
@@ -95,7 +96,10 @@ export default function Form({ mode }: UserFormProps) {
       dispatch(getProducts());
     }
     dispatch(getProducts());
-    history.push(PATH_PRODUCTS);
+    setLoading(true);
+    setTimeout(() => {
+      history.push(PATH_PRODUCTS);
+    }, 10000);
   }
 
   const formik = useFormik({
@@ -375,7 +379,8 @@ export default function Form({ mode }: UserFormProps) {
           </div>
           <div className="flex justify-end mt-8">
             <Button
-              className="mr-4 px-3 py-2 rounded-md transition-all  bg-blue-400 hover:bg-blue-500 text-white text-sm"
+              loading={loading}
+              className="flex items-center mr-4 px-3 py-2 rounded-md transition-all bg-blue-400 hover:bg-blue-500 text-white text-sm"
               type="submit"
             >
               SUBMIT
