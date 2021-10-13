@@ -48,7 +48,13 @@ const ProductList = ({
     return false;
   });
 
-  const newArrayProducts = selectProductCategory.filter((product: Product) => {
+  const sortProducts = products.sort(
+    (a, b) =>
+      new Date(b.timeCreat_Update).getTime() -
+      new Date(a.timeCreat_Update).getTime()
+  );
+
+  const newArrayProducts = sortProducts.filter((product: Product) => {
     if (
       product.name
         .trim()
@@ -64,12 +70,6 @@ const ProductList = ({
     dispatch(getProducts());
     dispatch(getCategories());
   }, []);
-
-  const sortProducts = products.sort(
-    (a, b) =>
-      new Date(b.timeCreat_Update).getTime() -
-      new Date(a.timeCreat_Update).getTime()
-  );
 
   const formatPrice = (price: number) =>
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -134,7 +134,7 @@ const ProductList = ({
     <div className="mt-10">
       <Table
         head={<ProductsTableHead />}
-        data={sortProducts}
+        data={newArrayProducts}
         renderRows={renderRows}
         pageSize={pageSize}
         currentPage={currentPage}
