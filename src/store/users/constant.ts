@@ -8,6 +8,7 @@ export const GET_USER_DETAIL = "GET_USER_DETAIL";
 export const UPDATE_USER = "UPDATE_USER";
 export const REJECTED = "REJECTED";
 export const LOGIN_USER = "LOGIN_USER";
+export const RESET_ERROR = "RESET_ERROR";
 
 export type ActionTypes =
   | { type: typeof PENDING }
@@ -17,4 +18,5 @@ export type ActionTypes =
   | { type: typeof GET_USER_DETAIL; payload: User }
   | { type: typeof UPDATE_USER; payload: User }
   | { type: typeof REJECTED; payload?: string }
-  | { type: typeof LOGIN_USER; payload: IUserLogin };
+  | { type: typeof LOGIN_USER; payload: IUserLogin }
+  | { type: typeof RESET_ERROR };

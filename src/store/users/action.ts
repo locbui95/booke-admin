@@ -12,7 +12,8 @@ import {
   ADD_USER,
   UPDATE_USER,
   GET_USER_DETAIL,
-  LOGIN_USER
+  LOGIN_USER,
+  RESET_ERROR
 } from "./constant";
 
 export const getUsers = () => async (dispatch: Dispatch<ActionTypes>) => {
@@ -77,3 +78,11 @@ export const loginUser =
       dispatch({ type: REJECTED, payload: Object(err)?.response?.data });
     }
   };
+export const resetError = () => async (dispatch: Dispatch<ActionTypes>) => {
+  dispatch({ type: PENDING });
+  try {
+    dispatch({ type: RESET_ERROR });
+  } catch (err) {
+    dispatch({ type: REJECTED });
+  }
+};
