@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import logo from "assets/logo.png";
 import { IUserLogin } from "types/user";
-import { loginUser } from "store/users/action";
+import { loginUser, resetError } from "store/users/action";
 import Button from "components/button";
 import Input from "components/input";
 
@@ -31,6 +31,7 @@ function LoginForm() {
 
   const handleLoadingBtn = () => {
     setIsLoading(false);
+    dispatch(resetError());
   };
 
   const handleSubmit = (values: IUserLogin) => {

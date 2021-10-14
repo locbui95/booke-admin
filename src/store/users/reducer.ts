@@ -7,7 +7,8 @@ import {
   REJECTED,
   GET_USERS,
   DELETE_USER,
-  LOGIN_USER
+  LOGIN_USER,
+  RESET_ERROR
 } from "./constant";
 
 interface InitialState {
@@ -68,6 +69,9 @@ const UsersReducer = (state = initialState, action: ActionTypes) => {
       return { ...state, loading: false, error: action.payload };
     case LOGIN_USER: {
       return { ...state, loading: false, infoUser: action.payload };
+    }
+    case RESET_ERROR: {
+      return { ...state, loading: false, error: "" };
     }
 
     default:
