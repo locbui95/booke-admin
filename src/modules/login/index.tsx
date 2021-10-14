@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { useHistory } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import logo from "assets/logo.png";
 import { IUserLogin } from "types/user";
@@ -13,6 +13,9 @@ import Input from "components/input";
 function LoginForm() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { error } = useSelector((state: RootState) => state.users);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const initialValues: IUserLogin = {
     email: "",
     password: ""
@@ -26,7 +29,9 @@ function LoginForm() {
     }
   }, [isCheck]);
 
-  const { error } = useSelector((state: RootState) => state.users);
+  const handleLoadingBtn = () => {
+    setLoading(false);
+  };
 
   const handleSubmit = (values: IUserLogin) => {
     const submitData: IUserLogin = {
@@ -70,6 +75,7 @@ function LoginForm() {
                         placeholder="Email"
                         onChange={formik.handleChange}
                         value={formik.values.email}
+                        onFocus={handleLoadingBtn}
                       />
                     </div>
                     <div className="flex flex-col mt-4">
@@ -81,6 +87,7 @@ function LoginForm() {
                         placeholder="Password"
                         onChange={formik.handleChange}
                         value={formik.values.password}
+                        onFocus={handleLoadingBtn}
                       />
                     </div>
                     <div className="flex items-center mt-4">
@@ -99,8 +106,9 @@ function LoginForm() {
                     </div>
                     <div className="flex flex-col mt-8 w-4/5">
                       <Button
+                        loading={loading}
                         type="submit"
-                        className="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded"
+                        className="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded flex justify-center"
                       >
                         Sign in
                       </Button>
