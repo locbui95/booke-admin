@@ -14,7 +14,7 @@ function LoginForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { error } = useSelector((state: RootState) => state.users);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const initialValues: IUserLogin = {
     email: "",
@@ -30,7 +30,7 @@ function LoginForm() {
   }, [isCheck]);
 
   const handleLoadingBtn = () => {
-    setLoading(false);
+    setIsLoading(false);
   };
 
   const handleSubmit = (values: IUserLogin) => {
@@ -38,6 +38,7 @@ function LoginForm() {
       email: values.email,
       password: values.password
     };
+    setIsLoading(true);
     dispatch(loginUser(submitData));
   };
 
@@ -106,7 +107,7 @@ function LoginForm() {
                     </div>
                     <div className="flex flex-col mt-8 w-4/5">
                       <Button
-                        loading={loading}
+                        loading={isLoading}
                         type="submit"
                         className="bg-blue-400 hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded flex justify-center"
                       >
