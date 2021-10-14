@@ -15,6 +15,7 @@ function LoginForm() {
   const dispatch = useDispatch();
   const { error } = useSelector((state: RootState) => state.users);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [a, b] = useState<boolean>(false);
 
   const initialValues: IUserLogin = {
     email: "",
@@ -29,12 +30,20 @@ function LoginForm() {
     }
   }, [isCheck]);
 
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  }, [error]);
+
   const handleLoadingBtn = () => {
     setIsLoading(false);
     dispatch(resetError());
   };
 
-  const handleSubmit = (values: IUserLogin) => {
+  const handleSubmit = async (values: IUserLogin) => {
     const submitData: IUserLogin = {
       email: values.email,
       password: values.password
