@@ -7,6 +7,7 @@ import Table from "components/table";
 import { deleteUser, getUsers } from "store/users/action";
 import User from "types/user";
 import Popup from "components/popup";
+import Product from "types/product";
 import TableHead from "./table-head";
 
 interface UsersProps {
@@ -46,13 +47,13 @@ const UsersList = (props: UsersProps) => {
     dispatch(deleteUser(userId));
     onCurrentPage(1);
   };
-  const sortUser = users.sort(
-    (a, b) =>
+  const sortUser = Object(users).sort(
+    (a: any, b: any) =>
       new Date(b.timeCreat_Update).getTime() -
       new Date(a.timeCreat_Update).getTime()
   );
 
-  const newArrayUser: User[] = sortUser.filter((value) => {
+  const newArrayUser: User[] = sortUser.filter((value: Product) => {
     if (value.name?.toLowerCase().match(keySearch.toLowerCase())) {
       return value;
     }
