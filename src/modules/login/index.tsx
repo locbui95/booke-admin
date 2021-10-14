@@ -43,7 +43,7 @@ function LoginForm() {
     dispatch(resetError());
   };
 
-  const handleSubmit = async (values: IUserLogin) => {
+  const handleSubmit = (values: IUserLogin) => {
     const submitData: IUserLogin = {
       email: values.email,
       password: values.password
