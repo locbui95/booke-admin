@@ -80,7 +80,7 @@ export default function DashboardList() {
         <div className="flex items-center justify-around mb-8 p-7 bg-white text-gray-600 shadow-md rounded-xl">
           <DashboardCard
             icon={<FaUsers />}
-            count={Number(users?.length)}
+            count={Number(Object.values(users)?.length)}
             title="Total Users"
           />
         </div>
